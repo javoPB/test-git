@@ -1,0 +1,743 @@
+%% --------------------------------------------------------------------------------------------------
+%% M\'odulo: Dominio
+%% --------------------------------------------------------------------------------------------------
+\clearpage
+\section{Modelo de Dominio} \label{sec:dom-dominio}
+\begin{figure}[H]
+\begin{center}
+	\label{tab:uml-domain-model}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{domain-model/DOM-Dominio/domain-model.png}
+	\caption{Diagrama del Modelo de Dominio}
+\end{center}
+\end{figure}
+\begin{figure}[H]
+		\begin{center}
+			\label{tab:uml-domain-model}
+			\includegraphics[width=0.95\textwidth,height=0.70\textheight]{domain-model/DOM-Dominio/domain-model-enum.png}
+			\caption{Diagrama del Modelo de Dominio Enums}
+		\end{center}
+\end{figure}
+\begin{table}[H]
+			\caption{Campos Calculados con Regla de Negocio}
+			\label{tab:entities}
+			%\resizebox{\textwidth}{!}{
+			\begin{center}
+			\begin{tabularx}{0.90\linewidth}{ X X X X}
+				\hline
+				\textbf{Entidad} & \textbf{Campo} & \textbf{C\'odigo} & \textbf{Descripci\'on} \\
+				\hline
+				\hline
+			\end{tabularx}
+			\end{center}
+			%}
+\end{table}
+
+\clearpage
+\section{Descripci\'on de las Entidades de Negocio} \label{sec:dom-entities-dominio}
+
+\begin{table}[H]
+	\caption{Entidades del Modelo de Dominio}
+	\label{tab:entities}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X }
+		\hline
+		\textbf{Entidad} & \textbf{Descripci\'on} \\
+		\hline
+		Contrato (\ref{tab:fields-dom-Contrato}) &  \\
+		Titular (\ref{tab:fields-dom-TitularContrato}) &  \\
+		Beneficiarios (\ref{tab:fields-dom-Beneficiario}) &  \\
+		Limitante (\ref{tab:fields-dom-Limitante}) &  \\
+		Emisor (\ref{tab:fields-dom-Emisor}) &  \\
+		Firma Autorizada (\ref{tab:fields-dom-FirmaAutorizada}) &  \\
+		 (\ref{tab:fields-dom-InstruccionEfectivo}) &  \\
+		Distribuci\'on de Instrucciones (\ref{tab:fields-dom-DistribucionInstrucciones}) &  \\
+		Reperfilamiento de Personas F\'isicas (\ref{tab:fields-dom-ReperfilamientoPersonaFisica}) &  \\
+		Negativa de Perfilamiento (\ref{tab:fields-dom-NegativaPerfilamiento}) &  \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\section{Campos por Entidad de Negocio} \label{sec:entity-fields-dominio}
+
+\begin{table}[H]
+	\caption{Entidad de Negocio Contrato}
+	\label{tab:fields-dom-Contrato}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		NoContrato &
+		Contrato &
+		Text &
+		 &
+		 \\
+		Digito &
+		D\'igito &
+		Text &
+		 &
+		 \\
+		Dv &
+		DV &
+		Text &
+		 &
+		 \\
+		Estatus &
+		Estatus &
+		Text &
+		 &
+		 \\
+		Perfil &
+		Perfil &
+		Text &
+		 &
+		 \\
+		Portafolio &
+		Portafolio &
+		Text &
+		 &
+		 \\
+		CLABE &
+		CLABE &
+		Text &
+		 &
+		 \\
+		STipoPort &
+		STipo Port &
+		Text &
+		 &
+		 \\
+		Libro &
+		Libro &
+		Text &
+		 &
+		 \\
+		AsesorInversion &
+		Asesor de Inversi\'on &
+		Text &
+		 &
+		 \\
+		TipoManifiesto &
+		Tipo de Manifiesto &
+		Text &
+		 &
+		 \\
+		ServicioInversion &
+		Servicio de Inversi\'on &
+		Text &
+		 &
+		 \\
+		CartaEjecucion1 &
+		Carta Ejecuci\'on &
+		Text &
+		 &
+		 \\
+		FechaCartaEjecucion1 &
+		Fecha &
+		Text &
+		 &
+		 \\
+		CartaEjecucion2 &
+		Carta Ejecuci\'on &
+		Text &
+		 &
+		 \\
+		FechaCartaEjecucion2 &
+		Fecha &
+		Text &
+		 &
+		 \\
+		JustificacionInstitucional &
+		Justificaci\'on &
+		Text &
+		 &
+		 \\
+		FechaInstitucional &
+		Fecha &
+		Text &
+		 &
+		 \\
+		JustificacionSofisticado &
+		Justificaci\'on &
+		Text &
+		 &
+		 \\
+		FechaSofisticado &
+		Fecha &
+		Text &
+		 &
+		 \\
+		JustificacionElegible &
+		Justificaci\'on &
+		Text &
+		 &
+		 \\
+		FechaElegible &
+		Fecha &
+		Text &
+		 &
+		 \\
+		JustificacionCalificado &
+		Justificaci\'on &
+		Text &
+		 &
+		 \\
+		FechaCalificado &
+		Fecha &
+		Text &
+		 &
+		 \\
+		JustificacionDiscrecional &
+		Justificaci\'on &
+		Text &
+		 &
+		 \\
+		FechaDiscrecional &
+		Fecha &
+		Text &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio Titular}
+	\label{tab:fields-dom-TitularContrato}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		Nombre &
+		Nombre &
+		Text &
+		 &
+		 \\
+		NoClienteBanamex &
+		No. Cliente Banamex &
+		Text &
+		 &
+		 \\
+		NoCta &
+		No. Cta &
+		Text &
+		 &
+		 \\
+		Suc &
+		Suc. &
+		Text &
+		 &
+		 \\
+		Clabe &
+		CLABE &
+		Text &
+		 &
+		 \\
+		Calle &
+		Calle &
+		Text &
+		 &
+		 \\
+		NoExt &
+		No. Exterior &
+		Text &
+		 &
+		 \\
+		NoInterior &
+		No. Interior &
+		Text &
+		 &
+		 \\
+		Cp &
+		C.P. &
+		Text &
+		 &
+		 \\
+		Estado &
+		Estado &
+		Text &
+		 &
+		 \\
+		DelMpo &
+		Del/Mpo &
+		Text &
+		 &
+		 \\
+		Ciudad &
+		Ciudad &
+		Text &
+		 &
+		 \\
+		Colonia &
+		Colonia &
+		Text &
+		 &
+		 \\
+		Rfc &
+		R.F.C.(Con Homoclave) &
+		Text &
+		 &
+		 \\
+		Curp &
+		CURP &
+		Text &
+		 &
+		 \\
+		FecNac &
+		Fecha Nac. &
+		Date &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio Beneficiarios}
+	\label{tab:fields-dom-Beneficiario}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		Nombre &
+		Nombre &
+		Text &
+		 &
+		 \\
+		ApPaterno &
+		Apellido Paterno &
+		Text &
+		 &
+		 \\
+		ApMaterno &
+		Apellido Materno &
+		Text &
+		 &
+		 \\
+		Porcentaje &
+		Porcentaje % &
+		Integer &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio Limitante}
+	\label{tab:fields-dom-Limitante}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		GrupoInstrumento &
+		Grupo Instrumento &
+		Text &
+		 &
+		 \\
+		TipoValor &
+		Tipo Valor &
+		Text &
+		 &
+		 \\
+		Emisoras &
+		Emisoras &
+		Text &
+		 &
+		 \\
+		TipoValorEmisora &
+		Tipo Valor Emisora &
+		Text &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio Emisor}
+	\label{tab:fields-dom-Emisor}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		Emisor &
+		Emisor &
+		Text &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio Firma Autorizada}
+	\label{tab:fields-dom-FirmaAutorizada}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		Nombre &
+		Nombre &
+		Text &
+		 &
+		 \\
+		ApPaterno &
+		Apellido Paterno &
+		Text &
+		 &
+		 \\
+		ApMaterno &
+		Apellido Materno &
+		Text &
+		 &
+		 \\
+		NoEscr &
+		No Escr &
+		Text &
+		 &
+		 \\
+		NoNot &
+		No Not &
+		Text &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio }
+	\label{tab:fields-dom-InstruccionEfectivo}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		Contrato &
+		Contrato &
+		Text &
+		 &
+		 \\
+		SubtipoPortafolio &
+		Subtipo de Portafolio &
+		Text &
+		 &
+		 \\
+		Digito &
+		D\'igito &
+		Text &
+		 &
+		 \\
+		Titular &
+		Titular &
+		Text &
+		 &
+		 \\
+		Saldo &
+		Saldo &
+		Currency &
+		 &
+		 \\
+		ContratoEgreso &
+		Contrato &
+		Text &
+		 &
+		 \\
+		DigitoEgreso &
+		D\'igito &
+		Text &
+		 &
+		 \\
+		SaldoInicialEgreso &
+		Saldo Inicial &
+		Currency &
+		 &
+		 \\
+		SaldoCalculadoEgreso &
+		Saldo Calculado &
+		Currency &
+		 &
+		 \\
+		ContratoIngreso &
+		Contrato &
+		Text &
+		 &
+		 \\
+		DigitoIngreso &
+		D\'igito &
+		Text &
+		 &
+		 \\
+		SaldoInicialIngreso &
+		Saldo Inicial &
+		Currency &
+		 &
+		 \\
+		SaldoCalculadoIngreso &
+		Saldo Calculado &
+		Currency &
+		 &
+		 \\
+		ImporteIngreso &
+		Importe &
+		Currency &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio Distribuci\'on de Instrucciones}
+	\label{tab:fields-dom-DistribucionInstrucciones}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		Capturados &
+		Capturados &
+		Boolean &
+		 &
+		 \\
+		Contrato &
+		Contrato &
+		Text &
+		 &
+		 \\
+		FolioMov &
+		Folio Mov. &
+		Text &
+		 &
+		 \\
+		Digito &
+		D\'igito &
+		Text &
+		 &
+		 \\
+		ImporteNeto &
+		Importe Neto &
+		Text &
+		 &
+		 \\
+		Depositos &
+		Dep\'ositos &
+		Boolean &
+		 &
+		 \\
+		Retiros &
+		Retiros &
+		Boolean &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio Reperfilamiento de Personas F\'isicas}
+	\label{tab:fields-dom-ReperfilamientoPersonaFisica}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		Nombre &
+		Nombre &
+		Text &
+		 &
+		 \\
+		PerfilActual &
+		Perfil Actual &
+		Text &
+		 &
+		 \\
+		PorcentajeLiquidez &
+		% (Liquidez) &
+		Text &
+		 &
+		 \\
+		MontoLiquidez &
+		Monto $ (Liquidez) &
+		Date &
+		 &
+		 \\
+		PorcentajeCortoPlazo &
+		% (Corto Plazo) &
+		Text &
+		 &
+		 \\
+		MontoCortoPlazo &
+		Monto $ (Corto Plazo) &
+		Currency &
+		 &
+		 \\
+		PorcentajeLargoPlazo &
+		% (Largo Plazo) &
+		Text &
+		 &
+		 \\
+		MontoLargoPlazo &
+		Monto $ (Largo Plazo) &
+		Currency &
+		 &
+		 \\
+		PorcentajePatrimonioLiquidoTotal &
+		% (Patrimonio l\'iquido total 100%) &
+		Text &
+		 &
+		 \\
+		MontoPatrimonioLiquidoTotal &
+		Monto $ (Patrimonio l\'iquido total 100%) &
+		Currency &
+		 &
+		 \\
+		Perfil &
+		Perfil &
+		File &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}
+\begin{table}[H]
+	\caption{Entidad de Negocio Negativa de Perfilamiento}
+	\label{tab:fields-dom-NegativaPerfilamiento}
+	%\resizebox{\textwidth}{!}{
+	\begin{center}
+	\begin{tabularx}{0.90\linewidth}{ X X X X X }
+		\hline
+		\textbf{Campo} &
+		\textbf{Etiqueta} &
+		\textbf{Tipo} &
+		\textbf{Restricciones} &
+		\textbf{Descripci\'on} \\
+		\hline
+		Nombre &
+		Nombre &
+		Text &
+		 &
+		 \\
+		PerfilActual &
+		Perfil Actual &
+		Text &
+		 &
+		 \\
+		PorcentajeLiquidez &
+		% (Liquidez) &
+		Text &
+		 &
+		 \\
+		MontoLiquidez &
+		Monto $ (Liquidez) &
+		Date &
+		 &
+		 \\
+		PorcentajeCortoPlazo &
+		% (Corto Plazo) &
+		Text &
+		 &
+		 \\
+		MontoCortoPlazo &
+		Monto $ (Corto Plazo) &
+		Currency &
+		 &
+		 \\
+		PorcentajeLargoPlazo &
+		% (Largo Plazo) &
+		Text &
+		 &
+		 \\
+		MontoLargoPlazo &
+		Monto $ (Largo Plazo) &
+		Currency &
+		 &
+		 \\
+		PorcentajePatrimonioLiquidoTotal &
+		% (Patrimonio l\'iquido total 100%) &
+		Text &
+		 &
+		 \\
+		MontoPatrimonioLiquidoTotal &
+		Monto $ (Patrimonio l\'iquido total 100%) &
+		Currency &
+		 &
+		 \\
+		Perfil &
+		Perfil &
+		File &
+		 &
+		 \\
+		Inconsistencias &
+		Inconsistencias &
+		Text &
+		 &
+		 \\
+		\hline
+	\end{tabularx}
+	\end{center}
+	%}
+\end{table}

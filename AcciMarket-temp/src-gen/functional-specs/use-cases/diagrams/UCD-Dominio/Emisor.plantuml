@@ -1,0 +1,9 @@
+@startuml
+	left to right direction
+	skinparam packageStyle rectangle
+	Operador <<persona>> as Actor
+	rectangle {
+		(Buscar Emisor) as SearchUC <<usuario>>
+		Actor -> SearchUC
+	}
+@enduml

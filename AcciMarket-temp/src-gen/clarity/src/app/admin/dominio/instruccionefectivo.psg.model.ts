@@ -1,0 +1,24 @@
+export class Instruccionefectivo {
+	dummy: string = null;
+	dummyItem: string = null;
+	dummy: string = null;
+	dummyItem: string = null;
+	dummy: string = null;
+	dummyItem: string = null;
+	dummy: string = null;
+	dummyItem: string = null;
+	contrato: string  = null;
+	subtipoportafolio: string  = null;
+	digito: string  = null;
+	titular: string  = null;
+	saldo: number = null;
+	contratoegreso: string  = null;
+	digitoegreso: string  = null;
+	saldoinicialegreso: number = null;
+	saldocalculadoegreso: number = null;
+	contratoingreso: string  = null;
+	digitoingreso: string  = null;
+	saldoinicialingreso: number = null;
+	saldocalculadoingreso: number = null;
+	importeingreso: number = null;
+}

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:form="http://www.springframework.org/tags/form">
+<body>
+	<div th:fragment="modalGuardar" class="modal fade cg-mod-agregar"
+		id="modalCrear" tabindex="-1" role="dialog"
+		aria-labelledby="cg-mod-agregar" aria-hidden="true"
+		data-backdrop="static" data-keyboard="false">
+		<div id="alertDanger"></div>
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form id="formNew" name="formNew">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							<label th:utext="#{lable.title.modal.agregar.reperfilamientopersonafisica}"></label>
+						</h4>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="container body">
+						<!-- Codigo Adicional -->
+						<!--
+						<input type="hidden" id="idSubprocesoI" name="idSubprocesoI">
+						<div class="row">
+							<div class="col-md-4 form-group">
+								<label for="moduloI" class="col-form-label"
+									th:text="#{cg.proceso.modulo}"></label> <select 
+									onchange="activarProcesoInsert();" id="moduloI" name="moduloI" class="form-control"
+									required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+									<option th:each="modulo : ${modulo}"
+										th:value="${modulo.idCtrlProceso}"
+										th:utext="${modulo.descripcion}" />
+								</select>
+							</div>
+							<div class="col-md-4 form-group">
+								<label for="procesoI" class="col-form-label"
+									th:text="#{cg.subproceso.proceso}"></label> <select
+									disabled="disabled"
+									name="procesoI" onchange="activarSubProcesoInsert();" id="procesoI"
+									class="form-control" required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+								</select>
+							</div>
+							<div class="col-md-4 form-group">
+								<label for="subprocesoI" class="col-form-label"
+									th:text="#{label.criterio.busqueda.subproceso}"></label> 
+									<select onchange="setIdSubProcesoInsert();"
+									name="subprocesoI" disabled="disabled" id="subprocesoI"
+									class="form-control" required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+								</select>
+							</div>
+						</div>
+						-->
+						<!-- Codigo Adicional -->
+						
+						<div class="row">
+						<div class="form-group col-md-4">
+							<label for="contrato" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.contrato}"></label> <select
+								id="idContrato" name="idContrato" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="contrato : ${listaContrato}"
+									th:value="${contrato.idContrato}"
+									th:text="${contrato.noContrato}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4" id="divNombre">
+							<label for="nombre" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.nombre}"></label> 
+							<input  type="text" id="nombre"
+									name="nombre" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divPerfilActual">
+							<label for="perfilActual" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.perfilactual}"></label> 
+							<input  type="text" id="perfilActual"
+									name="perfilActual" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.personaperfilar}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="personaPerfilar : ${listaDummy}"
+									th:value="${personaPerfilar.cveDummy}"
+									th:text="${personaPerfilar.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4" id="divPorcentajeLiquidez">
+							<label for="porcentajeLiquidez" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.porcentajeliquidez}"></label> 
+							<input  type="text" id="porcentajeLiquidez"
+									name="porcentajeLiquidez" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divMontoLiquidez">
+							<label for="montoLiquidez" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.montoliquidez}"></label> 
+							<input  type="date" id="montoLiquidez"
+									name="montoLiquidez" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divPorcentajeCortoPlazo">
+							<label for="porcentajeCortoPlazo" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.porcentajecortoplazo}"></label> 
+							<input  type="text" id="porcentajeCortoPlazo"
+									name="porcentajeCortoPlazo" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divMontoCortoPlazo">
+							<label for="montoCortoPlazo" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.montocortoplazo}"></label> 
+							<input  type="number" id="montoCortoPlazo"
+									name="montoCortoPlazo" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divPorcentajeLargoPlazo">
+							<label for="porcentajeLargoPlazo" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.porcentajelargoplazo}"></label> 
+							<input  type="text" id="porcentajeLargoPlazo"
+									name="porcentajeLargoPlazo" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divMontoLargoPlazo">
+							<label for="montoLargoPlazo" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.montolargoplazo}"></label> 
+							<input  type="number" id="montoLargoPlazo"
+									name="montoLargoPlazo" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divPorcentajePatrimonioLiquidoTotal">
+							<label for="porcentajePatrimonioLiquidoTotal" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.porcentajepatrimonioliquidototal}"></label> 
+							<input  type="text" id="porcentajePatrimonioLiquidoTotal"
+									name="porcentajePatrimonioLiquidoTotal" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divMontoPatrimonioLiquidoTotal">
+							<label for="montoPatrimonioLiquidoTotal" class="required col-form-label"
+									th:text="#{label.tabla.columna.reperfilamientopersonafisica.montopatrimonioliquidototal}"></label> 
+							<input  type="number" id="montoPatrimonioLiquidoTotal"
+									name="montoPatrimonioLiquidoTotal" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.intervaloedad}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="intervaloEdad : ${listaDummy}"
+									th:value="${intervaloEdad.cveDummy}"
+									th:text="${intervaloEdad.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.nivelestudios}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="nivelEstudios : ${listaDummy}"
+									th:value="${nivelEstudios.cveDummy}"
+									th:text="${nivelEstudios.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.ocupacion}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="ocupacion : ${listaDummy}"
+									th:value="${ocupacion.cveDummy}"
+									th:text="${ocupacion.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.actividadprofesionalanterior}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="actividadProfesionalAnterior : ${listaDummy}"
+									th:value="${actividadProfesionalAnterior.cveDummy}"
+									th:text="${actividadProfesionalAnterior.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.actividadprofesionalactual}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="actividadProfesionalActual : ${listaDummy}"
+									th:value="${actividadProfesionalActual.cveDummy}"
+									th:text="${actividadProfesionalActual.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="noSi" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.actividadrelacionadainversiones}"></label> <select
+								id="cveNoSi" name="cveNoSi" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="actividadRelacionadaInversiones : ${listaNoSi}"
+									th:value="${actividadRelacionadaInversiones.cveNoSi}"
+									th:text="${actividadRelacionadaInversiones.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.estrategiacliente}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="estrategiaCliente : ${listaDummy}"
+									th:value="${estrategiaCliente.cveDummy}"
+									th:text="${estrategiaCliente.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.clienteasesoria}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="clienteAsesoria : ${listaDummy}"
+									th:value="${clienteAsesoria.cveDummy}"
+									th:text="${clienteAsesoria.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="conocimientoExperiencia" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.experienciadeudagub}"></label> <select
+								id="cveConocimientoExperiencia" name="cveConocimientoExperiencia" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="experienciaDeudaGub : ${listaConocimientoExperiencia}"
+									th:value="${experienciaDeudaGub.cveConocimientoExperiencia}"
+									th:text="${experienciaDeudaGub.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.frecuenciadeudagub}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="frecuenciaDeudaGub : ${listaDummy}"
+									th:value="${frecuenciaDeudaGub.cveDummy}"
+									th:text="${frecuenciaDeudaGub.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.plazodeudagub}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="plazoDeudaGub : ${listaDummy}"
+									th:value="${plazoDeudaGub.cveDummy}"
+									th:text="${plazoDeudaGub.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.volumendeudagub}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="volumenDeudaGub : ${listaDummy}"
+									th:value="${volumenDeudaGub.cveDummy}"
+									th:text="${volumenDeudaGub.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="conocimientoExperiencia" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.expdeudacorp}"></label> <select
+								id="cveConocimientoExperiencia" name="cveConocimientoExperiencia" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="expDeudaCorp : ${listaConocimientoExperiencia}"
+									th:value="${expDeudaCorp.cveConocimientoExperiencia}"
+									th:text="${expDeudaCorp.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.frecuenciadeudacorp}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="frecuenciaDeudaCorp : ${listaDummy}"
+									th:value="${frecuenciaDeudaCorp.cveDummy}"
+									th:text="${frecuenciaDeudaCorp.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.plazodeudacorp}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="plazoDeudaCorp : ${listaDummy}"
+									th:value="${plazoDeudaCorp.cveDummy}"
+									th:text="${plazoDeudaCorp.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.volumendeudacorp}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="volumenDeudaCorp : ${listaDummy}"
+									th:value="${volumenDeudaCorp.cveDummy}"
+									th:text="${volumenDeudaCorp.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.expsociedadesinv}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="expSociedadesInv : ${listaDummy}"
+									th:value="${expSociedadesInv.cveDummy}"
+									th:text="${expSociedadesInv.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.frecuenciasociedadesinv}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="frecuenciaSociedadesInv : ${listaDummy}"
+									th:value="${frecuenciaSociedadesInv.cveDummy}"
+									th:text="${frecuenciaSociedadesInv.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.plazosociedadesinv}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="plazoSociedadesInv : ${listaDummy}"
+									th:value="${plazoSociedadesInv.cveDummy}"
+									th:text="${plazoSociedadesInv.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.volumensociedadesinv}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="volumenSociedadesInv : ${listaDummy}"
+									th:value="${volumenSociedadesInv.cveDummy}"
+									th:text="${volumenSociedadesInv.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.expvaloresest}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="expValoresEst : ${listaDummy}"
+									th:value="${expValoresEst.cveDummy}"
+									th:text="${expValoresEst.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.frecuenciavaloresest}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="frecuenciaValoresEst : ${listaDummy}"
+									th:value="${frecuenciaValoresEst.cveDummy}"
+									th:text="${frecuenciaValoresEst.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.plazovaloresest}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="plazoValoresEst : ${listaDummy}"
+									th:value="${plazoValoresEst.cveDummy}"
+									th:text="${plazoValoresEst.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.volumenvaloresest}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="volumenValoresEst : ${listaDummy}"
+									th:value="${volumenValoresEst.cveDummy}"
+									th:text="${volumenValoresEst.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.expcertificadosbur}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="expCertificadosBur : ${listaDummy}"
+									th:value="${expCertificadosBur.cveDummy}"
+									th:text="${expCertificadosBur.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.frecuenciacertificadosbur}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="frecuenciaCertificadosBur : ${listaDummy}"
+									th:value="${frecuenciaCertificadosBur.cveDummy}"
+									th:text="${frecuenciaCertificadosBur.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.plazocertificadosbur}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="plazoCertificadosBur : ${listaDummy}"
+									th:value="${plazoCertificadosBur.cveDummy}"
+									th:text="${plazoCertificadosBur.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.volumencertificadosbur}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="volumenCertificadosBur : ${listaDummy}"
+									th:value="${volumenCertificadosBur.cveDummy}"
+									th:text="${volumenCertificadosBur.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="noSi" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.tienelimitante}"></label> <select
+								id="cveNoSi" name="cveNoSi" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="tieneLimitante : ${listaNoSi}"
+									th:value="${tieneLimitante.cveNoSi}"
+									th:text="${tieneLimitante.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="situacionFinancieraActual" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.porcentajetotalpatrimonio}"></label> <select
+								id="cveSituacionFinancieraActual" name="cveSituacionFinancieraActual" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="porcentajeTotalPatrimonio : ${listaSituacionFinancieraActual}"
+									th:value="${porcentajeTotalPatrimonio.cveSituacionFinancieraActual}"
+									th:text="${porcentajeTotalPatrimonio.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="situacionFinancieraActual" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.porcentajeingresoanual}"></label> <select
+								id="cveSituacionFinancieraActual" name="cveSituacionFinancieraActual" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="porcentajeIngresoAnual : ${listaSituacionFinancieraActual}"
+									th:value="${porcentajeIngresoAnual.cveSituacionFinancieraActual}"
+									th:text="${porcentajeIngresoAnual.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="situacionFinancieraActual" class="required col-form-label"
+								th:text="#{label.title.modal.input.reperfilamientopersonafisica.porcentajeinversiones}"></label> <select
+								id="cveSituacionFinancieraActual" name="cveSituacionFinancieraActual" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="porcentajeInversiones : ${listaSituacionFinancieraActual}"
+									th:value="${porcentajeInversiones.cveSituacionFinancieraActual}"
+									th:text="${porcentajeInversiones.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4" id="divPerfil">
+							<label for="perfil" class="required col-form-label"
+								th:text="#{label.tabla.columna.reperfilamientopersonafisica.perfil}"></label> 
+							<input  type="text" id="perfil"
+								name="perfil" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						</div>
+					</div>
+
+					<div class="form-group modal-footer">
+						<button type="button" class="btn-style-citi" data-dismiss="modal"
+							th:text="#{label.button.cancelar}"></button>
+						<button type="submit" class="btn-style-citi" id="Guardar"
+							th:text="#{label.button.guardar}"></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>	

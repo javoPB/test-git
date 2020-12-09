@@ -1,0 +1,13 @@
+@startuml
+	left to right direction
+	skinparam packageStyle rectangle
+	Operador <<persona>> as Actor
+	rectangle {
+		(Agregar Titular) as CreateUC <<usuario>>
+		(Editar Titular) as EditUC <<usuario>>
+		Actor -> CreateUC
+		Actor -> EditUC
+		Actor -> SearchUC
+		EditUC .> SearchUC : include
+	}
+@enduml

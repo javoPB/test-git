@@ -1,0 +1,268 @@
+@startuml
+title Dominio
+entity Contrato <<entity>> {
+	NoContrato : Text
+	Digito : Text
+	Dv : Text
+	Estatus : Text
+	Perfil : Text
+	Portafolio : Text
+	CLABE : Text
+	STipoPort : Text
+	Libro : Text
+	AsesorInversion : Text
+	TipoManifiesto : Text
+	ServicioInversion : Text
+	CartaEjecucion1 : Text
+	FechaCartaEjecucion1 : Text
+	CartaEjecucion2 : Text
+	FechaCartaEjecucion2 : Text
+	Institucional : Institucional
+	JustificacionInstitucional : Text
+	FechaInstitucional : Text
+	Sofisticado : Sofisticado
+	JustificacionSofisticado : Text
+	FechaSofisticado : Text
+	Elegible : Elegible
+	JustificacionElegible : Text
+	FechaElegible : Text
+	Calificado : Calificado
+	JustificacionCalificado : Text
+	FechaCalificado : Text
+	Discrecional : Discrecional
+	JustificacionDiscrecional : Text
+	FechaDiscrecional : Text
+	InstrDeudaGub : ConocimientoExperiencia
+	InstrDeudaCorp : ConocimientoExperiencia
+	SociedadesInver : ConocimientoExperiencia
+	ValoresEstruc : ConocimientoExperiencia
+	CertBurFideicomisos : ConocimientoExperiencia
+	TitulosOpcionales : ConocimientoExperiencia
+	Acciones : ConocimientoExperiencia
+	ValoresExtr : ConocimientoExperiencia
+	Trackers : ConocimientoExperiencia
+}
+entity TitularContrato <<entity>> {
+	Nombre : Text
+	Actividad : Dummy
+	NoClienteBanamex : Text
+	Inst : Dummy
+	NoCta : Text
+	Suc : Text
+	Clabe : Text
+	Calle : Text
+	NoExt : Text
+	NoInterior : Text
+	MexExtr : MexicoExtrajero
+	Cp : Text
+	Estado : Text
+	DelMpo : Text
+	Ciudad : Text
+	Colonia : Text
+	Correspondencia : NoSi
+	Rfc : Text
+	Curp : Text
+	FecNac : Date
+	Escolaridad : Dummy
+	EdoCivil : Dummy
+	Sexo : Dummy
+	TipoVivienda : Dummy
+	CalidadMigratoria : Dummy
+	PaisResidencia : Dummy
+	Nacionalidad : Dummy
+	PaisNac : Dummy
+	EdoNac : Dummy
+	EmpleadoGroFinBanamex : NoSi
+}
+entity Beneficiario <<entity>> {
+	Nombre : Text
+	ApPaterno : Text
+	ApMaterno : Text
+	Porcentaje : Integer
+}
+entity Limitante <<entity>> {
+	GrupoInstrumento : Text
+	TipoValor : Text
+	Emisoras : Text
+	TipoValorEmisora : Text
+}
+entity Emisor <<entity>> {
+	Emisor : Text
+	Relacion : Relacion
+}
+entity FirmaAutorizada <<entity>> {
+	Tipo : Dummy
+	Nombre : Text
+	ApPaterno : Text
+	ApMaterno : Text
+	NoEscr : Text
+	NoNot : Text
+}
+entity InstruccionEfectivo <<entity>> {
+	Sucursal : Dummy
+	Operacion : Dummy
+	Tipo : Dummy
+	MedLiq : Dummy
+	Contrato : Text
+	SubtipoPortafolio : Text
+	Digito : Text
+	Titular : Text
+	Saldo : Currency
+	ContratoEgreso : Text
+	DigitoEgreso : Text
+	SaldoInicialEgreso : Currency
+	SaldoCalculadoEgreso : Currency
+	ContratoIngreso : Text
+	DigitoIngreso : Text
+	SaldoInicialIngreso : Currency
+	SaldoCalculadoIngreso : Currency
+	ImporteIngreso : Currency
+}
+entity DistribucionInstrucciones <<entity>> {
+	OpcDistrInstrucciones : OpcDistrInstrucciones
+	Capturados : Boolean
+	Contrato : Text
+	FolioMov : Text
+	Digito : Text
+	ImporteNeto : Text
+	Depositos : Boolean
+	Retiros : Boolean
+	Sucursal : Dummy
+}
+entity ReperfilamientoPersonaFisica <<entity>> {
+	Nombre : Text
+	PerfilActual : Text
+	PersonaPerfilar : Dummy
+	PorcentajeLiquidez : Text
+	MontoLiquidez : Date
+	PorcentajeCortoPlazo : Text
+	MontoCortoPlazo : Currency
+	PorcentajeLargoPlazo : Text
+	MontoLargoPlazo : Currency
+	PorcentajePatrimonioLiquidoTotal : Text
+	MontoPatrimonioLiquidoTotal : Currency
+	IntervaloEdad : Dummy
+	NivelEstudios : Dummy
+	Ocupacion : Dummy
+	ActividadProfesionalAnterior : Dummy
+	ActividadProfesionalActual : Dummy
+	ActividadRelacionadaInversiones : NoSi
+	EstrategiaCliente : Dummy
+	ClienteAsesoria : Dummy
+	ExperienciaDeudaGub : ConocimientoExperiencia
+	FrecuenciaDeudaGub : Dummy
+	PlazoDeudaGub : Dummy
+	VolumenDeudaGub : Dummy
+	ExpDeudaCorp : ConocimientoExperiencia
+	FrecuenciaDeudaCorp : Dummy
+	PlazoDeudaCorp : Dummy
+	VolumenDeudaCorp : Dummy
+	ExpSociedadesInv : Dummy
+	FrecuenciaSociedadesInv : Dummy
+	PlazoSociedadesInv : Dummy
+	VolumenSociedadesInv : Dummy
+	ExpValoresEst : Dummy
+	FrecuenciaValoresEst : Dummy
+	PlazoValoresEst : Dummy
+	VolumenValoresEst : Dummy
+	ExpCertificadosBur : Dummy
+	FrecuenciaCertificadosBur : Dummy
+	PlazoCertificadosBur : Dummy
+	VolumenCertificadosBur : Dummy
+	TieneLimitante : NoSi
+	PorcentajeTotalPatrimonio : SituacionFinancieraActual
+	PorcentajeIngresoAnual : SituacionFinancieraActual
+	PorcentajeInversiones : SituacionFinancieraActual
+	OrigenIngresos : SituacionFinancieraActual
+	Perfil : File
+}
+entity NegativaPerfilamiento <<entity>> {
+	Nombre : Text
+	PerfilActual : Text
+	PersonaPerfilar : Dummy
+	PorcentajeLiquidez : Text
+	MontoLiquidez : Date
+	PorcentajeCortoPlazo : Text
+	MontoCortoPlazo : Currency
+	PorcentajeLargoPlazo : Text
+	MontoLargoPlazo : Currency
+	PorcentajePatrimonioLiquidoTotal : Text
+	MontoPatrimonioLiquidoTotal : Currency
+	IntervaloEdad : Dummy
+	NivelEstudios : Dummy
+	Ocupacion : Dummy
+	ActividadProfesionalAnterior : Dummy
+	ActividadProfesionalActual : Dummy
+	ActividadRelacionadaInversiones : NoSi
+	EstrategiaCliente : Dummy
+	ClienteAsesoria : Dummy
+	ExperienciaDeudaGub : ConocimientoExperiencia
+	FrecuenciaDeudaGub : Dummy
+	PlazoDeudaGub : Dummy
+	VolumenDeudaGub : Dummy
+	ExpDeudaCorp : ConocimientoExperiencia
+	FrecuenciaDeudaCorp : Dummy
+	PlazoDeudaCorp : Dummy
+	VolumenDeudaCorp : Dummy
+	ExpSociedadesInv : Dummy
+	FrecuenciaSociedadesInv : Dummy
+	PlazoSociedadesInv : Dummy
+	VolumenSociedadesInv : Dummy
+	ExpValoresEst : Dummy
+	FrecuenciaValoresEst : Dummy
+	PlazoValoresEst : Dummy
+	VolumenValoresEst : Dummy
+	ExpCertificadosBur : Dummy
+	FrecuenciaCertificadosBur : Dummy
+	PlazoCertificadosBur : Dummy
+	VolumenCertificadosBur : Dummy
+	ExpTitulosOpc : Dummy
+	FrecuenciaTitulosOpc : Dummy
+	PlazoTitulosOpc : Dummy
+	VolumenTitulosOpc : Dummy
+	ExpAcciones : Dummy
+	FrecuenciaAcciones : Dummy
+	PlazoAcciones : Dummy
+	VolumenAcciones : Dummy
+	ExpValoresExt : Dummy
+	FrecuenciaValoresExt : Dummy
+	PlazoValoresExt : Dummy
+	VolumenValoresExt : Dummy
+	ExpTrackers : Dummy
+	FrecuenciaTrackers : Dummy
+	PlazoTrackers : Dummy
+	VolumenTrackers : Dummy
+	ExpCertificadosCap : Dummy
+	FrecuenciaCertificadosCap : Dummy
+	PlazoCertificadosCap : Dummy
+	VolumenCertificadosCap : Dummy
+	PropositoInversion : Dummy
+	ToleranciaRiesgo : Dummy
+	HorizonteInversion : Dummy
+	TieneLimitante : NoSi
+	PorcentajeTotalPatrimonio : SituacionFinancieraActual
+	PorcentajeIngresoAnual : SituacionFinancieraActual
+	PorcentajeInversiones : SituacionFinancieraActual
+	OrigenIngresos : SituacionFinancieraActual
+	Perfil : File
+	Inconsistencias : Text
+}
+
+	Contrato "0..*" --> "1..* Titular" TitularContrato
+
+	Contrato "0..*" --> "0..* Beneficiarios" Beneficiario
+
+	Contrato "0..*" --> "0..* Limitantes" Limitante
+
+	Contrato "0..*" --> "0..* Emisor" Emisor
+
+	Contrato "0..*" --> "0..* FirmasAutorizadas" FirmaAutorizada
+
+	InstruccionEfectivo "0..*" --> "1..* BenefEgreso" Beneficiario
+
+	InstruccionEfectivo "0..*" --> "1..* BenefIngreso" Beneficiario
+
+	ReperfilamientoPersonaFisica "0..*" --> "1..1 Contrato" Contrato
+
+	NegativaPerfilamiento "0..*" --> "1..1 Contrato" Contrato
+@enduml

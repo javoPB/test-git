@@ -1,0 +1,11 @@
+@startuml
+	left to right direction
+	skinparam packageStyle rectangle
+	Operador <<persona>> as Actor
+	rectangle {
+		(Eliminar Firma Autorizada) as DeleteUC <<usuario>>
+		Actor -> SearchUC
+		Actor --> DeleteUC
+		DeleteUC .> SearchUC : include
+	}
+@enduml

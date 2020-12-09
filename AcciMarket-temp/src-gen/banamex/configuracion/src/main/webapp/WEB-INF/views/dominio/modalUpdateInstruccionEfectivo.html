@@ -1,0 +1,202 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="modal fade cg-mod-editar" id="movModal" tabindex="-1" th:fragment="modalFragUpdate"
+	role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="cg-mod-editar" aria-hidden="true"
+	style="display: none;">
+	<div id="alertDangerUp"></div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<form id="formUpd" name="formUpd">
+				<div class="modal-header">
+					<h4 class="modal-title">
+						<label id="modalTitle" th:text="#{lable.title.modal.actualizar.instruccionefectivo}"></label>
+					</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="container body">
+					<input type="hidden" id="idInstruccionEfectivoUpd" name="idInstruccionEfectivoUpd">	
+					<!-- Codigo Adicional -->
+					<!--
+					<input type="hidden" id="idSubprocesoUpd" name="idSubprocesoUpd">
+					<div class="row">
+						<div class="col-md-4">
+							<label class="col-form-label" for="subprocesoUpd"
+								th:text="#{label.criterio.busqueda.subproceso}"></label> 
+								<input type="text" id="subprocesoUpd" name="subprocesoUpd" class="form-control" readonly="readonly">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label" for="procesoUpd"
+								th:text="#{label.criterio.busqueda.proceso}"></label> 
+								<input type="text" id="procesoUpd" name="procesoUpd"  class="form-control" readonly="readonly">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label" for="moduloUpd"
+								th:text="#{label.criterio.busqueda.modulo}"></label> 
+								<input type="text" id="moduloUpd"  name="moduloUpd"  class="form-control" readonly="readonly">
+						</div>
+					</div>
+					-->
+					<!-- Codigo Adicional -->
+						
+					<div class="row">
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.sucursal}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="sucursal : ${listaDummy}"
+								th:value="${sucursal.cveDummy}"
+								th:text="${sucursal.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.operacion}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="operacion : ${listaDummy}"
+								th:value="${operacion.cveDummy}"
+								th:text="${operacion.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.tipo}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="tipo : ${listaDummy}"
+								th:value="${tipo.cveDummy}"
+								th:text="${tipo.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.medliq}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="medLiq : ${listaDummy}"
+								th:value="${medLiq.cveDummy}"
+								th:text="${medLiq.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="contratoUpd"
+								th:text="#{label.title.modal.input.instruccionefectivo.contrato}"></label> 
+							<input type="text" id="contratoUpd" name="contratoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="subtipoPortafolioUpd"
+								th:text="#{label.title.modal.input.instruccionefectivo.subtipoportafolio}"></label> 
+							<input type="text" id="subtipoPortafolioUpd" name="subtipoPortafolioUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="digitoUpd"
+								th:text="#{label.title.modal.input.instruccionefectivo.digito}"></label> 
+							<input type="text" id="digitoUpd" name="digitoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="titularUpd"
+								th:text="#{label.title.modal.input.instruccionefectivo.titular}"></label> 
+							<input type="text" id="titularUpd" name="titularUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="saldoUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.saldo}"></label> 
+							<input type="number" id="saldoUpd" name="saldoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="contratoEgresoUpd"
+								th:text="#{label.title.modal.input.instruccionefectivo.contratoegreso}"></label> 
+							<input type="text" id="contratoEgresoUpd" name="contratoEgresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="digitoEgresoUpd"
+								th:text="#{label.title.modal.input.instruccionefectivo.digitoegreso}"></label> 
+							<input type="text" id="digitoEgresoUpd" name="digitoEgresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="saldoInicialEgresoUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.saldoinicialegreso}"></label> 
+							<input type="number" id="saldoInicialEgresoUpd" name="saldoInicialEgresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="saldoCalculadoEgresoUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.saldocalculadoegreso}"></label> 
+							<input type="number" id="saldoCalculadoEgresoUpd" name="saldoCalculadoEgresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="contratoIngresoUpd"
+								th:text="#{label.title.modal.input.instruccionefectivo.contratoingreso}"></label> 
+							<input type="text" id="contratoIngresoUpd" name="contratoIngresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="digitoIngresoUpd"
+								th:text="#{label.title.modal.input.instruccionefectivo.digitoingreso}"></label> 
+							<input type="text" id="digitoIngresoUpd" name="digitoIngresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="saldoInicialIngresoUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.saldoinicialingreso}"></label> 
+							<input type="number" id="saldoInicialIngresoUpd" name="saldoInicialIngresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="saldoCalculadoIngresoUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.saldocalculadoingreso}"></label> 
+							<input type="number" id="saldoCalculadoIngresoUpd" name="saldoCalculadoIngresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="importeIngresoUpd"
+							th:text="#{label.title.modal.input.instruccionefectivo.importeingreso}"></label> 
+							<input type="number" id="importeIngresoUpd" name="importeIngresoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					</div>
+					
+					<div class="form-group modal-footer">
+						<div id="updInformes" class="form-group">
+							<button id="salir" type="button"  class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cancelar}"></button>
+							<button id="btnGuardar" type="submit" class="btn-style-citi" th:text="#{label.button.guardar}"></button>
+							<button type="button" class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cerrar}"></button>
+						</div>
+					</div>
+					
+				</div>	
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>	

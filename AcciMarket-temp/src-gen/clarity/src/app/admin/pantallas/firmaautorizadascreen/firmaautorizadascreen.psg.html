@@ -1,0 +1,76 @@
+<div class="card-block">
+
+	<div class="card-header">
+   	Firma autorizada
+   	</div>
+   	
+<div class="card-block">	
+<!-- form -->
+<form class="form" [formGroup]="firmaautorizadaformForm">
+	<div class="clr-form-control">
+	    <label for="nombre" class="clr-control-label">Nombre<span class="required">*</span></label>
+	    <div class="clr-control-container clr-col-md-12"> 
+	        <label for="nombre" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm clr-input clr-col-sm-11 clr-col-md-11"
+	                [class.invalid]="firmaautorizadaformForm.get('nombre').invalid && (firmaautorizadaformForm.get('nombre').dirty || firmaautorizadaformForm.get('nombre').touched)">
+	            <input id="nombre" type="text" formControlName="nombre" placeholder="Nombre" class="clr-input clr-col-sm-12 clr-col-md-12">
+	            <span class="tooltip-content">
+	                Nombre es requerido.
+	            </span>
+	        </label>
+	    </div>
+	</div>
+	<div class="clr-form-control">
+	    <label for="appaterno" class="clr-control-label">Apellido Paterno<span class="required">*</span></label>
+	    <div class="clr-control-container clr-col-md-12"> 
+	        <label for="appaterno" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm clr-input clr-col-sm-11 clr-col-md-11"
+	                [class.invalid]="firmaautorizadaformForm.get('appaterno').invalid && (firmaautorizadaformForm.get('appaterno').dirty || firmaautorizadaformForm.get('appaterno').touched)">
+	            <input id="appaterno" type="text" formControlName="appaterno" placeholder="Apellido Paterno" class="clr-input clr-col-sm-12 clr-col-md-12">
+	            <span class="tooltip-content">
+	                Apellido Paterno es requerido.
+	            </span>
+	        </label>
+	    </div>
+	</div>
+	<div class="clr-form-control">
+	    <label for="apmaterno" class="clr-control-label">Apellido Materno<span class="required">*</span></label>
+	    <div class="clr-control-container clr-col-md-12"> 
+	        <label for="apmaterno" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm clr-input clr-col-sm-11 clr-col-md-11"
+	                [class.invalid]="firmaautorizadaformForm.get('apmaterno').invalid && (firmaautorizadaformForm.get('apmaterno').dirty || firmaautorizadaformForm.get('apmaterno').touched)">
+	            <input id="apmaterno" type="text" formControlName="apmaterno" placeholder="Apellido Materno" class="clr-input clr-col-sm-12 clr-col-md-12">
+	            <span class="tooltip-content">
+	                Apellido Materno es requerido.
+	            </span>
+	        </label>
+	    </div>
+	</div>
+	<div class="clr-form-control">
+	    <label for="noescr" class="clr-control-label">No Escr<span class="required">*</span></label>
+	    <div class="clr-control-container clr-col-md-12"> 
+	        <label for="noescr" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm clr-input clr-col-sm-11 clr-col-md-11"
+	                [class.invalid]="firmaautorizadaformForm.get('noescr').invalid && (firmaautorizadaformForm.get('noescr').dirty || firmaautorizadaformForm.get('noescr').touched)">
+	            <input id="noescr" type="text" formControlName="noescr" placeholder="No Escr" class="clr-input clr-col-sm-12 clr-col-md-12">
+	            <span class="tooltip-content">
+	                No Escr es requerido.
+	            </span>
+	        </label>
+	    </div>
+	</div>
+	<div class="clr-form-control">
+	    <label for="nonot" class="clr-control-label">No Not<span class="required">*</span></label>
+	    <div class="clr-control-container clr-col-md-12"> 
+	        <label for="nonot" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm clr-input clr-col-sm-11 clr-col-md-11"
+	                [class.invalid]="firmaautorizadaformForm.get('nonot').invalid && (firmaautorizadaformForm.get('nonot').dirty || firmaautorizadaformForm.get('nonot').touched)">
+	            <input id="nonot" type="text" formControlName="nonot" placeholder="No Not" class="clr-input clr-col-sm-12 clr-col-md-12">
+	            <span class="tooltip-content">
+	                No Not es requerido.
+	            </span>
+	        </label>
+	    </div>
+	</div>
+	<div class="ln_solid"></div>
+</form>
+<!-- ./form -->	
+    
+    <p>
+	</p>
+</div>	

@@ -1,0 +1,771 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="modal fade cg-mod-editar" id="movModal" tabindex="-1" th:fragment="modalFragUpdate"
+	role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="cg-mod-editar" aria-hidden="true"
+	style="display: none;">
+	<div id="alertDangerUp"></div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<form id="formUpd" name="formUpd">
+				<div class="modal-header">
+					<h4 class="modal-title">
+						<label id="modalTitle" th:text="#{lable.title.modal.actualizar.negativaperfilamiento}"></label>
+					</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="container body">
+					<input type="hidden" id="idNegativaPerfilamientoUpd" name="idNegativaPerfilamientoUpd">	
+					<!-- Codigo Adicional -->
+					<!--
+					<input type="hidden" id="idSubprocesoUpd" name="idSubprocesoUpd">
+					<div class="row">
+						<div class="col-md-4">
+							<label class="col-form-label" for="subprocesoUpd"
+								th:text="#{label.criterio.busqueda.subproceso}"></label> 
+								<input type="text" id="subprocesoUpd" name="subprocesoUpd" class="form-control" readonly="readonly">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label" for="procesoUpd"
+								th:text="#{label.criterio.busqueda.proceso}"></label> 
+								<input type="text" id="procesoUpd" name="procesoUpd"  class="form-control" readonly="readonly">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label" for="moduloUpd"
+								th:text="#{label.criterio.busqueda.modulo}"></label> 
+								<input type="text" id="moduloUpd"  name="moduloUpd"  class="form-control" readonly="readonly">
+						</div>
+					</div>
+					-->
+					<!-- Codigo Adicional -->
+						
+					<div class="row">
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="contratoUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.contrato}"></label> 
+							<select class="form-control" id="contratoUpd" name="contratoUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="contrato : ${listaContrato}"
+								th:value="${contrato.idContrato}"
+								th:text="${contrato.noContrato}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="nombreUpd"
+								th:text="#{label.title.modal.input.negativaperfilamiento.nombre}"></label> 
+							<input type="text" id="nombreUpd" name="nombreUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="perfilActualUpd"
+								th:text="#{label.title.modal.input.negativaperfilamiento.perfilactual}"></label> 
+							<input type="text" id="perfilActualUpd" name="perfilActualUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.personaperfilar}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="personaPerfilar : ${listaDummy}"
+								th:value="${personaPerfilar.cveDummy}"
+								th:text="${personaPerfilar.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="porcentajeLiquidezUpd"
+								th:text="#{label.title.modal.input.negativaperfilamiento.porcentajeliquidez}"></label> 
+							<input type="text" id="porcentajeLiquidezUpd" name="porcentajeLiquidezUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="montoLiquidezUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.montoliquidez}"></label> 
+							<input type="date" id="montoLiquidezUpd" name="montoLiquidezUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="porcentajeCortoPlazoUpd"
+								th:text="#{label.title.modal.input.negativaperfilamiento.porcentajecortoplazo}"></label> 
+							<input type="text" id="porcentajeCortoPlazoUpd" name="porcentajeCortoPlazoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="montoCortoPlazoUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.montocortoplazo}"></label> 
+							<input type="number" id="montoCortoPlazoUpd" name="montoCortoPlazoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="porcentajeLargoPlazoUpd"
+								th:text="#{label.title.modal.input.negativaperfilamiento.porcentajelargoplazo}"></label> 
+							<input type="text" id="porcentajeLargoPlazoUpd" name="porcentajeLargoPlazoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="montoLargoPlazoUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.montolargoplazo}"></label> 
+							<input type="number" id="montoLargoPlazoUpd" name="montoLargoPlazoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="porcentajePatrimonioLiquidoTotalUpd"
+								th:text="#{label.title.modal.input.negativaperfilamiento.porcentajepatrimonioliquidototal}"></label> 
+							<input type="text" id="porcentajePatrimonioLiquidoTotalUpd" name="porcentajePatrimonioLiquidoTotalUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="montoPatrimonioLiquidoTotalUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.montopatrimonioliquidototal}"></label> 
+							<input type="number" id="montoPatrimonioLiquidoTotalUpd" name="montoPatrimonioLiquidoTotalUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.intervaloedad}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="intervaloEdad : ${listaDummy}"
+								th:value="${intervaloEdad.cveDummy}"
+								th:text="${intervaloEdad.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.nivelestudios}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="nivelEstudios : ${listaDummy}"
+								th:value="${nivelEstudios.cveDummy}"
+								th:text="${nivelEstudios.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.ocupacion}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="ocupacion : ${listaDummy}"
+								th:value="${ocupacion.cveDummy}"
+								th:text="${ocupacion.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.actividadprofesionalanterior}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="actividadProfesionalAnterior : ${listaDummy}"
+								th:value="${actividadProfesionalAnterior.cveDummy}"
+								th:text="${actividadProfesionalAnterior.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.actividadprofesionalactual}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="actividadProfesionalActual : ${listaDummy}"
+								th:value="${actividadProfesionalActual.cveDummy}"
+								th:text="${actividadProfesionalActual.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveNoSiUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.actividadrelacionadainversiones}"></label> 
+							<select class="form-control" id="noSiUpd" name="noSiUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="actividadRelacionadaInversiones : ${listaNoSi}"
+								th:value="${actividadRelacionadaInversiones.cveNoSi}"
+								th:text="${actividadRelacionadaInversiones.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.estrategiacliente}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="estrategiaCliente : ${listaDummy}"
+								th:value="${estrategiaCliente.cveDummy}"
+								th:text="${estrategiaCliente.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.clienteasesoria}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="clienteAsesoria : ${listaDummy}"
+								th:value="${clienteAsesoria.cveDummy}"
+								th:text="${clienteAsesoria.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.experienciadeudagub}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="experienciaDeudaGub : ${listaConocimientoExperiencia}"
+								th:value="${experienciaDeudaGub.cveConocimientoExperiencia}"
+								th:text="${experienciaDeudaGub.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciadeudagub}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaDeudaGub : ${listaDummy}"
+								th:value="${frecuenciaDeudaGub.cveDummy}"
+								th:text="${frecuenciaDeudaGub.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazodeudagub}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoDeudaGub : ${listaDummy}"
+								th:value="${plazoDeudaGub.cveDummy}"
+								th:text="${plazoDeudaGub.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumendeudagub}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenDeudaGub : ${listaDummy}"
+								th:value="${volumenDeudaGub.cveDummy}"
+								th:text="${volumenDeudaGub.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.expdeudacorp}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expDeudaCorp : ${listaConocimientoExperiencia}"
+								th:value="${expDeudaCorp.cveConocimientoExperiencia}"
+								th:text="${expDeudaCorp.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciadeudacorp}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaDeudaCorp : ${listaDummy}"
+								th:value="${frecuenciaDeudaCorp.cveDummy}"
+								th:text="${frecuenciaDeudaCorp.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazodeudacorp}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoDeudaCorp : ${listaDummy}"
+								th:value="${plazoDeudaCorp.cveDummy}"
+								th:text="${plazoDeudaCorp.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumendeudacorp}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenDeudaCorp : ${listaDummy}"
+								th:value="${volumenDeudaCorp.cveDummy}"
+								th:text="${volumenDeudaCorp.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.expsociedadesinv}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expSociedadesInv : ${listaDummy}"
+								th:value="${expSociedadesInv.cveDummy}"
+								th:text="${expSociedadesInv.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciasociedadesinv}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaSociedadesInv : ${listaDummy}"
+								th:value="${frecuenciaSociedadesInv.cveDummy}"
+								th:text="${frecuenciaSociedadesInv.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazosociedadesinv}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoSociedadesInv : ${listaDummy}"
+								th:value="${plazoSociedadesInv.cveDummy}"
+								th:text="${plazoSociedadesInv.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumensociedadesinv}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenSociedadesInv : ${listaDummy}"
+								th:value="${volumenSociedadesInv.cveDummy}"
+								th:text="${volumenSociedadesInv.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.expvaloresest}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expValoresEst : ${listaDummy}"
+								th:value="${expValoresEst.cveDummy}"
+								th:text="${expValoresEst.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciavaloresest}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaValoresEst : ${listaDummy}"
+								th:value="${frecuenciaValoresEst.cveDummy}"
+								th:text="${frecuenciaValoresEst.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazovaloresest}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoValoresEst : ${listaDummy}"
+								th:value="${plazoValoresEst.cveDummy}"
+								th:text="${plazoValoresEst.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumenvaloresest}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenValoresEst : ${listaDummy}"
+								th:value="${volumenValoresEst.cveDummy}"
+								th:text="${volumenValoresEst.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.expcertificadosbur}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expCertificadosBur : ${listaDummy}"
+								th:value="${expCertificadosBur.cveDummy}"
+								th:text="${expCertificadosBur.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciacertificadosbur}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaCertificadosBur : ${listaDummy}"
+								th:value="${frecuenciaCertificadosBur.cveDummy}"
+								th:text="${frecuenciaCertificadosBur.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazocertificadosbur}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoCertificadosBur : ${listaDummy}"
+								th:value="${plazoCertificadosBur.cveDummy}"
+								th:text="${plazoCertificadosBur.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumencertificadosbur}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenCertificadosBur : ${listaDummy}"
+								th:value="${volumenCertificadosBur.cveDummy}"
+								th:text="${volumenCertificadosBur.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.exptitulosopc}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expTitulosOpc : ${listaDummy}"
+								th:value="${expTitulosOpc.cveDummy}"
+								th:text="${expTitulosOpc.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciatitulosopc}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaTitulosOpc : ${listaDummy}"
+								th:value="${frecuenciaTitulosOpc.cveDummy}"
+								th:text="${frecuenciaTitulosOpc.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazotitulosopc}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoTitulosOpc : ${listaDummy}"
+								th:value="${plazoTitulosOpc.cveDummy}"
+								th:text="${plazoTitulosOpc.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumentitulosopc}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenTitulosOpc : ${listaDummy}"
+								th:value="${volumenTitulosOpc.cveDummy}"
+								th:text="${volumenTitulosOpc.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.expacciones}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expAcciones : ${listaDummy}"
+								th:value="${expAcciones.cveDummy}"
+								th:text="${expAcciones.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciaacciones}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaAcciones : ${listaDummy}"
+								th:value="${frecuenciaAcciones.cveDummy}"
+								th:text="${frecuenciaAcciones.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazoacciones}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoAcciones : ${listaDummy}"
+								th:value="${plazoAcciones.cveDummy}"
+								th:text="${plazoAcciones.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumenacciones}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenAcciones : ${listaDummy}"
+								th:value="${volumenAcciones.cveDummy}"
+								th:text="${volumenAcciones.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.expvaloresext}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expValoresExt : ${listaDummy}"
+								th:value="${expValoresExt.cveDummy}"
+								th:text="${expValoresExt.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciavaloresext}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaValoresExt : ${listaDummy}"
+								th:value="${frecuenciaValoresExt.cveDummy}"
+								th:text="${frecuenciaValoresExt.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazovaloresext}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoValoresExt : ${listaDummy}"
+								th:value="${plazoValoresExt.cveDummy}"
+								th:text="${plazoValoresExt.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumenvaloresext}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenValoresExt : ${listaDummy}"
+								th:value="${volumenValoresExt.cveDummy}"
+								th:text="${volumenValoresExt.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.exptrackers}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expTrackers : ${listaDummy}"
+								th:value="${expTrackers.cveDummy}"
+								th:text="${expTrackers.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciatrackers}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaTrackers : ${listaDummy}"
+								th:value="${frecuenciaTrackers.cveDummy}"
+								th:text="${frecuenciaTrackers.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazotrackers}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoTrackers : ${listaDummy}"
+								th:value="${plazoTrackers.cveDummy}"
+								th:text="${plazoTrackers.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumentrackers}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenTrackers : ${listaDummy}"
+								th:value="${volumenTrackers.cveDummy}"
+								th:text="${volumenTrackers.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.expcertificadoscap}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="expCertificadosCap : ${listaDummy}"
+								th:value="${expCertificadosCap.cveDummy}"
+								th:text="${expCertificadosCap.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.frecuenciacertificadoscap}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="frecuenciaCertificadosCap : ${listaDummy}"
+								th:value="${frecuenciaCertificadosCap.cveDummy}"
+								th:text="${frecuenciaCertificadosCap.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.plazocertificadoscap}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="plazoCertificadosCap : ${listaDummy}"
+								th:value="${plazoCertificadosCap.cveDummy}"
+								th:text="${plazoCertificadosCap.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.volumencertificadoscap}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="volumenCertificadosCap : ${listaDummy}"
+								th:value="${volumenCertificadosCap.cveDummy}"
+								th:text="${volumenCertificadosCap.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.propositoinversion}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="propositoInversion : ${listaDummy}"
+								th:value="${propositoInversion.cveDummy}"
+								th:text="${propositoInversion.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.toleranciariesgo}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="toleranciaRiesgo : ${listaDummy}"
+								th:value="${toleranciaRiesgo.cveDummy}"
+								th:text="${toleranciaRiesgo.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDummyUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.horizonteinversion}"></label> 
+							<select class="form-control" id="dummyUpd" name="dummyUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="horizonteInversion : ${listaDummy}"
+								th:value="${horizonteInversion.cveDummy}"
+								th:text="${horizonteInversion.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveNoSiUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.tienelimitante}"></label> 
+							<select class="form-control" id="noSiUpd" name="noSiUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="tieneLimitante : ${listaNoSi}"
+								th:value="${tieneLimitante.cveNoSi}"
+								th:text="${tieneLimitante.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveSituacionFinancieraActualUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.porcentajetotalpatrimonio}"></label> 
+							<select class="form-control" id="situacionFinancieraActualUpd" name="situacionFinancieraActualUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="porcentajeTotalPatrimonio : ${listaSituacionFinancieraActual}"
+								th:value="${porcentajeTotalPatrimonio.cveSituacionFinancieraActual}"
+								th:text="${porcentajeTotalPatrimonio.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveSituacionFinancieraActualUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.porcentajeingresoanual}"></label> 
+							<select class="form-control" id="situacionFinancieraActualUpd" name="situacionFinancieraActualUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="porcentajeIngresoAnual : ${listaSituacionFinancieraActual}"
+								th:value="${porcentajeIngresoAnual.cveSituacionFinancieraActual}"
+								th:text="${porcentajeIngresoAnual.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveSituacionFinancieraActualUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.porcentajeinversiones}"></label> 
+							<select class="form-control" id="situacionFinancieraActualUpd" name="situacionFinancieraActualUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="porcentajeInversiones : ${listaSituacionFinancieraActual}"
+								th:value="${porcentajeInversiones.cveSituacionFinancieraActual}"
+								th:text="${porcentajeInversiones.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="perfilUpd"
+							th:text="#{label.title.modal.input.negativaperfilamiento.perfil}"></label> 
+							<input type="text" id="perfilUpd" name="perfilUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="inconsistenciasUpd"
+								th:text="#{label.title.modal.input.negativaperfilamiento.inconsistencias}"></label> 
+							<input type="text" id="inconsistenciasUpd" name="inconsistenciasUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					</div>
+					
+					<div class="form-group modal-footer">
+						<div id="updInformes" class="form-group">
+							<button id="salir" type="button"  class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cancelar}"></button>
+							<button id="btnGuardar" type="submit" class="btn-style-citi" th:text="#{label.button.guardar}"></button>
+							<button type="button" class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cerrar}"></button>
+						</div>
+					</div>
+					
+				</div>	
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>	

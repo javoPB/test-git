@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="editor" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <non-jta-data-source>SegmexRCDS</non-jta-data-source>
+
+    <class>com.citi.insurance.catalogos.entity.Contrato</class>
+    <class>com.citi.insurance.catalogos.entity.Titularcontrato</class>
+    <class>com.citi.insurance.catalogos.entity.Beneficiario</class>
+    <class>com.citi.insurance.catalogos.entity.Limitante</class>
+    <class>com.citi.insurance.catalogos.entity.Emisor</class>
+    <class>com.citi.insurance.catalogos.entity.Firmaautorizada</class>
+    <class>com.citi.insurance.catalogos.entity.Instruccionefectivo</class>
+    <class>com.citi.insurance.catalogos.entity.Distribucioninstrucciones</class>
+    <class>com.citi.insurance.catalogos.entity.Reperfilamientopersonafisica</class>
+    <class>com.citi.insurance.catalogos.entity.Negativaperfilamiento</class>
+
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.use_sql_comments" value="true"/>
+      <property name="hibernate.max_fetch_depth" value="1"/>
+    </properties>
+  </persistence-unit>
+</persistence>

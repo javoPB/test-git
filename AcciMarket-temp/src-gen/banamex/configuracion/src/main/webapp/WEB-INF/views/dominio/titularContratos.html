@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="templates/layout :: head(~{this :: title}, ~{this :: .custom-link}, ~{this :: .custom-script}, ~{this :: .custom-body})">
+<title>Titular</title>
+
+<!--/* Links de su pagina */-->
+<!-- <link class="custom-link" rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/> -->
+<link class="custom-link" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<!-- <link class="custom-link" rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css"> -->
+<link class="custom-link" rel="stylesheet" media="screen" th:href="@{/resources/css/gi/main-gi.css}" />
+
+<!--/* Scripts de su pagina */-->
+<!-- <script class="custom-script" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script> -->
+<!-- <script class="custom-script" -->
+<!-- 	src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script> -->
+<script class="custom-script" th:src="@{/resources/js/dominio/titularContrato.js}"></script>
+
+
+</head>
+
+<body>
+	<header th:insert="templates/header :: header"> </header>
+	<br>
+	<div class="container custom-body">
+		
+		<div id="alertSuccess"></div>
+		<div id="alertWarning"></div>
+		<div id="alertDangerError"></div>
+
+		<div class="formTop">
+			<span class="titleStaticForm"
+				th:text="#{label.consulta.titularcontrato}"></span>
+			<hr>	
+			<form id="formBuscar" name="formBuscar">
+				<!-- Codigo adicional -->
+				<!--
+				<input type="hidden" id="idSubproceso" name="idSubproceso">
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<label for="gi-sel-modulo" class="col-form-label"
+							th:text="#{cg.proceso.modulo}"></label> 
+						<select name="modulo"
+							onchange="activarProceso();" id="gi-sel-modulo"
+							class="form-control" required>
+							<option value="0" th:text="#{cg.seleccionar}"
+								selected></option>
+							<option th:each="modulo : ${modulo}"
+								th:value="${modulo.idCtrlProceso}" th:utext="${modulo.descripcion}" />
+						</select>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="gi-sel-proceso" class="col-form-label"
+							th:text="#{cg.subproceso.proceso}"></label> <select
+							name="Proceso" disabled="disabled"
+							onchange="activarSubProceso();" id="gi-sel-proceso"
+							class="form-control" required data-bv-notempty-message="Campo requerido">
+							<option value="" th:text="#{cg.seleccionar}"
+								selected></option>
+						</select>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="gi-sel-subproceso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.subproceso}"></label> 
+						<select onchange="setIdSubProceso();" 
+							name="subproceso" disabled="disabled" id="gi-sel-subproceso"
+							class="form-control" required data-bv-notempty-message="Campo requerido">
+							<option value="" th:text="#{cg.seleccionar}"
+								selected></option>
+						</select>
+					</div>
+				</div>
+				-->
+				<!-- Codigo Adicional -->	
+
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="nombre" class="col-form-label"
+							th:text="#{label.criterio.busqueda.nombre}"> </label> 
+							<input type="text" class="form-control" id="nombreFlt" maxlength="100"
+							name="nombre" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="actividad" class="col-form-label"
+							th:text="#{label.criterio.busqueda.actividad}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="actividad : ${listaDummy}"
+								th:value="${actividad.cveDummy}"
+								th:text="${actividad.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="noclientebanamex" class="col-form-label"
+							th:text="#{label.criterio.busqueda.noclientebanamex}"> </label> 
+							<input type="text" class="form-control" id="noClienteBanamexFlt" maxlength="100"
+							name="noclientebanamex" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="nocta" class="col-form-label"
+							th:text="#{label.criterio.busqueda.nocta}"> </label> 
+							<input type="text" class="form-control" id="noCtaFlt" maxlength="100"
+							name="nocta" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="suc" class="col-form-label"
+							th:text="#{label.criterio.busqueda.suc}"> </label> 
+							<input type="text" class="form-control" id="sucFlt" maxlength="100"
+							name="suc" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="clabe" class="col-form-label"
+							th:text="#{label.criterio.busqueda.clabe}"> </label> 
+							<input type="text" class="form-control" id="clabeFlt" maxlength="100"
+							name="clabe" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="calle" class="col-form-label"
+							th:text="#{label.criterio.busqueda.calle}"> </label> 
+							<input type="text" class="form-control" id="calleFlt" maxlength="100"
+							name="calle" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="noext" class="col-form-label"
+							th:text="#{label.criterio.busqueda.noext}"> </label> 
+							<input type="text" class="form-control" id="noExtFlt" maxlength="100"
+							name="noext" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="nointerior" class="col-form-label"
+							th:text="#{label.criterio.busqueda.nointerior}"> </label> 
+							<input type="text" class="form-control" id="noInteriorFlt" maxlength="100"
+							name="nointerior" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="mexExtr" class="col-form-label"
+							th:text="#{label.criterio.busqueda.mexextr}"></label> <select
+							id="cveMexicoExtrajeroFlt" name="cveMexicoExtrajero"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="mexExtr : ${listaMexicoExtrajero}"
+								th:value="${mexExtr.cveMexicoExtrajero}"
+								th:text="${mexExtr.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="cp" class="col-form-label"
+							th:text="#{label.criterio.busqueda.cp}"> </label> 
+							<input type="text" class="form-control" id="cpFlt" maxlength="100"
+							name="cp" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="estado" class="col-form-label"
+							th:text="#{label.criterio.busqueda.estado}"> </label> 
+							<input type="text" class="form-control" id="estadoFlt" maxlength="100"
+							name="estado" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="delmpo" class="col-form-label"
+							th:text="#{label.criterio.busqueda.delmpo}"> </label> 
+							<input type="text" class="form-control" id="delMpoFlt" maxlength="100"
+							name="delmpo" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="ciudad" class="col-form-label"
+							th:text="#{label.criterio.busqueda.ciudad}"> </label> 
+							<input type="text" class="form-control" id="ciudadFlt" maxlength="100"
+							name="ciudad" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="colonia" class="col-form-label"
+							th:text="#{label.criterio.busqueda.colonia}"> </label> 
+							<input type="text" class="form-control" id="coloniaFlt" maxlength="100"
+							name="colonia" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="correspondencia" class="col-form-label"
+							th:text="#{label.criterio.busqueda.correspondencia}"></label> <select
+							id="cveNoSiFlt" name="cveNoSi"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="correspondencia : ${listaNoSi}"
+								th:value="${correspondencia.cveNoSi}"
+								th:text="${correspondencia.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="rfc" class="col-form-label"
+							th:text="#{label.criterio.busqueda.rfc}"> </label> 
+							<input type="text" class="form-control" id="rfcFlt" maxlength="100"
+							name="rfc" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="curp" class="col-form-label"
+							th:text="#{label.criterio.busqueda.curp}"> </label> 
+							<input type="text" class="form-control" id="curpFlt" maxlength="100"
+							name="curp" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="fecnac" class="col-form-label"
+							th:text="#{label.criterio.busqueda.fecnac}"> </label> 
+							<input type="date" class="form-control" id="fecNacFlt" maxlength="100"
+							name="fecnac" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="escolaridad" class="col-form-label"
+							th:text="#{label.criterio.busqueda.escolaridad}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="escolaridad : ${listaDummy}"
+								th:value="${escolaridad.cveDummy}"
+								th:text="${escolaridad.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="edoCivil" class="col-form-label"
+							th:text="#{label.criterio.busqueda.edocivil}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="edoCivil : ${listaDummy}"
+								th:value="${edoCivil.cveDummy}"
+								th:text="${edoCivil.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="sexo" class="col-form-label"
+							th:text="#{label.criterio.busqueda.sexo}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="sexo : ${listaDummy}"
+								th:value="${sexo.cveDummy}"
+								th:text="${sexo.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="tipoVivienda" class="col-form-label"
+							th:text="#{label.criterio.busqueda.tipovivienda}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="tipoVivienda : ${listaDummy}"
+								th:value="${tipoVivienda.cveDummy}"
+								th:text="${tipoVivienda.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="calidadMigratoria" class="col-form-label"
+							th:text="#{label.criterio.busqueda.calidadmigratoria}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="calidadMigratoria : ${listaDummy}"
+								th:value="${calidadMigratoria.cveDummy}"
+								th:text="${calidadMigratoria.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="paisResidencia" class="col-form-label"
+							th:text="#{label.criterio.busqueda.paisresidencia}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="paisResidencia : ${listaDummy}"
+								th:value="${paisResidencia.cveDummy}"
+								th:text="${paisResidencia.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="nacionalidad" class="col-form-label"
+							th:text="#{label.criterio.busqueda.nacionalidad}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="nacionalidad : ${listaDummy}"
+								th:value="${nacionalidad.cveDummy}"
+								th:text="${nacionalidad.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="paisNac" class="col-form-label"
+							th:text="#{label.criterio.busqueda.paisnac}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="paisNac : ${listaDummy}"
+								th:value="${paisNac.cveDummy}"
+								th:text="${paisNac.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="edoNac" class="col-form-label"
+							th:text="#{label.criterio.busqueda.edonac}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="edoNac : ${listaDummy}"
+								th:value="${edoNac.cveDummy}"
+								th:text="${edoNac.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="empleadoGroFinBanamex" class="col-form-label"
+							th:text="#{label.criterio.busqueda.empleadogrofinbanamex}"></label> <select
+							id="cveNoSiFlt" name="cveNoSi"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="empleadoGroFinBanamex : ${listaNoSi}"
+								th:value="${empleadoGroFinBanamex.cveNoSi}"
+								th:text="${empleadoGroFinBanamex.descripcion}"></option>
+						</select>
+					</div>	
+				</div>
+				<div class="row">
+					<div class="col-md-6"></div>
+					<div class="col-md-6">
+						<button type="submit" class="btn-style-citi float-right mx-0"
+							id="dominio-btn-buscar" th:text="#{label.button.buscar}"></button>
+						<button type="button" class="btn-style-citi float-right mx-2"
+							id="dominio-but-limpiar" th:text="#{label.button.limpiar}"></button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<span class="tituloTabla" th:text="#{tabla.titulo.busqueda}"></span>
+		<div class="table-responsive">
+			<table class="table table-bordered" id="datostabla">
+				<thead class="bg-info">
+				</thead>
+			</table>
+		</div>
+
+		<div class="row float-right mx-0 btnList">
+			<button type="button" class="btn-style-citi" name="eliminarButton" id="eliminarButton"
+			        th:text="#{label.button.eliminar}"></button>
+			<button type="button" class="btn-style-citi" name="actualizarButton" id="actualizarButton"
+			        th:text="#{label.button.actualizar}"></button>
+			<button type="button" class="btn-style-citi float-right mx-2"
+							id="agregar" th:text="#{label.button.agregar}"></button>
+		</div>
+			
+		<!-- 		Modal Crear salida -->
+		<div th:replace="dominio/modalCrearTitularContrato :: modalGuardar"></div>
+		
+		<div th:replace="dominio/modalUpdateTitularContrato :: modalFragUpdate"></div>
+			
+			
+		<!-- Modal eliminar -->
+		<div class="modal fade cg-mod-eliminar" id="modalEliminar" tabindex="-1"
+			role="dialog" data-backdrop="static" data-keyboard="false"
+			aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" th:utext="#{label.title.modal.eliminar.titularcontrato}"></h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="text-center">
+							<p id="dominio-mensaje-eliminar"></p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cancelar}"></button>
+						<button type="button" onclick="eliminarTitularContrato()" class="btn-style-citi" th:text="#{label.button.aceptar}"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<footer th:replace="templates/footer :: footer"> </footer>
+</body>
+</html>	

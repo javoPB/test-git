@@ -1,0 +1,84 @@
+
+	{
+		"ids":[
+			{
+				"id": "emisor-results",
+				"headers": [
+				{ "label": "Emisor" },
+				{ "label": "Relación" }
+				],
+				"rows": [
+					{
+						"id": "1",
+						"data": [
+							"Eos perferendis sequi.",
+							"Presidente"
+						]
+					},
+					{
+						"id": "2",
+						"data": [
+							"Velit id omnis quisquam in quod.",
+							"Presidente"
+						]
+					},
+					{
+						"id": "3",
+						"data": [
+							"Et velit error eveniet.",
+							"Vicepresidente"
+						]
+					},
+					{
+						"id": "4",
+						"data": [
+							"Quo sint modi nobis dolor praesentium consequatur maxime.",
+							"Presidente"
+						]
+					},
+					{
+						"id": "5",
+						"data": [
+							"Est nulla atque autem ipsa sed.",
+							"Vicepresidente"
+						]
+					},
+					{
+						"id": "6",
+						"data": [
+							"Provident aut et voluptas labore et.",
+							"Vicepresidente"
+						]
+					},
+					{
+						"id": "7",
+						"data": [
+							"Quis incidunt provident qui.",
+							"Vicepresidente"
+						]
+					},
+					{
+						"id": "8",
+						"data": [
+							"Soluta deleniti officia in et.",
+							"Presidente"
+						]
+					},
+					{
+						"id": "9",
+						"data": [
+							"Est at error voluptatem vero similique aliquam.",
+							"Presidente"
+						]
+					},
+					{
+						"id": "10",
+						"data": [
+							"Et officia voluptatum.",
+							"Presidente"
+						]
+					}
+				]
+			}
+		]
+	}

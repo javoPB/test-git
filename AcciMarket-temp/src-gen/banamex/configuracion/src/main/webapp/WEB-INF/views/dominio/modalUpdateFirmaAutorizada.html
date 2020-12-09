@@ -1,0 +1,95 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="modal fade cg-mod-editar" id="movModal" tabindex="-1" th:fragment="modalFragUpdate"
+	role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="cg-mod-editar" aria-hidden="true"
+	style="display: none;">
+	<div id="alertDangerUp"></div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<form id="formUpd" name="formUpd">
+				<div class="modal-header">
+					<h4 class="modal-title">
+						<label id="modalTitle" th:text="#{lable.title.modal.actualizar.firmaautorizada}"></label>
+					</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="container body">
+					<input type="hidden" id="idFirmaAutorizadaUpd" name="idFirmaAutorizadaUpd">	
+					<!-- Codigo Adicional -->
+					<!--
+					<input type="hidden" id="idSubprocesoUpd" name="idSubprocesoUpd">
+					<div class="row">
+						<div class="col-md-4">
+							<label class="col-form-label" for="subprocesoUpd"
+								th:text="#{label.criterio.busqueda.subproceso}"></label> 
+								<input type="text" id="subprocesoUpd" name="subprocesoUpd" class="form-control" readonly="readonly">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label" for="procesoUpd"
+								th:text="#{label.criterio.busqueda.proceso}"></label> 
+								<input type="text" id="procesoUpd" name="procesoUpd"  class="form-control" readonly="readonly">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label" for="moduloUpd"
+								th:text="#{label.criterio.busqueda.modulo}"></label> 
+								<input type="text" id="moduloUpd"  name="moduloUpd"  class="form-control" readonly="readonly">
+						</div>
+					</div>
+					-->
+					<!-- Codigo Adicional -->
+						
+					<div class="row">
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="nombreUpd"
+								th:text="#{label.title.modal.input.firmaautorizada.nombre}"></label> 
+							<input type="text" id="nombreUpd" name="nombreUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="apPaternoUpd"
+								th:text="#{label.title.modal.input.firmaautorizada.appaterno}"></label> 
+							<input type="text" id="apPaternoUpd" name="apPaternoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="apMaternoUpd"
+								th:text="#{label.title.modal.input.firmaautorizada.apmaterno}"></label> 
+							<input type="text" id="apMaternoUpd" name="apMaternoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="noEscrUpd"
+								th:text="#{label.title.modal.input.firmaautorizada.noescr}"></label> 
+							<input type="text" id="noEscrUpd" name="noEscrUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="noNotUpd"
+								th:text="#{label.title.modal.input.firmaautorizada.nonot}"></label> 
+							<input type="text" id="noNotUpd" name="noNotUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					</div>
+					
+					<div class="form-group modal-footer">
+						<div id="updInformes" class="form-group">
+							<button id="salir" type="button"  class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cancelar}"></button>
+							<button id="btnGuardar" type="submit" class="btn-style-citi" th:text="#{label.button.guardar}"></button>
+							<button type="button" class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cerrar}"></button>
+						</div>
+					</div>
+					
+				</div>	
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>	

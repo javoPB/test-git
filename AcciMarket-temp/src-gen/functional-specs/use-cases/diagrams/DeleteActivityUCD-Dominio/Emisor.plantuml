@@ -1,0 +1,14 @@
+@startumlstart
+start
+:El Operador selecciona el registro a eliminar;
+:El Sistema obtiene y muestra el detalle en la página [Eliminar Emisor];
+:El Operador confirma la eliminación;	
+if (Es posible eliminar?) then (SI)    		
+	:El Sistema elimina el registro\n de la entidad [Emisor];  	
+else (NO)    		
+	:El Sistema muestra la página\n [Eliminar Emisor]\ne indica la razón por la cual no se puede eliminar el registro;    		
+	end  	
+endif
+stop
+@enduml
+

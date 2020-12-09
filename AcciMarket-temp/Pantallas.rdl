@@ -1,0 +1,672 @@
+module Pantallas{
+	name: "Accimarket"
+	
+	screen DatosGeneralesScreen{
+		home:true
+		landmark:true
+		title: "Datos Generales"
+
+		form<Dominio.Contrato> BusquedaContratoForm{
+			row{
+				col(md-2){
+					display Dominio.Contrato.NoContrato
+				}
+				col(md-2){
+					display Dominio.Contrato.Digito
+				}
+				col(md-2){
+					display Dominio.Contrato.Dv
+				}
+				col(md-2){
+					display Dominio.Contrato.Estatus
+				}
+				col(md-2){
+					display Dominio.Contrato.Perfil
+				}
+				col(md-2){
+					display Dominio.Contrato.Portafolio
+				}
+			}
+			row{
+				col(md-2){
+					display Dominio.Contrato.CLABE
+				}
+				col(md-2){
+					display Dominio.Contrato.STipoPort
+				}
+				col(md-2){
+					display Dominio.Contrato.Libro
+				}
+			}
+			
+			query ConsultarContratoQuery -> ConsultarContratoQuery
+				.success: DatosGeneralesScreen
+				.failure: ErrorScreen
+				{ widget(label: "Consultar", type: Normal, state: Primary, icon: "Search") }
+		}
+
+
+		form<Dominio.Contrato> DatosContratoForm{
+			
+			panel Titular{
+				title: "Persona Física Nacional"
+				
+				row{
+					col(md-6){
+						display Dominio.TitularContrato.Nombre
+					}
+					col(md-3){
+						display Dominio.TitularContrato.Actividad
+					}
+					col(md-3){
+						display Dominio.TitularContrato.Rfc
+					}
+				}
+				row{
+					col(md-3){
+						display Dominio.TitularContrato.Sexo
+					}
+					col(md-3){
+						display Dominio.TitularContrato.Curp
+					}
+					col(md-3){
+						display Dominio.TitularContrato.FecNac
+					}
+					col(md-3){
+						display Dominio.TitularContrato.NoClienteBanamex
+					}
+				}
+				row{
+					col(md-3){
+						display Dominio.TitularContrato.Nacionalidad
+					}
+					col(md-3){
+						display Dominio.TitularContrato.CalidadMigratoria
+					}
+				}
+							
+				
+			}
+			
+			panel ClasificacionContrato{
+				title: "Clasificación Contrato"
+				
+				row{
+					col(md-12){
+						display Dominio.Contrato.AsesorInversion
+						display Dominio.Contrato.TipoManifiesto
+						display Dominio.Contrato.ServicioInversion
+					}					
+				}
+				row{
+					col(md-8){
+						display Dominio.Contrato.CartaEjecucion1
+						display Dominio.Contrato.CartaEjecucion2
+					}
+					col(md-4){
+						display Dominio.Contrato.FechaCartaEjecucion1
+						display Dominio.Contrato.FechaCartaEjecucion2
+					}
+				}
+				row{
+					col(md-4){
+						display Dominio.Contrato.Institucional
+						display Dominio.Contrato.Sofisticado
+						display Dominio.Contrato.Elegible
+						display Dominio.Contrato.Calificado
+						display Dominio.Contrato.Discrecional
+					}
+					col(md-4){
+						display Dominio.Contrato.JustificacionInstitucional
+						display Dominio.Contrato.JustificacionSofisticado
+						display Dominio.Contrato.JustificacionElegible
+						display Dominio.Contrato.JustificacionCalificado
+						display Dominio.Contrato.JustificacionDiscrecional
+					}
+					col(md-4){
+						display Dominio.Contrato.FechaInstitucional
+						display Dominio.Contrato.FechaSofisticado
+						display Dominio.Contrato.FechaElegible
+						display Dominio.Contrato.FechaCalificado
+						display Dominio.Contrato.FechaDiscrecional
+					}
+				}
+			}
+			
+			panel ConocimientoExperiencia{
+				title: "Conocimiento y Experiencia"
+				
+				display Dominio.Contrato.InstrDeudaGub
+				display Dominio.Contrato.InstrDeudaCorp
+				display Dominio.Contrato.SociedadesInver
+				display Dominio.Contrato.ValoresEstruc
+				display Dominio.Contrato.CertBurFideicomisos
+				display Dominio.Contrato.TitulosOpcionales
+				display Dominio.Contrato.Acciones
+				display Dominio.Contrato.ValoresExtr
+				display Dominio.Contrato.Trackers
+			}
+			
+			panel LimitantesIntervenir{
+				title: "Limitantes a Intervenir"
+				
+				display Dominio.Contrato.Limitantes
+			}
+			
+			panel RelacionEmisor{
+				title: "Relación Emisor"
+				
+				display Dominio.Contrato.Emisor
+			}
+			
+			panel FirmasAutorizdas{
+				title: "Firmas Autorizadas"
+				
+				display Dominio.Contrato.FirmasAutorizadas
+			}
+			
+		}
+	}
+	
+		
+	screen OperacionesEfectivoScreen{
+		home:false
+		landmark:true
+		title: "Instrucciones de Efectivo"
+		
+		form<Dominio.InstruccionEfectivo> InstruccionEfectivoForm{
+			panel CapturaEfectivo{
+				title: "Captura de Efectivo"
+				
+				row{
+					col(md-2 md-offset-4){
+						display Dominio.InstruccionEfectivo.Sucursal
+					}
+				}
+				row{
+					col(md-4){
+						display Dominio.InstruccionEfectivo.Operacion
+					}
+					col(md-4){
+						display Dominio.InstruccionEfectivo.Tipo
+					}
+				}
+				row{
+					col(md-4){
+						display Dominio.InstruccionEfectivo.MedLiq
+					}
+				}
+				row{
+					col(md-4){
+						display Dominio.InstruccionEfectivo.Contrato
+					}
+					col(md-6){
+						display Dominio.InstruccionEfectivo.SubtipoPortafolio
+					}
+					col(md-2){
+						display Dominio.InstruccionEfectivo.Digito
+					}
+				}
+				row{
+					col(md-12){
+						display Dominio.InstruccionEfectivo.Titular
+					}
+				}
+				row{
+					col(md-4 md-offset-8){
+						display Dominio.InstruccionEfectivo.Saldo
+					}
+				}
+			}
+			
+			panel CapturaTraspasoEfectivo{
+				title: "Captura de Traspasos de Efectivo"
+				
+				row{
+					col(md-3){
+						display Dominio.InstruccionEfectivo.ContratoEgreso
+					}
+					col(md-3){
+						display Dominio.InstruccionEfectivo.DigitoEgreso
+					}
+					col(md-3){
+						display Dominio.InstruccionEfectivo.SaldoInicialEgreso
+					}
+					col(md-3){
+						display Dominio.InstruccionEfectivo.SaldoCalculadoEgreso
+					}
+				}
+				row{
+					col(md-12){
+						display Dominio.InstruccionEfectivo.BenefEgreso
+					}
+				}
+				row{
+					col(md-3){
+						display Dominio.InstruccionEfectivo.ContratoIngreso
+					}
+					col(md-3){
+						display Dominio.InstruccionEfectivo.DigitoIngreso
+					}
+					col(md-3){
+						display Dominio.InstruccionEfectivo.SaldoInicialIngreso
+					}
+					col(md-3){
+						display Dominio.InstruccionEfectivo.SaldoCalculadoIngreso
+					}
+				}
+				row{
+					col(md-12){
+						display Dominio.InstruccionEfectivo.BenefIngreso
+					}
+				}
+				row{
+					col(md-4){
+						display Dominio.InstruccionEfectivo.ImporteIngreso
+					}				
+				}
+								
+			}
+			
+			command ProcesarTraspasosEfectivoCommand -> ProcesarTraspasosEfectivoCommand
+				.success: OperacionesEfectivoScreen
+				.failure: OperacionesEfectivoScreen
+				{ widget(label: "Procesar", type: Normal, state: Primary, icon: "Ok") }
+				
+			flow CancelarTraspasosEfectivoFlow -> OperacionesEfectivoScreen
+				{ widget(label: "Cancelar", type: Outlined, state: Primary, icon: "Done") }
+		}
+	}
+	
+	screen DistribucionInstruccionesScreen{
+		home: false
+		landmark: true
+		title: "Distribución de Instrucciones"
+				
+		form<Dominio.DistribucionInstrucciones> DistribucionInstruccionesForm{
+			row{
+				col(md-2){
+					display Dominio.DistribucionInstrucciones.OpcDistrInstrucciones
+				}
+				col(md-2){
+					display Dominio.DistribucionInstrucciones.Contrato
+				}
+				col(md-2){
+					display Dominio.DistribucionInstrucciones.FolioMov
+				}
+				col(md-2){
+					display Dominio.DistribucionInstrucciones.Digito
+				}
+				col(md-2){
+					display Dominio.DistribucionInstrucciones.ImporteNeto
+				}
+				col(md-2){
+					display Dominio.DistribucionInstrucciones.Depositos					
+				}
+			}
+			row{
+				col(md-2){
+					display Dominio.DistribucionInstrucciones.Capturados
+				}
+				col(md-2 md-offset-8){
+					display Dominio.DistribucionInstrucciones.Retiros
+				}
+			}
+			row{
+				col(md-2 md-offset-10){
+					display Dominio.DistribucionInstrucciones.Sucursal
+				}
+			}
+		}
+	}
+	
+	screen AperturaContratoScreen{
+		home: false
+		landmark: true
+		title: "Apertura de Contrato"
+		
+		form<Dominio.Contrato> AperturaContratoForm{
+			panel AperturaContrato{
+				title: "Wizzard de Apertura de Contrato"
+				
+				panel DatosTitular{
+					title: "Datos del Titular"
+					
+					panel MedioLiquidacion{
+						title: "Medio de Liquidación"
+						
+						row{
+							col(md-3){
+								display Dominio.TitularContrato.NoClienteBanamex
+							}
+							col(md-3){
+								display Dominio.TitularContrato.Inst
+							}
+							col(md-2){
+								display Dominio.TitularContrato.NoCta
+							}
+							col(md-2){
+								display Dominio.TitularContrato.Suc
+							}
+							col(md-2){
+								display Dominio.TitularContrato.Clabe
+							}
+						}
+						
+					}
+					
+					panel DomicilioFiscal{
+						title: "Domicilio Fiscal"
+						
+						row{
+							col(md-4){
+								display Dominio.TitularContrato.Calle
+								display Dominio.TitularContrato.Cp
+								display Dominio.TitularContrato.MexExtr
+							}
+							col(md-4){
+								display Dominio.TitularContrato.NoExt
+								display Dominio.TitularContrato.Estado
+								display Dominio.TitularContrato.Ciudad
+							}
+							col(md-4){
+								display Dominio.TitularContrato.NoInterior
+								display Dominio.TitularContrato.DelMpo
+								display Dominio.TitularContrato.Colonia
+							}
+						}
+						
+						display Dominio.TitularContrato.Correspondencia
+					}
+					
+					panel DatosGenerales{
+						title: "Datos Generales"
+						
+						row{
+							col(md-4){
+								display Dominio.TitularContrato.Rfc
+								display Dominio.TitularContrato.Escolaridad
+								display Dominio.TitularContrato.TipoVivienda
+								display Dominio.TitularContrato.Nacionalidad	
+							}
+							col(md-4){
+								display Dominio.TitularContrato.Curp
+								display Dominio.TitularContrato.EdoCivil
+								display Dominio.TitularContrato.CalidadMigratoria
+								display Dominio.TitularContrato.PaisNac
+							}
+							col(md-4){
+								display Dominio.TitularContrato.FecNac
+								display Dominio.TitularContrato.Sexo
+								display Dominio.TitularContrato.PaisResidencia
+								display Dominio.TitularContrato.EdoNac
+							}
+						}
+						
+						display Dominio.TitularContrato.EmpleadoGroFinBanamex
+					}
+					
+					
+				}
+			}
+		}
+		
+	}
+	
+	screen ReperfilamientoPersonaFisicaScreen{
+		home: false
+		landmark: true
+		title: "Reperfilamiento de Personas Físicas"
+		
+		form<Dominio.ReperfilamientoPersonaFisica> ReperfilamientoPersonaFisicaForm{
+			row{
+				col(md-3){
+					display Dominio.ReperfilamientoPersonaFisica.Contrato
+				}
+				col(md-6){
+					display Dominio.ReperfilamientoPersonaFisica.Nombre
+				}
+				col(md-3){
+					display Dominio.ReperfilamientoPersonaFisica.PerfilActual
+				}
+			}
+			display Dominio.ReperfilamientoPersonaFisica.PersonaPerfilar
+			
+			panel MapaLiquidez{
+				title: "Mapa de Liquidez"
+				row{
+					col(md-2){
+						display Dominio.ReperfilamientoPersonaFisica.PorcentajeLiquidez
+						display Dominio.ReperfilamientoPersonaFisica.PorcentajeCortoPlazo
+						display Dominio.ReperfilamientoPersonaFisica.PorcentajeLargoPlazo
+						display Dominio.ReperfilamientoPersonaFisica.PorcentajePatrimonioLiquidoTotal
+					}
+					col(md-2){
+						display Dominio.ReperfilamientoPersonaFisica.MontoLiquidez
+						display Dominio.ReperfilamientoPersonaFisica.MontoCortoPlazo
+						display Dominio.ReperfilamientoPersonaFisica.MontoLargoPlazo
+						display Dominio.ReperfilamientoPersonaFisica.MontoPatrimonioLiquidoTotal
+					}
+				}
+				
+			}
+			
+			display Dominio.ReperfilamientoPersonaFisica.IntervaloEdad
+			display Dominio.ReperfilamientoPersonaFisica.NivelEstudios
+			display Dominio.ReperfilamientoPersonaFisica.Ocupacion
+			display Dominio.ReperfilamientoPersonaFisica.ActividadProfesionalAnterior
+			display Dominio.ReperfilamientoPersonaFisica.ActividadProfesionalActual
+			display Dominio.ReperfilamientoPersonaFisica.ActividadRelacionadaInversiones
+			display Dominio.ReperfilamientoPersonaFisica.EstrategiaCliente
+			display Dominio.ReperfilamientoPersonaFisica.ClienteAsesoria
+			
+			row{
+				col(md-3){
+					display Dominio.ReperfilamientoPersonaFisica.ExperienciaDeudaGub
+					display Dominio.ReperfilamientoPersonaFisica.ExpDeudaCorp
+					display Dominio.ReperfilamientoPersonaFisica.ExpSociedadesInv
+					display Dominio.ReperfilamientoPersonaFisica.ExpValoresEst
+					display Dominio.ReperfilamientoPersonaFisica.ExpCertificadosBur
+				}
+				col(md-3){
+					display Dominio.ReperfilamientoPersonaFisica.FrecuenciaDeudaGub
+					display Dominio.ReperfilamientoPersonaFisica.FrecuenciaDeudaCorp
+					display Dominio.ReperfilamientoPersonaFisica.FrecuenciaSociedadesInv
+					display Dominio.ReperfilamientoPersonaFisica.FrecuenciaValoresEst
+					display Dominio.ReperfilamientoPersonaFisica.FrecuenciaCertificadosBur
+				}
+				col(md-3){
+					display Dominio.ReperfilamientoPersonaFisica.PlazoDeudaGub
+					display Dominio.ReperfilamientoPersonaFisica.PlazoDeudaCorp
+					display Dominio.ReperfilamientoPersonaFisica.PlazoSociedadesInv
+					display Dominio.ReperfilamientoPersonaFisica.PlazoValoresEst
+					display Dominio.ReperfilamientoPersonaFisica.PlazoCertificadosBur
+				}
+				col(md-3){
+					display Dominio.ReperfilamientoPersonaFisica.VolumenDeudaGub
+					display Dominio.ReperfilamientoPersonaFisica.VolumenDeudaCorp
+					display Dominio.ReperfilamientoPersonaFisica.VolumenSociedadesInv
+					display Dominio.ReperfilamientoPersonaFisica.VolumenValoresEst
+					display Dominio.ReperfilamientoPersonaFisica.VolumenCertificadosBur
+				}
+			}
+			
+			display Dominio.ReperfilamientoPersonaFisica.TieneLimitante
+			display Dominio.ReperfilamientoPersonaFisica.PorcentajeTotalPatrimonio
+			display Dominio.ReperfilamientoPersonaFisica.PorcentajeIngresoAnual
+			display Dominio.ReperfilamientoPersonaFisica.PorcentajeInversiones
+			display Dominio.ReperfilamientoPersonaFisica.OrigenIngresos
+			display Dominio.ReperfilamientoPersonaFisica.Perfil
+			
+			command EnviarReperfilamientoPersonaFisicaCommand -> EnviarReperfilamientoPersonaFisicaCommand
+				.success: ReperfilamientoPersonaFisicaScreen
+				.failure: ErrorScreen
+				{ widget(label: "Enviar", type: Normal, state: Primary, icon: "OK") }
+		}
+		
+	}
+	
+	screen NegativaPerfilamientoScreen{
+		home: false
+		landmark: true
+		title: "Negativa de Perfilamiento"
+		
+		form<Dominio.NegativaPerfilamiento> NegativaPerfilamientoForm{
+			row{
+				col(md-3){
+					display Dominio.NegativaPerfilamiento.Contrato
+				}
+				col(md-6){
+					display Dominio.NegativaPerfilamiento.Nombre
+				}
+				col(md-3){
+					display Dominio.NegativaPerfilamiento.PerfilActual
+				}
+			}
+			display Dominio.NegativaPerfilamiento.PersonaPerfilar
+			
+			panel MapaLiquidez{
+				title: "Mapa de Liquidez"
+				row{
+					col(md-2){
+						display Dominio.NegativaPerfilamiento.PorcentajeLiquidez
+						display Dominio.NegativaPerfilamiento.PorcentajeCortoPlazo
+						display Dominio.NegativaPerfilamiento.PorcentajeLargoPlazo
+						display Dominio.NegativaPerfilamiento.PorcentajePatrimonioLiquidoTotal
+					}
+					col(md-2){
+						display Dominio.NegativaPerfilamiento.MontoLiquidez
+						display Dominio.NegativaPerfilamiento.MontoCortoPlazo
+						display Dominio.NegativaPerfilamiento.MontoLargoPlazo
+						display Dominio.NegativaPerfilamiento.MontoPatrimonioLiquidoTotal
+					}
+				}
+			}
+			
+			display Dominio.NegativaPerfilamiento.IntervaloEdad
+			display Dominio.NegativaPerfilamiento.NivelEstudios
+			display Dominio.NegativaPerfilamiento.Ocupacion
+			display Dominio.NegativaPerfilamiento.ActividadProfesionalAnterior
+			display Dominio.NegativaPerfilamiento.ActividadProfesionalActual
+			display Dominio.NegativaPerfilamiento.ActividadRelacionadaInversiones
+			display Dominio.NegativaPerfilamiento.EstrategiaCliente
+			display Dominio.NegativaPerfilamiento.ClienteAsesoria
+			
+			row{
+				col(md-3){
+					display Dominio.NegativaPerfilamiento.ExperienciaDeudaGub
+					display Dominio.NegativaPerfilamiento.ExpDeudaCorp
+					display Dominio.NegativaPerfilamiento.ExpSociedadesInv
+					display Dominio.NegativaPerfilamiento.ExpValoresEst
+					display Dominio.NegativaPerfilamiento.ExpCertificadosBur
+					display Dominio.NegativaPerfilamiento.ExpTitulosOpc
+					display Dominio.NegativaPerfilamiento.ExpAcciones
+					display Dominio.NegativaPerfilamiento.ExpValoresExt
+					display Dominio.NegativaPerfilamiento.ExpTrackers
+					display Dominio.NegativaPerfilamiento.ExpCertificadosCap
+				}
+				col(md-3){
+					display Dominio.NegativaPerfilamiento.FrecuenciaDeudaGub
+					display Dominio.NegativaPerfilamiento.FrecuenciaDeudaCorp
+					display Dominio.NegativaPerfilamiento.FrecuenciaSociedadesInv
+					display Dominio.NegativaPerfilamiento.FrecuenciaValoresEst
+					display Dominio.NegativaPerfilamiento.FrecuenciaCertificadosBur
+					display Dominio.NegativaPerfilamiento.FrecuenciaTitulosOpc
+					display Dominio.NegativaPerfilamiento.FrecuenciaAcciones
+					display Dominio.NegativaPerfilamiento.FrecuenciaValoresExt
+					display Dominio.NegativaPerfilamiento.FrecuenciaTrackers
+					display Dominio.NegativaPerfilamiento.FrecuenciaCertificadosCap
+				}
+				col(md-3){
+					display Dominio.NegativaPerfilamiento.PlazoDeudaGub
+					display Dominio.NegativaPerfilamiento.PlazoDeudaCorp
+					display Dominio.NegativaPerfilamiento.PlazoSociedadesInv
+					display Dominio.NegativaPerfilamiento.PlazoValoresEst
+					display Dominio.NegativaPerfilamiento.PlazoCertificadosBur
+					display Dominio.NegativaPerfilamiento.PlazoTitulosOpc
+					display Dominio.NegativaPerfilamiento.PlazoAcciones
+					display Dominio.NegativaPerfilamiento.PlazoValoresExt
+					display Dominio.NegativaPerfilamiento.PlazoTrackers
+					display Dominio.NegativaPerfilamiento.PlazoCertificadosCap
+				}
+				col(md-3){
+					display Dominio.NegativaPerfilamiento.VolumenDeudaGub
+					display Dominio.NegativaPerfilamiento.VolumenDeudaCorp
+					display Dominio.NegativaPerfilamiento.VolumenSociedadesInv
+					display Dominio.NegativaPerfilamiento.VolumenValoresEst
+					display Dominio.NegativaPerfilamiento.VolumenCertificadosBur
+					display Dominio.NegativaPerfilamiento.VolumenTitulosOpc
+					display Dominio.NegativaPerfilamiento.VolumenAcciones
+					display Dominio.NegativaPerfilamiento.VolumenValoresExt
+					display Dominio.NegativaPerfilamiento.VolumenTrackers
+					display Dominio.NegativaPerfilamiento.VolumenCertificadosCap
+				}
+			}
+			display Dominio.NegativaPerfilamiento.PropositoInversion
+			display Dominio.NegativaPerfilamiento.ToleranciaRiesgo
+			display Dominio.NegativaPerfilamiento.HorizonteInversion
+			display Dominio.NegativaPerfilamiento.TieneLimitante
+			display Dominio.NegativaPerfilamiento.PorcentajeTotalPatrimonio
+			display Dominio.NegativaPerfilamiento.PorcentajeIngresoAnual
+			display Dominio.NegativaPerfilamiento.PorcentajeInversiones
+			display Dominio.NegativaPerfilamiento.OrigenIngresos
+			display Dominio.NegativaPerfilamiento.Perfil
+			display Dominio.NegativaPerfilamiento.Inconsistencias
+			
+			command EnviarNegativaPerfilamientoCommand -> EnviarNegativaPerfilamientoCommand
+				.success: NegativaPerfilamientoScreen
+				.failure: ErrorScreen
+				{ widget(label: "Enviar", type: Normal, state: Primary, icon: "OK") }
+		}
+		
+	}
+	
+	screen FirmaAutorizadaScreen{
+		home:false
+		landmark:true
+		title: "Firma autorizada"
+		
+		form<Dominio.FirmaAutorizada> FirmaAutorizadaForm{
+			display Dominio.FirmaAutorizada.Tipo
+			display Dominio.FirmaAutorizada.Nombre
+			display Dominio.FirmaAutorizada.ApPaterno
+			display Dominio.FirmaAutorizada.ApMaterno
+			display Dominio.FirmaAutorizada.NoEscr
+			display Dominio.FirmaAutorizada.NoNot
+		}
+	
+	}
+	
+	
+	screen ErrorScreen{
+		home:false
+		landmark:false
+		title: "Error"
+		
+		message ErrorMessage {
+			text: "Error"
+		}
+	}
+	
+	query ConsultarContratoQuery {
+		name: "Consultar Contrato"		
+	}
+	
+	command ProcesarTraspasosEfectivoCommand {
+		name: "Procesar Traspasos de Efectivo"		
+	}
+
+	query ConsultarDistribucionInstruccionesQuery {
+		name: "Consultar Distribución de Instrucciones"		
+	}
+	
+	command EnviarReperfilamientoPersonaFisicaCommand {
+		name: "Enviar Reperfilamiento de Persona Física"		
+	}
+	
+	command EnviarNegativaPerfilamientoCommand {
+		name: "Enviar Negativa de Perfilamiento"		
+	}
+	
+	
+}

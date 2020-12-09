@@ -1,0 +1,23 @@
+@startuml
+start
+:El Operador captura información en 
+la forma [Criterios de Búsqueda Negativa de Perfilamiento];
+while (Datos incompletos?) is (SI)  
+	:El Sistema muestra los campos de la forma 
+	[Criterios de Búsqueda Negativa de Perfilamiento] que son obligatorios.;  
+	:El Operador captura información en 
+	la forma [Criterios de Búsqueda Negativa de Perfilamiento];
+endwhile (NO) 
+	:El Sistema obtiene información de acuerdo 
+	a los Criterios de Búsqueda seleccionados;
+	if (Existe información?) then (SI)    
+		:El Sistema muestra la lista 
+		[Resultados de Búsqueda Negativa de Perfilamiento];
+	else (NO)    
+		:El Sistema avisa que no 
+		encontró información [Negativa de Perfilamiento];		  
+		end  
+	endif
+stop
+@enduml
+

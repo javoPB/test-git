@@ -1,0 +1,21 @@
+@startuml
+start
+:El Operador captura información 
+en la forma [Agregar Beneficiarios];
+while (Datos incompletos?) is (SI)  
+	:El Sistema muestra los campos de la forma 
+	[Agregar Beneficiarios] que son obligatorios;  
+	:El Operador captura información en 
+	la forma [Agregar Beneficiarios];
+endwhile (NO)  
+	if (Datos válidos?) then (SI)    
+		:El Sistema crea un nuevo registro 
+		en la entidad [Beneficiarios];  
+	else (NO)    
+		:El Sistema muestra los campos de la forma 
+		[Agregar Beneficiarios] que son inválidos e indica la razón;    
+		end  
+	endif
+stop
+@enduml
+

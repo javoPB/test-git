@@ -1,0 +1,106 @@
+
+	{
+		"ids":[
+			{
+				"id": "limitante-results",
+				"headers": [
+				{ "label": "Grupo Instrumento" },
+				{ "label": "Tipo Valor" },
+				{ "label": "Emisoras" },
+				{ "label": "Tipo Valor Emisora" }
+				],
+				"rows": [
+					{
+						"id": "1",
+						"data": [
+							"Placeat sed praesentium vel aut voluptatem quisquam quos.",
+							"Molestias vel unde eaque molestias doloribus et.",
+							"Praesentium vel accusamus.",
+							"Similique reprehenderit libero labore mollitia."
+						]
+					},
+					{
+						"id": "2",
+						"data": [
+							"Nobis vitae ipsa ducimus veritatis consequatur.",
+							"Voluptatibus aut ratione magnam officiis quia consequuntur.",
+							"Quae quaerat velit et facilis possimus sit.",
+							"Quam quia qui."
+						]
+					},
+					{
+						"id": "3",
+						"data": [
+							"Voluptatem numquam inventore totam labore voluptas deserunt.",
+							"Ea dolor numquam et.",
+							"Ut tempora placeat voluptatum et numquam.",
+							"Nisi repudiandae magnam aliquam necessitatibus."
+						]
+					},
+					{
+						"id": "4",
+						"data": [
+							"Est aut ut aperiam modi sit earum.",
+							"Modi exercitationem delectus voluptas rerum modi reprehenderit voluptatibus.",
+							"Illo quisquam laudantium.",
+							"Rerum quaerat aliquam amet id ut."
+						]
+					},
+					{
+						"id": "5",
+						"data": [
+							"Quos similique qui impedit.",
+							"Nihil ipsa ut quas blanditiis laboriosam quisquam.",
+							"Fuga est eos.",
+							"Excepturi officiis rem eum nobis."
+						]
+					},
+					{
+						"id": "6",
+						"data": [
+							"Quia quia dignissimos.",
+							"Delectus est natus repellat quidem aut.",
+							"Non aperiam consectetur quis voluptates alias quo.",
+							"Labore iusto deserunt aut."
+						]
+					},
+					{
+						"id": "7",
+						"data": [
+							"Exercitationem qui ut adipisci aut et distinctio nostrum.",
+							"Distinctio corrupti blanditiis vero labore optio inventore molestias.",
+							"Molestiae asperiores quia molestiae ipsa nulla molestias sed.",
+							"Ut architecto laborum."
+						]
+					},
+					{
+						"id": "8",
+						"data": [
+							"Sunt in consequatur error atque officiis qui ipsam.",
+							"Quia molestiae quidem ea.",
+							"Et rerum consequatur ratione.",
+							"Rerum quis illo debitis cum voluptatibus quasi."
+						]
+					},
+					{
+						"id": "9",
+						"data": [
+							"Ut eos sunt enim saepe eaque ipsa.",
+							"Delectus vero ut assumenda aut est.",
+							"Non sequi eos.",
+							"Odio neque porro doloremque."
+						]
+					},
+					{
+						"id": "10",
+						"data": [
+							"Perspiciatis laudantium quaerat sed cupiditate.",
+							"Voluptatum consequatur quis itaque.",
+							"Voluptate nostrum et praesentium.",
+							"Et eius ullam sunt."
+						]
+					}
+				]
+			}
+		]
+	}

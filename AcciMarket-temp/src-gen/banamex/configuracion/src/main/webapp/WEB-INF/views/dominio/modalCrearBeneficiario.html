@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:form="http://www.springframework.org/tags/form">
+<body>
+	<div th:fragment="modalGuardar" class="modal fade cg-mod-agregar"
+		id="modalCrear" tabindex="-1" role="dialog"
+		aria-labelledby="cg-mod-agregar" aria-hidden="true"
+		data-backdrop="static" data-keyboard="false">
+		<div id="alertDanger"></div>
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form id="formNew" name="formNew">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							<label th:utext="#{lable.title.modal.agregar.beneficiario}"></label>
+						</h4>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="container body">
+						<!-- Codigo Adicional -->
+						<!--
+						<input type="hidden" id="idSubprocesoI" name="idSubprocesoI">
+						<div class="row">
+							<div class="col-md-4 form-group">
+								<label for="moduloI" class="col-form-label"
+									th:text="#{cg.proceso.modulo}"></label> <select 
+									onchange="activarProcesoInsert();" id="moduloI" name="moduloI" class="form-control"
+									required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+									<option th:each="modulo : ${modulo}"
+										th:value="${modulo.idCtrlProceso}"
+										th:utext="${modulo.descripcion}" />
+								</select>
+							</div>
+							<div class="col-md-4 form-group">
+								<label for="procesoI" class="col-form-label"
+									th:text="#{cg.subproceso.proceso}"></label> <select
+									disabled="disabled"
+									name="procesoI" onchange="activarSubProcesoInsert();" id="procesoI"
+									class="form-control" required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+								</select>
+							</div>
+							<div class="col-md-4 form-group">
+								<label for="subprocesoI" class="col-form-label"
+									th:text="#{label.criterio.busqueda.subproceso}"></label> 
+									<select onchange="setIdSubProcesoInsert();"
+									name="subprocesoI" disabled="disabled" id="subprocesoI"
+									class="form-control" required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+								</select>
+							</div>
+						</div>
+						-->
+						<!-- Codigo Adicional -->
+						
+						<div class="row">
+						<div class="form-group col-md-4" id="divNombre">
+							<label for="nombre" class="required col-form-label"
+									th:text="#{label.tabla.columna.beneficiario.nombre}"></label> 
+							<input  type="text" id="nombre"
+									name="nombre" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divApPaterno">
+							<label for="apPaterno" class="required col-form-label"
+									th:text="#{label.tabla.columna.beneficiario.appaterno}"></label> 
+							<input  type="text" id="apPaterno"
+									name="apPaterno" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divApMaterno">
+							<label for="apMaterno" class="required col-form-label"
+									th:text="#{label.tabla.columna.beneficiario.apmaterno}"></label> 
+							<input  type="text" id="apMaterno"
+									name="apMaterno" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divPorcentaje">
+							<label for="porcentaje" class="required col-form-label"
+									th:text="#{label.tabla.columna.beneficiario.porcentaje}"></label> 
+							<input  type="number" id="porcentaje"
+									name="porcentaje" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						</div>
+					</div>
+
+					<div class="form-group modal-footer">
+						<button type="button" class="btn-style-citi" data-dismiss="modal"
+							th:text="#{label.button.cancelar}"></button>
+						<button type="submit" class="btn-style-citi" id="Guardar"
+							th:text="#{label.button.guardar}"></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>	

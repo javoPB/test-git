@@ -1,0 +1,1379 @@
+module Dominio{
+	name: "Definición de las entidades de dominio de Accimarket"
+	
+	enum Dummy{
+		DUMMY1: "Dummy 1"
+		DUMMY2: "Dummy 2"
+		DUMMY3: "Dummy 3"
+	}
+	
+	enum Sexo{
+		FEMENINO: "FEMENINO"
+		MASCULINO: "MASCULINO"
+	}
+	
+	enum Institucional{
+		INSTITUCIONAL: "INSTITUCIONAL"
+		INSTITUCIONALPRACT: "INSTITUCIONAL PRACT. VTA."
+	}
+	
+	enum Sofisticado{
+		SOFISTICADO: "SOFISTICADO"
+		NOSOFISTICADO: "NO SOFISTICADO"
+	}
+	
+	enum Elegible{
+		ELEGIBLE: "ELEGIBLE"
+		NOELEGIBLE: "NO ELEGIBLE"
+	}
+	
+	enum Calificado{
+		CALIFICADO: "CALIFICADO"
+		NOCALIFICADO: "NO CALIFICADO"
+	}
+	
+	enum Discrecional{
+		DISCRECIONAL: "DISCRECIONAL"
+		NODISCRECIONAL: "NO DISCRECIONAL"
+	}
+	
+	enum ConocimientoExperiencia{
+		NOCONOCE: "No conoce ni ha intervenido"
+		SOLOCONOCE: "Sólo conoce"
+		CONOCEINTERVENIDO: "Conoce y ha intervenido"
+	}
+	
+	enum Relacion{
+		VICEPRESIDENTE: "Vicepresidente"
+		PRESIDENTE: "Presidente"
+	}
+	
+	enum OpcDistrInstrucciones{
+		INTRADIA: "Intradía"
+		PROGRAMADOS: "Programados"
+		HISTORICOS: "Históricos"
+	}	
+	
+	enum MexicoExtrajero{
+		MEXICO: "México"
+		EXTRANJERO: "Extranjero"
+	}
+	
+	enum NoSi{
+		NO: "No"
+		SI: "Si"
+	}
+	
+	enum SituacionFinancieraActual{
+		DE0A20: "0-20%"
+		DE20A40: "20-40%"
+		DE40A60: "40-60%"
+		DE60A80: "60-80%"
+		DE80A100: "80-100%"
+	}
+	
+	enum OrigenIngresos {
+		VENTAACTIVOS: "Venta de Activos"
+		PREMIOS: "Premios"
+		PRESTAMOS: "Préstamos"
+		SALARIOANUAL: "Salario Anual"
+		DIVIDENDOS: "Pago de Dividendos"
+		VENTABIENES: "Venta de Bienes"
+		HERENCIA: "Herencia"
+		PATRIMONIO: "Patrimonio/Ahorro"
+		TRASPASO: "Traspaso/Cancelación de cuentas de otro Banco"
+		OTRO: "Otro"
+	}
+		
+	entity Contrato {
+		scaffold(add:true, edit:true, delete:true, search:Simple, view:false)
+		glossary(name: "Contrato", description: "")		
+		
+		/*     -----     Inicio Datos Generales     -----     */
+		field NoContrato: Text {			
+			glossary(name: "Contrato", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Digito: Text {			
+			glossary(name: "Dígito", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Dv: Text {			
+			glossary(name: "DV", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Estatus: Text {			
+			glossary(name: "Estatus", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Perfil: Text {			
+			glossary(name: "Perfil", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Portafolio: Text {			
+			glossary(name: "Portafolio", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field CLABE: Text {			
+			glossary(name: "CLABE", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field STipoPort: Text {
+			glossary(name: "STipo Port", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Libro: Text {			
+			glossary(name: "Libro", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Titular: TitularContrato[1..*] {			
+			glossary(name: "Titular del Contrato", description: "")
+			widget(exposed_filter: true, display_result:true, type:Option)			
+		}
+		
+		reference Beneficiarios: Beneficiario[0..*] {			
+			glossary(name: "Beneficiarios", description: "")
+			widget(exposed_filter: false, display_result:false)			
+		}
+		/*     -----     Fin Datos Generales     -----     */
+		
+		/*     -----     Inicio Clasificación Contrato     -----     */
+		field AsesorInversion: Text {			
+			glossary(name: "Asesor de Inversión", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field TipoManifiesto: Text {			
+			glossary(name: "Tipo de Manifiesto", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field ServicioInversion: Text {			
+			glossary(name: "Servicio de Inversión", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field CartaEjecucion1: Text {			
+			glossary(name: "Carta Ejecución", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field FechaCartaEjecucion1: Text {			
+			glossary(name: "Fecha", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field CartaEjecucion2: Text {			
+			glossary(name: "Carta Ejecución", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+			
+		field FechaCartaEjecucion2: Text {			
+			glossary(name: "Fecha", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+				
+		reference Institucional: Institucional[1..*] {			
+			glossary(name: "Institucional/Intitucional Pract. Vta.", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field JustificacionInstitucional: Text {			
+			glossary(name: "Justificación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field FechaInstitucional: Text {			
+			glossary(name: "Fecha", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Sofisticado: Sofisticado[1..1] {			
+			glossary(name: "Sofisticado/No sofisticaso", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field JustificacionSofisticado: Text {			
+			glossary(name: "Justificación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field FechaSofisticado: Text {			
+			glossary(name: "Fecha", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Elegible: Elegible[1..1] {			
+			glossary(name: "Elegible/No Elegible", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field JustificacionElegible: Text {			
+			glossary(name: "Justificación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field FechaElegible: Text {			
+			glossary(name: "Fecha", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Calificado: Calificado[1..1] {			
+			glossary(name: "Calificado/No Calificado", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field JustificacionCalificado: Text {			
+			glossary(name: "Justificación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field FechaCalificado: Text {			
+			glossary(name: "Fecha", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Discrecional: Discrecional[1..1] {			
+			glossary(name: "Discrecional/No Discrecional", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field JustificacionDiscrecional: Text {			
+			glossary(name: "Justificación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field FechaDiscrecional: Text {			
+			glossary(name: "Fecha", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		/*     -----     Fin Clasificación Contrato     -----     */
+		
+		/*     -----     Inicio Conocimiento y Experiencia     -----     */		
+		reference InstrDeudaGub: ConocimientoExperiencia[1..1] {			
+			glossary(name: "Instrumetos de Deuda Gubernamental", description: "")
+			widget(exposed_filter: true, display_result:true, type:Autocomplete)			
+		}
+		
+		reference InstrDeudaCorp: ConocimientoExperiencia[1..1] {			
+			glossary(name: "Instrumentos de Deuda Corporativa", description: "")
+			widget(exposed_filter: true, display_result:true, type:SelectList)			
+		}
+		
+		reference SociedadesInver: ConocimientoExperiencia[1..1] {			
+			glossary(name: "Sociedades de Inversión", description: "")
+			widget(exposed_filter: true, display_result:true, type:Option)			
+		}
+		
+		reference ValoresEstruc: ConocimientoExperiencia[1..1] {			
+			glossary(name: "Valores Estructurados", description: "")
+			widget(exposed_filter: true, display_result:true, type:Option)			
+		}		
+		
+		reference CertBurFideicomisos: ConocimientoExperiencia[1..1] {			
+			glossary(name: "Certificados Bursátiles Fiduciarios (Cebures,Cedevis) y Fideicomisos Privados", description: "")
+			widget(exposed_filter: true, display_result:true, type:Option)			
+		}
+		
+		reference TitulosOpcionales: ConocimientoExperiencia[1..1] {			
+			glossary(name: "Titulos Opcionales (Warrants)", description: "")
+			widget(exposed_filter: true, display_result:true, type:Option)			
+		}
+		
+		reference Acciones: ConocimientoExperiencia[1..1] {			
+			glossary(name: "Acciones", description: "")
+			widget(exposed_filter: true, display_result:true, type:Option)			
+		}
+		
+		reference ValoresExtr: ConocimientoExperiencia[1..1] {			
+			glossary(name: "Valores Extranjeros", description: "")
+			widget(exposed_filter: true, display_result:true, type:Option)			
+		}
+		
+		reference Trackers: ConocimientoExperiencia[1..*] {			
+			glossary(name: "Trackers TRACs o ETFs", description: "")
+			widget(exposed_filter: true, display_result:true, type:Check)			
+		}
+		/*     -----     Fin Conocimiento y Experiencia     -----     */
+		
+		/*     -----     Inicio Limitantes a Intervenir     -----     */
+		reference Limitantes: Limitante[0..*] {			
+			glossary(name: "Limitantes a Intervenir", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		/*     -----     Fin Limitantes a Intervenir     -----     */	
+			
+		/*     -----     Inicio Relación Emisor     -----     */
+		reference Emisor: Emisor[0..*] {			
+			glossary(name: "Relación Emisor", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		/*     -----     Fin Relación Emisor     -----     */	
+		
+		/*     -----     Inicio Firmas Autorizadas     -----     */		
+		reference FirmasAutorizadas: FirmaAutorizada[0..*] {			
+			glossary(name: "Firmas Autorizadas", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		/*     -----     Fin Firmas Autorizadas     -----     */			
+		def toString {
+			return NoContrato
+		}
+	}	
+		
+		
+	entity TitularContrato {
+		scaffold(add:true, edit:true, delete:false, search:None, view:false)
+		glossary(name: "Titular" ,description: "")
+		
+		field Nombre: Text {			
+			glossary(name: "Nombre", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Actividad: Dummy[1..1] {			
+			glossary(name: "Actividad", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field NoClienteBanamex: Text {			
+			glossary(name: "No. Cliente Banamex", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}					
+
+		reference Inst: Dummy[1..1] {			
+			glossary(name: "Inst", description: "")
+			widget(exposed_filter: false, display_result:false)			
+		}
+
+		field NoCta: Text {			
+			glossary(name: "No. Cta", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Suc: Text {			
+			glossary(name: "Suc.", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Clabe: Text {			
+			glossary(name: "CLABE", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Calle: Text {			
+			glossary(name: "Calle", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field NoExt: Text {			
+			glossary(name: "No. Exterior", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field NoInterior: Text {			
+			glossary(name: "No. Interior", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference MexExtr: MexicoExtrajero[1..1] {			
+			glossary(name: "CLABE", description: "")
+			widget(exposed_filter: true, display_result:true, type: Option)			
+		}	
+		
+		field Cp: Text {			
+			glossary(name: "C.P.", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Estado: Text {			
+			glossary(name: "Estado", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field DelMpo: Text {			
+			glossary(name: "Del/Mpo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Ciudad: Text {			
+			glossary(name: "Ciudad", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Colonia: Text {			
+			glossary(name: "Colonia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference Correspondencia: NoSi[1..1] {			
+			glossary(name: "¿Quieres que la correspondencia llegue al domicilio anterior?", description: "")
+			widget(exposed_filter: true, display_result:true, type: Option)			
+		}	
+		
+		field Rfc: Text {			
+			glossary(name: "R.F.C.(Con Homoclave)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Curp: Text {			
+			glossary(name: "CURP", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field FecNac: Date {			
+			glossary(name: "Fecha Nac.", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference Escolaridad: Dummy[1..1] {			
+			glossary(name: "Escolaridad", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference EdoCivil:  Dummy[1..1] {				
+			glossary(name: "Edo. Civil", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference Sexo:  Dummy[1..1] {				
+			glossary(name: "Sexo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference TipoVivienda: Dummy[1..1] {						
+			glossary(name: "Tipo Vivienda", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference CalidadMigratoria:  Dummy[1..1] {						
+			glossary(name: "C. Migratoria", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference PaisResidencia:  Dummy[1..1] {						
+			glossary(name: "P. Residencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference Nacionalidad:  Dummy[1..1] {						
+			glossary(name: "Nacionalidad", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference PaisNac:  Dummy[1..1] {						
+			glossary(name: "País Nac.", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference EdoNac:  Dummy[1..1] {						
+			glossary(name: "Edo. Nac.", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference EmpleadoGroFinBanamex:  NoSi[1..1] {						
+			glossary(name: "¿El cliente es empleado del Grupo Financiero Banamex?", description: "")
+			widget(exposed_filter: true, display_result:true, type: Option)			
+		}	
+
+		def toString {
+			return Nombre
+		}
+	}	
+	
+	entity Beneficiario {
+		scaffold(add:false, edit:false, delete:false, search:None, view:false)
+		glossary(name: "Beneficiarios", description: "")
+		
+		field Nombre: Text {			
+			glossary(name: "Nombre", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field ApPaterno: Text {			
+			glossary(name: "Apellido Paterno", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field ApMaterno: Text {			
+			glossary(name: "Apellido Materno", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Porcentaje: Integer {			
+			glossary(name: "Porcentaje %", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		def toString {
+			return Nombre
+		}
+	}	
+	
+	entity Limitante {
+		scaffold(add:false, edit:false, delete:false, search:None, view:false)
+		glossary(name: "Limitante", description: "")
+		
+		field GrupoInstrumento: Text {			
+			glossary(name: "Grupo Instrumento", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field TipoValor: Text {			
+			glossary(name: "Tipo Valor", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Emisoras: Text {			
+			glossary(name: "Emisoras", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field TipoValorEmisora: Text {			
+			glossary(name: "Tipo Valor Emisora", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		def toString {
+			return GrupoInstrumento
+		}
+	}	
+	
+	
+	entity Emisor {
+		scaffold(add:false, edit:false, delete:false, search:Complex, view:false)
+		glossary(name: "Emisor", description: "")
+		
+		field Emisor: Text {			
+			glossary(name: "Emisor", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Relacion: Relacion[1..1] {			
+			glossary(name: "Relación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		def toString {
+			return Emisor
+		}
+	}	
+	
+		
+	entity FirmaAutorizada { 
+		scaffold(add:false, edit:false, delete:true, search:None, view:false)
+		glossary(name: "Firma Autorizada", description: "")
+		
+		reference Tipo: Dummy[1..*] {			
+			glossary(name: "Tipo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		field Nombre: Text {			
+			glossary(name: "Nombre", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field ApPaterno: Text {			
+			glossary(name: "Apellido Paterno", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field ApMaterno: Text {			
+			glossary(name: "Apellido Materno", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field NoEscr: Text {			
+			glossary(name: "No Escr", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field NoNot: Text {			
+			glossary(name: "No Not", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		def toString {
+			return Tipo
+		}
+	}	
+	
+	
+	entity InstruccionEfectivo {
+		scaffold(add:false, edit:false, delete:false, search:None, view:false)
+		glossary(name: "", description: "")
+		
+		reference Sucursal: Dummy[1..1] {			
+			glossary(name: "Sucursal", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		reference Operacion: Dummy[1..1] {			
+			glossary(name: "Operación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		reference Tipo: Dummy[1..1] {			
+			glossary(name: "Tipo Operación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		reference MedLiq: Dummy[1..1] {			
+			glossary(name: "Med. Liquidación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		field Contrato: Text {			
+			glossary(name: "Contrato", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field SubtipoPortafolio: Text {			
+			glossary(name: "Subtipo de Portafolio", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Digito: Text {			
+			glossary(name: "Dígito", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Titular: Text {			
+			glossary(name: "Titular", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Saldo: Currency {			
+			glossary(name: "Saldo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field ContratoEgreso: Text {			
+			glossary(name: "Contrato", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field DigitoEgreso: Text {			
+			glossary(name: "Dígito", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field SaldoInicialEgreso: Currency {			
+			glossary(name: "Saldo Inicial", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field SaldoCalculadoEgreso: Currency {			
+			glossary(name: "Saldo Calculado", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference BenefEgreso: Beneficiario[1..*] {			
+			glossary(name: "Benef.", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}				
+		
+		field ContratoIngreso: Text {			
+			glossary(name: "Contrato", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field DigitoIngreso: Text {			
+			glossary(name: "Dígito", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field SaldoInicialIngreso: Currency {			
+			glossary(name: "Saldo Inicial", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field SaldoCalculadoIngreso: Currency {			
+			glossary(name: "Saldo Calculado", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference BenefIngreso: Beneficiario[1..*] {			
+			glossary(name: "Benef. --", description: "")
+			widget(exposed_filter: true, display_result:true)	
+			constraints(required:true)			
+		}	
+		
+		field ImporteIngreso: Currency {			
+			glossary(name: "Importe", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+				
+		def toString {
+			return Contrato
+		}
+	}	
+	
+	entity DistribucionInstrucciones {
+		scaffold(add:false, edit:false, delete:false, search:None, view:false)
+		glossary(name: "Distribución de Instrucciones", description: "")
+		
+		reference OpcDistrInstrucciones: OpcDistrInstrucciones[1..1] {			
+			glossary(name: "NOMBRE", description: "")
+			widget(exposed_filter: true, display_result:true, type:Option)			
+		}
+		
+		/*Boolean */
+		field Capturados: Boolean {			
+			glossary(name: "Capturados", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Contrato: Text {			
+			glossary(name: "Contrato", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field FolioMov: Text {			
+			glossary(name: "Folio Mov.", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Digito: Text {			
+			glossary(name: "Dígito", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field ImporteNeto: Text {			
+			glossary(name: "Importe Neto", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		/*Boolean */
+		field Depositos: Boolean {			
+			glossary(name: "Depósitos", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		/*Boolean */
+		field Retiros: Boolean {			
+			glossary(name: "Retiros", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		reference Sucursal: Dummy[1..1] {
+			glossary(name: "Sucursal", description: "")
+			widget(exposed_filter: true, display_result:true)
+		}
+		
+		def toString {
+			return Contrato
+		}
+	}	
+	
+	entity ReperfilamientoPersonaFisica {
+		scaffold(add:true, edit:true, delete:true, search:None, view:false)
+		glossary(name: "Reperfilamiento de Personas Físicas", description: "")
+		
+		reference Contrato: Contrato[1..1] {			
+			glossary(name: "", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Nombre: Text {			
+			glossary(name: "Nombre", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field PerfilActual: Text {			
+			glossary(name: "Perfil Actual", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PersonaPerfilar: Dummy[1..1] {			
+			glossary(name: "Seleccione a la persona a perfilar", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field PorcentajeLiquidez: Text {			
+			glossary(name: "% (Liquidez)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field MontoLiquidez: Date {			
+			glossary(name: "Monto $ (Liquidez)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field PorcentajeCortoPlazo: Text {			
+			glossary(name: "% (Corto Plazo)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field MontoCortoPlazo: Currency {			
+			glossary(name: "Monto $ (Corto Plazo)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field PorcentajeLargoPlazo: Text {			
+			glossary(name: "% (Largo Plazo)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field MontoLargoPlazo: Currency {			
+			glossary(name: "Monto $ (Largo Plazo)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field PorcentajePatrimonioLiquidoTotal: Text {			
+			glossary(name: "% (Patrimonio líquido total 100%)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field MontoPatrimonioLiquidoTotal: Currency {			
+			glossary(name: "Monto $ (Patrimonio líquido total 100%)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		reference IntervaloEdad: Dummy[1..1] {			
+			glossary(name: "1.1 Intervalo de Edad", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		reference NivelEstudios: Dummy[1..1] {			
+			glossary(name: "1.2 Nivel de Estudios", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Ocupacion: Dummy[1..1] {			
+			glossary(name: "1.3 Ocupación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ActividadProfesionalAnterior: Dummy[1..1] {			
+			glossary(name: "1.4 Actividad Profesional ¿Anterior?", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ActividadProfesionalActual: Dummy[1..1] {			
+			glossary(name: "Actividad Profesional ¿Actual?", description: "")
+			widget(exposed_filter: true, display_result:true)
+		}
+		
+		reference ActividadRelacionadaInversiones: NoSi[1..1] {
+			glossary(name: "Relacionada con Inversiones", description: "")
+			widget(exposed_filter: true, display_result:true, type: Option)			
+		}
+		
+		reference EstrategiaCliente: Dummy [1..1] {			
+			glossary(name: "1.5 Estrategia de inversión del Cliente generalmente utilizada", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ClienteAsesoria: Dummy[1..1] {			
+			glossary(name: "1.6 El Cliente ha usado asesoría para la toma de decisiones de inversión", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExperienciaDeudaGub: ConocimientoExperiencia[1..1] {			
+			glossary(name: "2.1 Instrumentos de Deuda Gubernamental", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaDeudaGub: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoDeudaGub: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenDeudaGub: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpDeudaCorp: ConocimientoExperiencia[1..1] {			
+			glossary(name: "2.2 Instrumentos de Deuda Corporativa", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaDeudaCorp: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoDeudaCorp: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenDeudaCorp: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpSociedadesInv: Dummy[1..1] {			
+			glossary(name: "2.3 Sociedades de Inversión", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaSociedadesInv: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoSociedadesInv: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenSociedadesInv: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpValoresEst: Dummy[1..1] {			
+			glossary(name: "2.4 Valores Estructurados", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaValoresEst: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoValoresEst: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenValoresEst: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpCertificadosBur: Dummy[1..1] {			
+			glossary(name: "2.5 Certificados Bursátiles Fiduciarios (Cerubes, Cedevis) y Fideicomisos Privados", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaCertificadosBur: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoCertificadosBur: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenCertificadosBur: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference TieneLimitante: NoSi[1..1] {			
+			glossary(name: "1. El Cliente tiene alguna limitante y/o restricción para invertir", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PorcentajeTotalPatrimonio: SituacionFinancieraActual[1..1] {			
+			glossary(name: "6.1 Porcentaje total del Patrimonio que el Cliente designa a invertir en productos de inversión (diferentes de bienes raíces, etc.)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PorcentajeIngresoAnual: SituacionFinancieraActual[1..1] {			
+			glossary(name: "6.2 Porcentaje del ingreso anual que el Cliente destina a invertir en instrumentos de inversión", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PorcentajeInversiones: SituacionFinancieraActual[1..1] {			
+			glossary(name: "6.3 Porcentaje de las inversiones del Cliente que mantendrá en esta institución", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference OrigenIngresos: SituacionFinancieraActual[1..*] {			
+			glossary(name: "6.4 Seleccionar el origen de los ingresos del Cliente destinados a invertir", description: "")
+			widget(exposed_filter: true, display_result:true, type:Check)			
+		}
+		
+		field Perfil: File {			
+			glossary(name: "Perfil", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+
+		def toString {
+			return Nombre
+		}
+	}	
+	
+	entity NegativaPerfilamiento {
+		scaffold(add:false, edit:false, delete:false, search:None, view:false)
+		glossary(name: "Negativa de Perfilamiento", description: "")
+		
+		reference Contrato: Contrato[1..1] {			
+			glossary(name: "", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field Nombre: Text {			
+			glossary(name: "Nombre", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field PerfilActual: Text {			
+			glossary(name: "Perfil Actual", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PersonaPerfilar: Dummy[1..1] {			
+			glossary(name: "Seleccione la persona que desea perfilar", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field PorcentajeLiquidez: Text {			
+			glossary(name: "% (Liquidez)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field MontoLiquidez: Date {			
+			glossary(name: "Monto $ (Liquidez)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field PorcentajeCortoPlazo: Text {			
+			glossary(name: "% (Corto Plazo)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field MontoCortoPlazo: Currency {			
+			glossary(name: "Monto $ (Corto Plazo)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field PorcentajeLargoPlazo: Text {			
+			glossary(name: "% (Largo Plazo)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field MontoLargoPlazo: Currency {			
+			glossary(name: "Monto $ (Largo Plazo)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field PorcentajePatrimonioLiquidoTotal: Text {			
+			glossary(name: "% (Patrimonio líquido total 100%)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		field MontoPatrimonioLiquidoTotal: Currency {			
+			glossary(name: "Monto $ (Patrimonio líquido total 100%)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		reference IntervaloEdad: Dummy[1..1] {			
+			glossary(name: "1.1 Intervalo de Edad", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		reference NivelEstudios: Dummy[1..1] {			
+			glossary(name: "1.2 Nivel de Estudios", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference Ocupacion: Dummy[1..1] {			
+			glossary(name: "1.3 Ocupación", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ActividadProfesionalAnterior: Dummy[1..1] {			
+			glossary(name: "1.4 Actividad Profesional ¿Anterior?", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ActividadProfesionalActual: Dummy[1..1] {			
+			glossary(name: "Actividad Profesional ¿Actual?", description: "")
+			widget(exposed_filter: true, display_result:true)
+		}
+		
+		reference ActividadRelacionadaInversiones: NoSi[1..1] {
+			glossary(name: "Relacionada con Inversiones", description: "")
+			widget(exposed_filter: true, display_result:true, type: Option)			
+		}
+		
+		reference EstrategiaCliente: Dummy [1..1] {			
+			glossary(name: "1.5 Estrategia de inversión del Cliente generalmente utilizada", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ClienteAsesoria: Dummy[1..1] {			
+			glossary(name: "1.6 El Cliente ha usado asesoría para la toma de decisiones de inversión", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExperienciaDeudaGub: ConocimientoExperiencia[1..1] {			
+			glossary(name: "2.1 Instrumentos de Deuda Gubernamental", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaDeudaGub: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoDeudaGub: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenDeudaGub: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpDeudaCorp: ConocimientoExperiencia[1..1] {			
+			glossary(name: "2.2 Instrumentos de Deuda Corporativa", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaDeudaCorp: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoDeudaCorp: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenDeudaCorp: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpSociedadesInv: Dummy[1..1] {			
+			glossary(name: "2.3 Sociedades de Inversión", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaSociedadesInv: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoSociedadesInv: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenSociedadesInv: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpValoresEst: Dummy[1..1] {			
+			glossary(name: "2.4 Valores Estructurados", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaValoresEst: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoValoresEst: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenValoresEst: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}		
+		
+		reference ExpCertificadosBur: Dummy[1..1] {			
+			glossary(name: "2.5 Certificados Bursátiles Fiduciarios (Cerubes, Cedevis) y Fideicomisos Privados", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaCertificadosBur: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoCertificadosBur: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenCertificadosBur: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpTitulosOpc: Dummy[1..1] {			
+			glossary(name: "2.6 Títulos Opcionales (Warrant)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaTitulosOpc: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoTitulosOpc: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenTitulosOpc: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpAcciones: Dummy[1..1] {			
+			glossary(name: "2.7 Acciones", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaAcciones: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoAcciones: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenAcciones: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpValoresExt: Dummy[1..1] {			
+			glossary(name: "2.8 Valores Extranjeros", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaValoresExt: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoValoresExt: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenValoresExt: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpTrackers: Dummy[1..1] {			
+			glossary(name: "2.9 Trackers TRACs o ETFs", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaTrackers: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoTrackers: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenTrackers: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ExpCertificadosCap: Dummy[1..1] {			
+			glossary(name: "2.5 Certificados de Capital de Desarrollo (CKDs)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference FrecuenciaCertificadosCap: Dummy[1..1] {			
+			glossary(name: "Frecuencia", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PlazoCertificadosCap: Dummy[1..1] {			
+			glossary(name: "Plazo", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference VolumenCertificadosCap: Dummy[1..1] {			
+			glossary(name: "Volumen", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PropositoInversion: Dummy[1..1] {			
+			glossary(name: "Seleccionar el Propósito de Inversión del Cliente (Estrategia)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference ToleranciaRiesgo: Dummy[1..1] {			
+			glossary(name: "Seleccionar la Torelancia al Riesgo del Cliente", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference HorizonteInversion: Dummy[1..1] {			
+			glossary(name: "Seleccionar el Horizonte de Inversión del Cliente", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference TieneLimitante: NoSi[1..1] {			
+			glossary(name: "1. El Cliente tiene alguna limitante y/o restricción para invertir", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PorcentajeTotalPatrimonio: SituacionFinancieraActual[1..1] {			
+			glossary(name: "6.1 Porcentaje total del Patrimonio que el Cliente designa a invertir en productos de inversión (diferentes de bienes raíces, etc.)", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PorcentajeIngresoAnual: SituacionFinancieraActual[1..1] {			
+			glossary(name: "6.2 Porcentaje del ingreso anual que el Cliente destina a invertir en instrumentos de inversión", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference PorcentajeInversiones: SituacionFinancieraActual[1..1] {			
+			glossary(name: "6.3 Porcentaje de las inversiones del Cliente que mantendrá en esta institución", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}
+		
+		reference OrigenIngresos: SituacionFinancieraActual[1..*] {			
+			glossary(name: "6.4 Seleccionar el origen de los ingresos del Cliente destinados a invertir", description: "")
+			widget(exposed_filter: true, display_result:true, type:Check)			
+		}
+		
+		field Perfil: File {			
+			glossary(name: "Perfil", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		
+		field Inconsistencias: Text {			
+			glossary(name: "Inconsistencias", description: "")
+			widget(exposed_filter: true, display_result:true)			
+		}	
+		def toString {
+			return Nombre
+		}
+	}
+	
+	
+
+	
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="templates/layout :: head(~{this :: title}, ~{this :: .custom-link}, ~{this :: .custom-script}, ~{this :: .custom-body})">
+<title></title>
+
+<!--/* Links de su pagina */-->
+<!-- <link class="custom-link" rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/> -->
+<link class="custom-link" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<!-- <link class="custom-link" rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css"> -->
+<link class="custom-link" rel="stylesheet" media="screen" th:href="@{/resources/css/gi/main-gi.css}" />
+
+<!--/* Scripts de su pagina */-->
+<!-- <script class="custom-script" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script> -->
+<!-- <script class="custom-script" -->
+<!-- 	src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script> -->
+<script class="custom-script" th:src="@{/resources/js/dominio/instruccionEfectivo.js}"></script>
+
+
+</head>
+
+<body>
+	<header th:insert="templates/header :: header"> </header>
+	<br>
+	<div class="container custom-body">
+		
+		<div id="alertSuccess"></div>
+		<div id="alertWarning"></div>
+		<div id="alertDangerError"></div>
+
+		<div class="formTop">
+			<span class="titleStaticForm"
+				th:text="#{label.consulta.instruccionefectivo}"></span>
+			<hr>	
+			<form id="formBuscar" name="formBuscar">
+				<!-- Codigo adicional -->
+				<!--
+				<input type="hidden" id="idSubproceso" name="idSubproceso">
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<label for="gi-sel-modulo" class="col-form-label"
+							th:text="#{cg.proceso.modulo}"></label> 
+						<select name="modulo"
+							onchange="activarProceso();" id="gi-sel-modulo"
+							class="form-control" required>
+							<option value="0" th:text="#{cg.seleccionar}"
+								selected></option>
+							<option th:each="modulo : ${modulo}"
+								th:value="${modulo.idCtrlProceso}" th:utext="${modulo.descripcion}" />
+						</select>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="gi-sel-proceso" class="col-form-label"
+							th:text="#{cg.subproceso.proceso}"></label> <select
+							name="Proceso" disabled="disabled"
+							onchange="activarSubProceso();" id="gi-sel-proceso"
+							class="form-control" required data-bv-notempty-message="Campo requerido">
+							<option value="" th:text="#{cg.seleccionar}"
+								selected></option>
+						</select>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="gi-sel-subproceso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.subproceso}"></label> 
+						<select onchange="setIdSubProceso();" 
+							name="subproceso" disabled="disabled" id="gi-sel-subproceso"
+							class="form-control" required data-bv-notempty-message="Campo requerido">
+							<option value="" th:text="#{cg.seleccionar}"
+								selected></option>
+						</select>
+					</div>
+				</div>
+				-->
+				<!-- Codigo Adicional -->	
+
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="sucursal" class="col-form-label"
+							th:text="#{label.criterio.busqueda.sucursal}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="sucursal : ${listaDummy}"
+								th:value="${sucursal.cveDummy}"
+								th:text="${sucursal.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="operacion" class="col-form-label"
+							th:text="#{label.criterio.busqueda.operacion}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="operacion : ${listaDummy}"
+								th:value="${operacion.cveDummy}"
+								th:text="${operacion.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="tipo" class="col-form-label"
+							th:text="#{label.criterio.busqueda.tipo}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="tipo : ${listaDummy}"
+								th:value="${tipo.cveDummy}"
+								th:text="${tipo.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="medLiq" class="col-form-label"
+							th:text="#{label.criterio.busqueda.medliq}"></label> <select
+							id="cveDummyFlt" name="cveDummy"
+							class="form-control">
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="medLiq : ${listaDummy}"
+								th:value="${medLiq.cveDummy}"
+								th:text="${medLiq.descripcion}"></option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4">
+						<label for="contrato" class="col-form-label"
+							th:text="#{label.criterio.busqueda.contrato}"> </label> 
+							<input type="text" class="form-control" id="contratoFlt" maxlength="100"
+							name="contrato" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="subtipoportafolio" class="col-form-label"
+							th:text="#{label.criterio.busqueda.subtipoportafolio}"> </label> 
+							<input type="text" class="form-control" id="subtipoPortafolioFlt" maxlength="100"
+							name="subtipoportafolio" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="digito" class="col-form-label"
+							th:text="#{label.criterio.busqueda.digito}"> </label> 
+							<input type="text" class="form-control" id="digitoFlt" maxlength="100"
+							name="digito" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="titular" class="col-form-label"
+							th:text="#{label.criterio.busqueda.titular}"> </label> 
+							<input type="text" class="form-control" id="titularFlt" maxlength="100"
+							name="titular" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="saldo" class="col-form-label"
+							th:text="#{label.criterio.busqueda.saldo}"> </label> 
+							<input type="number" class="form-control" id="saldoFlt" maxlength="9"
+							name="saldo" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="contratoegreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.contratoegreso}"> </label> 
+							<input type="text" class="form-control" id="contratoEgresoFlt" maxlength="100"
+							name="contratoegreso" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="digitoegreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.digitoegreso}"> </label> 
+							<input type="text" class="form-control" id="digitoEgresoFlt" maxlength="100"
+							name="digitoegreso" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="saldoinicialegreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.saldoinicialegreso}"> </label> 
+							<input type="number" class="form-control" id="saldoInicialEgresoFlt" maxlength="9"
+							name="saldoinicialegreso" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="saldocalculadoegreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.saldocalculadoegreso}"> </label> 
+							<input type="number" class="form-control" id="saldoCalculadoEgresoFlt" maxlength="9"
+							name="saldocalculadoegreso" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="contratoingreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.contratoingreso}"> </label> 
+							<input type="text" class="form-control" id="contratoIngresoFlt" maxlength="100"
+							name="contratoingreso" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="digitoingreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.digitoingreso}"> </label> 
+							<input type="text" class="form-control" id="digitoIngresoFlt" maxlength="100"
+							name="digitoingreso" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="saldoinicialingreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.saldoinicialingreso}"> </label> 
+							<input type="number" class="form-control" id="saldoInicialIngresoFlt" maxlength="9"
+							name="saldoinicialingreso" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="saldocalculadoingreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.saldocalculadoingreso}"> </label> 
+							<input type="number" class="form-control" id="saldoCalculadoIngresoFlt" maxlength="9"
+							name="saldocalculadoingreso" onkeypress="return onlyText(event); ">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="importeingreso" class="col-form-label"
+							th:text="#{label.criterio.busqueda.importeingreso}"> </label> 
+							<input type="number" class="form-control" id="importeIngresoFlt" maxlength="9"
+							name="importeingreso" onkeypress="return onlyText(event); ">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6"></div>
+					<div class="col-md-6">
+						<button type="submit" class="btn-style-citi float-right mx-0"
+							id="dominio-btn-buscar" th:text="#{label.button.buscar}"></button>
+						<button type="button" class="btn-style-citi float-right mx-2"
+							id="dominio-but-limpiar" th:text="#{label.button.limpiar}"></button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<span class="tituloTabla" th:text="#{tabla.titulo.busqueda}"></span>
+		<div class="table-responsive">
+			<table class="table table-bordered" id="datostabla">
+				<thead class="bg-info">
+				</thead>
+			</table>
+		</div>
+
+		<div class="row float-right mx-0 btnList">
+			<button type="button" class="btn-style-citi" name="eliminarButton" id="eliminarButton"
+			        th:text="#{label.button.eliminar}"></button>
+			<button type="button" class="btn-style-citi" name="actualizarButton" id="actualizarButton"
+			        th:text="#{label.button.actualizar}"></button>
+			<button type="button" class="btn-style-citi float-right mx-2"
+							id="agregar" th:text="#{label.button.agregar}"></button>
+		</div>
+			
+		<!-- 		Modal Crear salida -->
+		<div th:replace="dominio/modalCrearInstruccionEfectivo :: modalGuardar"></div>
+		
+		<div th:replace="dominio/modalUpdateInstruccionEfectivo :: modalFragUpdate"></div>
+			
+			
+		<!-- Modal eliminar -->
+		<div class="modal fade cg-mod-eliminar" id="modalEliminar" tabindex="-1"
+			role="dialog" data-backdrop="static" data-keyboard="false"
+			aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" th:utext="#{label.title.modal.eliminar.instruccionefectivo}"></h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="text-center">
+							<p id="dominio-mensaje-eliminar"></p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cancelar}"></button>
+						<button type="button" onclick="eliminarInstruccionEfectivo()" class="btn-style-citi" th:text="#{label.button.aceptar}"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<footer th:replace="templates/footer :: footer"> </footer>
+</body>
+</html>	

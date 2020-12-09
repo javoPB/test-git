@@ -1,0 +1,17 @@
+@startuml
+	left to right direction
+	skinparam packageStyle rectangle
+	Operador <<persona>> as Actor
+	rectangle {
+		(Agregar Contrato) as CreateUC <<usuario>>
+		(Editar Contrato) as EditUC <<usuario>>
+		(Buscar Contrato) as SearchUC <<usuario>>
+		(Eliminar Contrato) as DeleteUC <<usuario>>
+		Actor -> CreateUC
+		Actor -> EditUC
+		Actor -> SearchUC
+		Actor --> DeleteUC
+		EditUC .> SearchUC : include
+		DeleteUC .> SearchUC : include
+	}
+@enduml

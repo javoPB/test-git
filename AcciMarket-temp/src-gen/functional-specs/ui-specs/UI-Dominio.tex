@@ -1,0 +1,2456 @@
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Contrato
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Contrato} \label{sec:cf-ui-admin-contrato}
+
+%% -----
+%% User Interface: Search
+%% -----
+\subsection{IUXX-01. Buscar Contrato} \label{sec:ui-page-search-contrato}
+
+\textbf{Descripci\'on}: P\'agina para Buscar Contrato.\\
+
+\begin{figure}[H]
+	\label{tab:ui-search-contrato-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/Contrato-Admin.png}
+	\caption{P\'agina Buscar Contrato}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Criterios de B\'usqueda}
+	\label{tab:ui-search-criteria-contrato-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{7cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Contrato &
+		TextBox &
+		Text &
+		Contrato.NoContrato \\
+		D\'igito &
+		TextBox &
+		Text &
+		Contrato.Digito \\
+		DV &
+		TextBox &
+		Text &
+		Contrato.Dv \\
+		Estatus &
+		TextBox &
+		Text &
+		Contrato.Estatus \\
+		Perfil &
+		TextBox &
+		Text &
+		Contrato.Perfil \\
+		Portafolio &
+		TextBox &
+		Text &
+		Contrato.Portafolio \\
+		CLABE &
+		TextBox &
+		Text &
+		Contrato.CLABE \\
+		STipo Port &
+		TextBox &
+		Text &
+		Contrato.STipoPort \\
+		Libro &
+		TextBox &
+		Text &
+		Contrato.Libro \\
+		Titular del Contrato &
+		Modal &
+		Entity &
+		Contrato.Titular \\
+		Asesor de Inversi\'on &
+		TextBox &
+		Text &
+		Contrato.AsesorInversion \\
+		Tipo de Manifiesto &
+		TextBox &
+		Text &
+		Contrato.TipoManifiesto \\
+		Servicio de Inversi\'on &
+		TextBox &
+		Text &
+		Contrato.ServicioInversion \\
+		Carta Ejecuci\'on &
+		TextBox &
+		Text &
+		Contrato.CartaEjecucion1 \\
+		Fecha &
+		TextBox &
+		Text &
+		Contrato.FechaCartaEjecucion1 \\
+		Carta Ejecuci\'on &
+		TextBox &
+		Text &
+		Contrato.CartaEjecucion2 \\
+		Fecha &
+		TextBox &
+		Text &
+		Contrato.FechaCartaEjecucion2 \\
+		Institucional/Intitucional Pract. Vta. &
+		Modal &
+		Entity &
+		Contrato.Institucional \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		Contrato.JustificacionInstitucional \\
+		Fecha &
+		TextBox &
+		Text &
+		Contrato.FechaInstitucional \\
+		Sofisticado/No sofisticaso &
+		Modal &
+		Entity &
+		Contrato.Sofisticado \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		Contrato.JustificacionSofisticado \\
+		Fecha &
+		TextBox &
+		Text &
+		Contrato.FechaSofisticado \\
+		Elegible/No Elegible &
+		Modal &
+		Entity &
+		Contrato.Elegible \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		Contrato.JustificacionElegible \\
+		Fecha &
+		TextBox &
+		Text &
+		Contrato.FechaElegible \\
+		Calificado/No Calificado &
+		Modal &
+		Entity &
+		Contrato.Calificado \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		Contrato.JustificacionCalificado \\
+		Fecha &
+		TextBox &
+		Text &
+		Contrato.FechaCalificado \\
+		Discrecional/No Discrecional &
+		Modal &
+		Entity &
+		Contrato.Discrecional \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		Contrato.JustificacionDiscrecional \\
+		Fecha &
+		TextBox &
+		Text &
+		Contrato.FechaDiscrecional \\
+		Instrumetos de Deuda Gubernamental &
+		Modal &
+		Entity &
+		Contrato.InstrDeudaGub \\
+		Instrumentos de Deuda Corporativa &
+		Modal &
+		Entity &
+		Contrato.InstrDeudaCorp \\
+		Sociedades de Inversi\'on &
+		Modal &
+		Entity &
+		Contrato.SociedadesInver \\
+		Valores Estructurados &
+		Modal &
+		Entity &
+		Contrato.ValoresEstruc \\
+		Certificados Burs\'atiles Fiduciarios (Cebures,Cedevis) y Fideicomisos Privados &
+		Modal &
+		Entity &
+		Contrato.CertBurFideicomisos \\
+		Titulos Opcionales (Warrants) &
+		Modal &
+		Entity &
+		Contrato.TitulosOpcionales \\
+		Acciones &
+		Modal &
+		Entity &
+		Contrato.Acciones \\
+		Valores Extranjeros &
+		Modal &
+		Entity &
+		Contrato.ValoresExtr \\
+		Trackers TRACs o ETFs &
+		Modal &
+		Entity &
+		Contrato.Trackers \\
+		Limitantes a Intervenir &
+		Modal &
+		Entity &
+		Contrato.Limitantes \\
+		Relaci\'on Emisor &
+		Modal &
+		Entity &
+		Contrato.Emisor \\
+		Firmas Autorizadas &
+		Modal &
+		Entity &
+		Contrato.FirmasAutorizadas \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+\begin{table}[H]
+	\caption{Lista: Resultados de B\'usqueda}
+	\label{tab:ui-search-results-contrato-form}
+	%\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Contrato &
+		Contrato.NoContrato \\
+		D\'igito &
+		Contrato.Digito \\
+		DV &
+		Contrato.Dv \\
+		Estatus &
+		Contrato.Estatus \\
+		Perfil &
+		Contrato.Perfil \\
+		Portafolio &
+		Contrato.Portafolio \\
+		CLABE &
+		Contrato.CLABE \\
+		STipo Port &
+		Contrato.STipoPort \\
+		Libro &
+		Contrato.Libro \\
+		Titular del Contrato &
+		Contrato.Titular \\
+		Asesor de Inversi\'on &
+		Contrato.AsesorInversion \\
+		Tipo de Manifiesto &
+		Contrato.TipoManifiesto \\
+		Servicio de Inversi\'on &
+		Contrato.ServicioInversion \\
+		Carta Ejecuci\'on &
+		Contrato.CartaEjecucion1 \\
+		Fecha &
+		Contrato.FechaCartaEjecucion1 \\
+		Carta Ejecuci\'on &
+		Contrato.CartaEjecucion2 \\
+		Fecha &
+		Contrato.FechaCartaEjecucion2 \\
+		Institucional/Intitucional Pract. Vta. &
+		Contrato.Institucional \\
+		Justificaci\'on &
+		Contrato.JustificacionInstitucional \\
+		Fecha &
+		Contrato.FechaInstitucional \\
+		Sofisticado/No sofisticaso &
+		Contrato.Sofisticado \\
+		Justificaci\'on &
+		Contrato.JustificacionSofisticado \\
+		Fecha &
+		Contrato.FechaSofisticado \\
+		Elegible/No Elegible &
+		Contrato.Elegible \\
+		Justificaci\'on &
+		Contrato.JustificacionElegible \\
+		Fecha &
+		Contrato.FechaElegible \\
+		Calificado/No Calificado &
+		Contrato.Calificado \\
+		Justificaci\'on &
+		Contrato.JustificacionCalificado \\
+		Fecha &
+		Contrato.FechaCalificado \\
+		Discrecional/No Discrecional &
+		Contrato.Discrecional \\
+		Justificaci\'on &
+		Contrato.JustificacionDiscrecional \\
+		Fecha &
+		Contrato.FechaDiscrecional \\
+		Instrumetos de Deuda Gubernamental &
+		Contrato.InstrDeudaGub \\
+		Instrumentos de Deuda Corporativa &
+		Contrato.InstrDeudaCorp \\
+		Sociedades de Inversi\'on &
+		Contrato.SociedadesInver \\
+		Valores Estructurados &
+		Contrato.ValoresEstruc \\
+		Certificados Burs\'atiles Fiduciarios (Cebures,Cedevis) y Fideicomisos Privados &
+		Contrato.CertBurFideicomisos \\
+		Titulos Opcionales (Warrants) &
+		Contrato.TitulosOpcionales \\
+		Acciones &
+		Contrato.Acciones \\
+		Valores Extranjeros &
+		Contrato.ValoresExtr \\
+		Trackers TRACs o ETFs &
+		Contrato.Trackers \\
+		Limitantes a Intervenir &
+		Contrato.Limitantes \\
+		Relaci\'on Emisor &
+		Contrato.Emisor \\
+		Firmas Autorizadas &
+		Contrato.FirmasAutorizadas \\
+		\hline
+	\end{tabular}
+	%}
+\end{table}
+
+\clearpage
+%% -----
+%% User Interface: Create
+%% -----
+\subsection{IUXX-02. Agregar Contrato} \label{sec:ui-page-create-contrato}
+
+\textbf{Descripci\'on}: P\'agina para Agregar Contrato.\\
+
+\begin{figure}[H]
+	\label{tab:ui-create-contrato-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/Contrato-Add.png}
+	\caption{P\'agina Agregar Contrato}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Agregar Contrato}
+	\label{tab:ui-create-contrato-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Contrato &
+		TextBox &
+		Text &
+		 &
+		Contrato.NoContrato \\
+		D\'igito &
+		TextBox &
+		Text &
+		 &
+		Contrato.Digito \\
+		DV &
+		TextBox &
+		Text &
+		 &
+		Contrato.Dv \\
+		Estatus &
+		TextBox &
+		Text &
+		 &
+		Contrato.Estatus \\
+		Perfil &
+		TextBox &
+		Text &
+		 &
+		Contrato.Perfil \\
+		Portafolio &
+		TextBox &
+		Text &
+		 &
+		Contrato.Portafolio \\
+		CLABE &
+		TextBox &
+		Text &
+		 &
+		Contrato.CLABE \\
+		STipo Port &
+		TextBox &
+		Text &
+		 &
+		Contrato.STipoPort \\
+		Libro &
+		TextBox &
+		Text &
+		 &
+		Contrato.Libro \\
+		Titular del Contrato &
+		Modal &
+		Entity &
+		 &
+		Contrato.Titular \\
+		Beneficiarios &
+		Modal &
+		Entity &
+		 &
+		Contrato.Beneficiarios \\
+		Asesor de Inversi\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.AsesorInversion \\
+		Tipo de Manifiesto &
+		TextBox &
+		Text &
+		 &
+		Contrato.TipoManifiesto \\
+		Servicio de Inversi\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.ServicioInversion \\
+		Carta Ejecuci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.CartaEjecucion1 \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaCartaEjecucion1 \\
+		Carta Ejecuci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.CartaEjecucion2 \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaCartaEjecucion2 \\
+		Institucional/Intitucional Pract. Vta. &
+		Modal &
+		Entity &
+		 &
+		Contrato.Institucional \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionInstitucional \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaInstitucional \\
+		Sofisticado/No sofisticaso &
+		Modal &
+		Entity &
+		 &
+		Contrato.Sofisticado \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionSofisticado \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaSofisticado \\
+		Elegible/No Elegible &
+		Modal &
+		Entity &
+		 &
+		Contrato.Elegible \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionElegible \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaElegible \\
+		Calificado/No Calificado &
+		Modal &
+		Entity &
+		 &
+		Contrato.Calificado \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionCalificado \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaCalificado \\
+		Discrecional/No Discrecional &
+		Modal &
+		Entity &
+		 &
+		Contrato.Discrecional \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionDiscrecional \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaDiscrecional \\
+		Instrumetos de Deuda Gubernamental &
+		Modal &
+		Entity &
+		 &
+		Contrato.InstrDeudaGub \\
+		Instrumentos de Deuda Corporativa &
+		Modal &
+		Entity &
+		 &
+		Contrato.InstrDeudaCorp \\
+		Sociedades de Inversi\'on &
+		Modal &
+		Entity &
+		 &
+		Contrato.SociedadesInver \\
+		Valores Estructurados &
+		Modal &
+		Entity &
+		 &
+		Contrato.ValoresEstruc \\
+		Certificados Burs\'atiles Fiduciarios (Cebures,Cedevis) y Fideicomisos Privados &
+		Modal &
+		Entity &
+		 &
+		Contrato.CertBurFideicomisos \\
+		Titulos Opcionales (Warrants) &
+		Modal &
+		Entity &
+		 &
+		Contrato.TitulosOpcionales \\
+		Acciones &
+		Modal &
+		Entity &
+		 &
+		Contrato.Acciones \\
+		Valores Extranjeros &
+		Modal &
+		Entity &
+		 &
+		Contrato.ValoresExtr \\
+		Trackers TRACs o ETFs &
+		Modal &
+		Entity &
+		 &
+		Contrato.Trackers \\
+		Limitantes a Intervenir &
+		Modal &
+		Entity &
+		 &
+		Contrato.Limitantes \\
+		Relaci\'on Emisor &
+		Modal &
+		Entity &
+		 &
+		Contrato.Emisor \\
+		Firmas Autorizadas &
+		Modal &
+		Entity &
+		 &
+		Contrato.FirmasAutorizadas \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+\clearpage
+%% -----
+%% User Interface: Update
+%% -----
+\subsection{IUXX-03. Editar Contrato} \label{sec:ui-page-update-contrato}
+
+\textbf{Descripci\'on}: P\'agina para Editar Contrato.\\
+
+\begin{figure}[H]
+	\label{tab:ui-edit-contrato-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/Contrato-Edit.png}
+	\caption{P\'agina Editar Contrato}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Editar Contrato}
+	\label{tab:ui-update-contrato-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Contrato &
+		TextBox &
+		Text &
+		 &
+		Contrato.NoContrato \\
+		D\'igito &
+		TextBox &
+		Text &
+		 &
+		Contrato.Digito \\
+		DV &
+		TextBox &
+		Text &
+		 &
+		Contrato.Dv \\
+		Estatus &
+		TextBox &
+		Text &
+		 &
+		Contrato.Estatus \\
+		Perfil &
+		TextBox &
+		Text &
+		 &
+		Contrato.Perfil \\
+		Portafolio &
+		TextBox &
+		Text &
+		 &
+		Contrato.Portafolio \\
+		CLABE &
+		TextBox &
+		Text &
+		 &
+		Contrato.CLABE \\
+		STipo Port &
+		TextBox &
+		Text &
+		 &
+		Contrato.STipoPort \\
+		Libro &
+		TextBox &
+		Text &
+		 &
+		Contrato.Libro \\
+		Titular del Contrato &
+		Modal &
+		Entity &
+		 &
+		Contrato.Titular \\
+		Beneficiarios &
+		Modal &
+		Entity &
+		 &
+		Contrato.Beneficiarios \\
+		Asesor de Inversi\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.AsesorInversion \\
+		Tipo de Manifiesto &
+		TextBox &
+		Text &
+		 &
+		Contrato.TipoManifiesto \\
+		Servicio de Inversi\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.ServicioInversion \\
+		Carta Ejecuci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.CartaEjecucion1 \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaCartaEjecucion1 \\
+		Carta Ejecuci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.CartaEjecucion2 \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaCartaEjecucion2 \\
+		Institucional/Intitucional Pract. Vta. &
+		Modal &
+		Entity &
+		 &
+		Contrato.Institucional \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionInstitucional \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaInstitucional \\
+		Sofisticado/No sofisticaso &
+		Modal &
+		Entity &
+		 &
+		Contrato.Sofisticado \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionSofisticado \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaSofisticado \\
+		Elegible/No Elegible &
+		Modal &
+		Entity &
+		 &
+		Contrato.Elegible \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionElegible \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaElegible \\
+		Calificado/No Calificado &
+		Modal &
+		Entity &
+		 &
+		Contrato.Calificado \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionCalificado \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaCalificado \\
+		Discrecional/No Discrecional &
+		Modal &
+		Entity &
+		 &
+		Contrato.Discrecional \\
+		Justificaci\'on &
+		TextBox &
+		Text &
+		 &
+		Contrato.JustificacionDiscrecional \\
+		Fecha &
+		TextBox &
+		Text &
+		 &
+		Contrato.FechaDiscrecional \\
+		Instrumetos de Deuda Gubernamental &
+		Modal &
+		Entity &
+		 &
+		Contrato.InstrDeudaGub \\
+		Instrumentos de Deuda Corporativa &
+		Modal &
+		Entity &
+		 &
+		Contrato.InstrDeudaCorp \\
+		Sociedades de Inversi\'on &
+		Modal &
+		Entity &
+		 &
+		Contrato.SociedadesInver \\
+		Valores Estructurados &
+		Modal &
+		Entity &
+		 &
+		Contrato.ValoresEstruc \\
+		Certificados Burs\'atiles Fiduciarios (Cebures,Cedevis) y Fideicomisos Privados &
+		Modal &
+		Entity &
+		 &
+		Contrato.CertBurFideicomisos \\
+		Titulos Opcionales (Warrants) &
+		Modal &
+		Entity &
+		 &
+		Contrato.TitulosOpcionales \\
+		Acciones &
+		Modal &
+		Entity &
+		 &
+		Contrato.Acciones \\
+		Valores Extranjeros &
+		Modal &
+		Entity &
+		 &
+		Contrato.ValoresExtr \\
+		Trackers TRACs o ETFs &
+		Modal &
+		Entity &
+		 &
+		Contrato.Trackers \\
+		Limitantes a Intervenir &
+		Modal &
+		Entity &
+		 &
+		Contrato.Limitantes \\
+		Relaci\'on Emisor &
+		Modal &
+		Entity &
+		 &
+		Contrato.Emisor \\
+		Firmas Autorizadas &
+		Modal &
+		Entity &
+		 &
+		Contrato.FirmasAutorizadas \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+\clearpage
+%% -----
+%% User Interface: Delete
+%% -----
+\subsection{IUXX-04. Eliminar Contrato} \label{sec:ui-page-delete-contrato}
+
+\textbf{Descripci\'on}: P\'agina para Eliminar Contrato.\\
+
+\begin{figure}[H]
+	\label{tab:ui-delete-contrato-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/Contrato-Delete.png}
+	\caption{P\'agina Eliminar Contrato}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Eliminar Contrato}
+	\label{tab:ui-delete-contrato-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Contrato &
+		Label &
+		Text &
+		&
+		Contrato.NoContrato \\
+		D\'igito &
+		Label &
+		Text &
+		&
+		Contrato.Digito \\
+		DV &
+		Label &
+		Text &
+		&
+		Contrato.Dv \\
+		Estatus &
+		Label &
+		Text &
+		&
+		Contrato.Estatus \\
+		Perfil &
+		Label &
+		Text &
+		&
+		Contrato.Perfil \\
+		Portafolio &
+		Label &
+		Text &
+		&
+		Contrato.Portafolio \\
+		CLABE &
+		Label &
+		Text &
+		&
+		Contrato.CLABE \\
+		STipo Port &
+		Label &
+		Text &
+		&
+		Contrato.STipoPort \\
+		Libro &
+		Label &
+		Text &
+		&
+		Contrato.Libro \\
+		Titular del Contrato &
+		Label &
+		Entity &
+		&
+		Contrato.Titular \\
+		Beneficiarios &
+		Label &
+		Entity &
+		&
+		Contrato.Beneficiarios \\
+		Asesor de Inversi\'on &
+		Label &
+		Text &
+		&
+		Contrato.AsesorInversion \\
+		Tipo de Manifiesto &
+		Label &
+		Text &
+		&
+		Contrato.TipoManifiesto \\
+		Servicio de Inversi\'on &
+		Label &
+		Text &
+		&
+		Contrato.ServicioInversion \\
+		Carta Ejecuci\'on &
+		Label &
+		Text &
+		&
+		Contrato.CartaEjecucion1 \\
+		Fecha &
+		Label &
+		Text &
+		&
+		Contrato.FechaCartaEjecucion1 \\
+		Carta Ejecuci\'on &
+		Label &
+		Text &
+		&
+		Contrato.CartaEjecucion2 \\
+		Fecha &
+		Label &
+		Text &
+		&
+		Contrato.FechaCartaEjecucion2 \\
+		Institucional/Intitucional Pract. Vta. &
+		Label &
+		Entity &
+		&
+		Contrato.Institucional \\
+		Justificaci\'on &
+		Label &
+		Text &
+		&
+		Contrato.JustificacionInstitucional \\
+		Fecha &
+		Label &
+		Text &
+		&
+		Contrato.FechaInstitucional \\
+		Sofisticado/No sofisticaso &
+		Label &
+		Entity &
+		&
+		Contrato.Sofisticado \\
+		Justificaci\'on &
+		Label &
+		Text &
+		&
+		Contrato.JustificacionSofisticado \\
+		Fecha &
+		Label &
+		Text &
+		&
+		Contrato.FechaSofisticado \\
+		Elegible/No Elegible &
+		Label &
+		Entity &
+		&
+		Contrato.Elegible \\
+		Justificaci\'on &
+		Label &
+		Text &
+		&
+		Contrato.JustificacionElegible \\
+		Fecha &
+		Label &
+		Text &
+		&
+		Contrato.FechaElegible \\
+		Calificado/No Calificado &
+		Label &
+		Entity &
+		&
+		Contrato.Calificado \\
+		Justificaci\'on &
+		Label &
+		Text &
+		&
+		Contrato.JustificacionCalificado \\
+		Fecha &
+		Label &
+		Text &
+		&
+		Contrato.FechaCalificado \\
+		Discrecional/No Discrecional &
+		Label &
+		Entity &
+		&
+		Contrato.Discrecional \\
+		Justificaci\'on &
+		Label &
+		Text &
+		&
+		Contrato.JustificacionDiscrecional \\
+		Fecha &
+		Label &
+		Text &
+		&
+		Contrato.FechaDiscrecional \\
+		Instrumetos de Deuda Gubernamental &
+		Label &
+		Entity &
+		&
+		Contrato.InstrDeudaGub \\
+		Instrumentos de Deuda Corporativa &
+		Label &
+		Entity &
+		&
+		Contrato.InstrDeudaCorp \\
+		Sociedades de Inversi\'on &
+		Label &
+		Entity &
+		&
+		Contrato.SociedadesInver \\
+		Valores Estructurados &
+		Label &
+		Entity &
+		&
+		Contrato.ValoresEstruc \\
+		Certificados Burs\'atiles Fiduciarios (Cebures,Cedevis) y Fideicomisos Privados &
+		Label &
+		Entity &
+		&
+		Contrato.CertBurFideicomisos \\
+		Titulos Opcionales (Warrants) &
+		Label &
+		Entity &
+		&
+		Contrato.TitulosOpcionales \\
+		Acciones &
+		Label &
+		Entity &
+		&
+		Contrato.Acciones \\
+		Valores Extranjeros &
+		Label &
+		Entity &
+		&
+		Contrato.ValoresExtr \\
+		Trackers TRACs o ETFs &
+		Label &
+		Entity &
+		&
+		Contrato.Trackers \\
+		Limitantes a Intervenir &
+		Label &
+		Entity &
+		&
+		Contrato.Limitantes \\
+		Relaci\'on Emisor &
+		Label &
+		Entity &
+		&
+		Contrato.Emisor \\
+		Firmas Autorizadas &
+		Label &
+		Entity &
+		&
+		Contrato.FirmasAutorizadas \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Titular
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Titular} \label{sec:cf-ui-admin-titularcontrato}
+
+\begin{figure}[H]
+        \label{tab:ui-search-titularcontrato-page}
+        \includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/TitularContrato-Admin.png}
+        \caption{P\'agina Administrar Titular}
+\end{figure}
+\clearpage
+%% -----
+%% User Interface: Create
+%% -----
+\subsection{IUXX-02. Agregar Titular} \label{sec:ui-page-create-titularcontrato}
+
+\textbf{Descripci\'on}: P\'agina para Agregar Titular.\\
+
+\begin{figure}[H]
+	\label{tab:ui-create-titularcontrato-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/TitularContrato-Add.png}
+	\caption{P\'agina Agregar Titular}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Agregar Titular}
+	\label{tab:ui-create-titularcontrato-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Nombre &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Nombre \\
+		Actividad &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Actividad \\
+		No. Cliente Banamex &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.NoClienteBanamex \\
+		Inst &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Inst \\
+		No. Cta &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.NoCta \\
+		Suc. &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Suc \\
+		CLABE &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Clabe \\
+		Calle &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Calle \\
+		No. Exterior &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.NoExt \\
+		No. Interior &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.NoInterior \\
+		CLABE &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.MexExtr \\
+		C.P. &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Cp \\
+		Estado &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Estado \\
+		Del/Mpo &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.DelMpo \\
+		Ciudad &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Ciudad \\
+		Colonia &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Colonia \\
+		¿Quieres que la correspondencia llegue al domicilio anterior? &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Correspondencia \\
+		R.F.C.(Con Homoclave) &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Rfc \\
+		CURP &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Curp \\
+		Fecha Nac. &
+		DatePicker &
+		Date &
+		 &
+		TitularContrato.FecNac \\
+		Escolaridad &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Escolaridad \\
+		Edo. Civil &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.EdoCivil \\
+		Sexo &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Sexo \\
+		Tipo Vivienda &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.TipoVivienda \\
+		C. Migratoria &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.CalidadMigratoria \\
+		P. Residencia &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.PaisResidencia \\
+		Nacionalidad &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Nacionalidad \\
+		Pa\'is Nac. &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.PaisNac \\
+		Edo. Nac. &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.EdoNac \\
+		¿El cliente es empleado del Grupo Financiero Banamex? &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.EmpleadoGroFinBanamex \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+\clearpage
+%% -----
+%% User Interface: Update
+%% -----
+\subsection{IUXX-03. Editar Titular} \label{sec:ui-page-update-titularcontrato}
+
+\textbf{Descripci\'on}: P\'agina para Editar Titular.\\
+
+\begin{figure}[H]
+	\label{tab:ui-edit-titularcontrato-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/TitularContrato-Edit.png}
+	\caption{P\'agina Editar Titular}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Editar Titular}
+	\label{tab:ui-update-titularcontrato-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Nombre &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Nombre \\
+		Actividad &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Actividad \\
+		No. Cliente Banamex &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.NoClienteBanamex \\
+		Inst &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Inst \\
+		No. Cta &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.NoCta \\
+		Suc. &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Suc \\
+		CLABE &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Clabe \\
+		Calle &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Calle \\
+		No. Exterior &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.NoExt \\
+		No. Interior &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.NoInterior \\
+		CLABE &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.MexExtr \\
+		C.P. &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Cp \\
+		Estado &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Estado \\
+		Del/Mpo &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.DelMpo \\
+		Ciudad &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Ciudad \\
+		Colonia &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Colonia \\
+		¿Quieres que la correspondencia llegue al domicilio anterior? &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Correspondencia \\
+		R.F.C.(Con Homoclave) &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Rfc \\
+		CURP &
+		TextBox &
+		Text &
+		 &
+		TitularContrato.Curp \\
+		Fecha Nac. &
+		DatePicker &
+		Date &
+		 &
+		TitularContrato.FecNac \\
+		Escolaridad &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Escolaridad \\
+		Edo. Civil &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.EdoCivil \\
+		Sexo &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Sexo \\
+		Tipo Vivienda &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.TipoVivienda \\
+		C. Migratoria &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.CalidadMigratoria \\
+		P. Residencia &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.PaisResidencia \\
+		Nacionalidad &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.Nacionalidad \\
+		Pa\'is Nac. &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.PaisNac \\
+		Edo. Nac. &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.EdoNac \\
+		¿El cliente es empleado del Grupo Financiero Banamex? &
+		Modal &
+		Entity &
+		 &
+		TitularContrato.EmpleadoGroFinBanamex \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Beneficiarios
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Beneficiarios} \label{sec:cf-ui-admin-beneficiario}
+
+\begin{figure}[H]
+        \label{tab:ui-search-beneficiario-page}
+        \includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/Beneficiario-Admin.png}
+        \caption{P\'agina Administrar Beneficiarios}
+\end{figure}
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Limitante
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Limitante} \label{sec:cf-ui-admin-limitante}
+
+\begin{figure}[H]
+        \label{tab:ui-search-limitante-page}
+        \includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/Limitante-Admin.png}
+        \caption{P\'agina Administrar Limitante}
+\end{figure}
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Emisor
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Emisor} \label{sec:cf-ui-admin-emisor}
+
+%% -----
+%% User Interface: Search
+%% -----
+\subsection{IUXX-01. Buscar Emisor} \label{sec:ui-page-search-emisor}
+
+\textbf{Descripci\'on}: P\'agina para Buscar Emisor.\\
+
+\begin{figure}[H]
+	\label{tab:ui-search-emisor-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/Emisor-Admin.png}
+	\caption{P\'agina Buscar Emisor}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Criterios de B\'usqueda}
+	\label{tab:ui-search-criteria-emisor-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{7cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Emisor &
+		TextBox &
+		Text &
+		Emisor.Emisor \\
+		Relaci\'on &
+		Modal &
+		Entity &
+		Emisor.Relacion \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+\begin{table}[H]
+	\caption{Lista: Resultados de B\'usqueda}
+	\label{tab:ui-search-results-emisor-form}
+	%\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Emisor &
+		Emisor.Emisor \\
+		Relaci\'on &
+		Emisor.Relacion \\
+		\hline
+	\end{tabular}
+	%}
+\end{table}
+
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Firma Autorizada
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Firma Autorizada} \label{sec:cf-ui-admin-firmaautorizada}
+
+\begin{figure}[H]
+        \label{tab:ui-search-firmaautorizada-page}
+        \includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/FirmaAutorizada-Admin.png}
+        \caption{P\'agina Administrar Firma Autorizada}
+\end{figure}
+\clearpage
+%% -----
+%% User Interface: Delete
+%% -----
+\subsection{IUXX-04. Eliminar Firma Autorizada} \label{sec:ui-page-delete-firmaautorizada}
+
+\textbf{Descripci\'on}: P\'agina para Eliminar Firma Autorizada.\\
+
+\begin{figure}[H]
+	\label{tab:ui-delete-firmaautorizada-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/FirmaAutorizada-Delete.png}
+	\caption{P\'agina Eliminar Firma Autorizada}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Eliminar Firma Autorizada}
+	\label{tab:ui-delete-firmaautorizada-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		Tipo &
+		Label &
+		Entity &
+		&
+		FirmaAutorizada.Tipo \\
+		Nombre &
+		Label &
+		Text &
+		&
+		FirmaAutorizada.Nombre \\
+		Apellido Paterno &
+		Label &
+		Text &
+		&
+		FirmaAutorizada.ApPaterno \\
+		Apellido Materno &
+		Label &
+		Text &
+		&
+		FirmaAutorizada.ApMaterno \\
+		No Escr &
+		Label &
+		Text &
+		&
+		FirmaAutorizada.NoEscr \\
+		No Not &
+		Label &
+		Text &
+		&
+		FirmaAutorizada.NoNot \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: 
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar } \label{sec:cf-ui-admin-instruccionefectivo}
+
+\begin{figure}[H]
+        \label{tab:ui-search-instruccionefectivo-page}
+        \includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/InstruccionEfectivo-Admin.png}
+        \caption{P\'agina Administrar }
+\end{figure}
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Distribuci\'on de Instrucciones
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Distribuci\'on de Instrucciones} \label{sec:cf-ui-admin-distribucioninstrucciones}
+
+\begin{figure}[H]
+        \label{tab:ui-search-distribucioninstrucciones-page}
+        \includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/DistribucionInstrucciones-Admin.png}
+        \caption{P\'agina Administrar Distribuci\'on de Instrucciones}
+\end{figure}
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Reperfilamiento de Personas F\'isicas
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Reperfilamiento de Personas F\'isicas} \label{sec:cf-ui-admin-reperfilamientopersonafisica}
+
+\begin{figure}[H]
+        \label{tab:ui-search-reperfilamientopersonafisica-page}
+        \includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/ReperfilamientoPersonaFisica-Admin.png}
+        \caption{P\'agina Administrar Reperfilamiento de Personas F\'isicas}
+\end{figure}
+\clearpage
+%% -----
+%% User Interface: Create
+%% -----
+\subsection{IUXX-02. Agregar Reperfilamiento de Personas F\'isicas} \label{sec:ui-page-create-reperfilamientopersonafisica}
+
+\textbf{Descripci\'on}: P\'agina para Agregar Reperfilamiento de Personas F\'isicas.\\
+
+\begin{figure}[H]
+	\label{tab:ui-create-reperfilamientopersonafisica-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/ReperfilamientoPersonaFisica-Add.png}
+	\caption{P\'agina Agregar Reperfilamiento de Personas F\'isicas}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Agregar Reperfilamiento de Personas F\'isicas}
+	\label{tab:ui-create-reperfilamientopersonafisica-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		 &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.Contrato \\
+		Nombre &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.Nombre \\
+		Perfil Actual &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PerfilActual \\
+		Seleccione a la persona a perfilar &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PersonaPerfilar \\
+		% (Liquidez) &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeLiquidez \\
+		Monto $ (Liquidez) &
+		DatePicker &
+		Date &
+		 &
+		ReperfilamientoPersonaFisica.MontoLiquidez \\
+		% (Corto Plazo) &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeCortoPlazo \\
+		Monto $ (Corto Plazo) &
+		TextBox &
+		Currency &
+		 &
+		ReperfilamientoPersonaFisica.MontoCortoPlazo \\
+		% (Largo Plazo) &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeLargoPlazo \\
+		Monto $ (Largo Plazo) &
+		TextBox &
+		Currency &
+		 &
+		ReperfilamientoPersonaFisica.MontoLargoPlazo \\
+		% (Patrimonio l\'iquido total 100%) &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajePatrimonioLiquidoTotal \\
+		Monto $ (Patrimonio l\'iquido total 100%) &
+		TextBox &
+		Currency &
+		 &
+		ReperfilamientoPersonaFisica.MontoPatrimonioLiquidoTotal \\
+		1.1 Intervalo de Edad &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.IntervaloEdad \\
+		1.2 Nivel de Estudios &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.NivelEstudios \\
+		1.3 Ocupaci\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.Ocupacion \\
+		1.4 Actividad Profesional ¿Anterior? &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ActividadProfesionalAnterior \\
+		Actividad Profesional ¿Actual? &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ActividadProfesionalActual \\
+		Relacionada con Inversiones &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ActividadRelacionadaInversiones \\
+		1.5 Estrategia de inversi\'on del Cliente generalmente utilizada &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.EstrategiaCliente \\
+		1.6 El Cliente ha usado asesor\'ia para la toma de decisiones de inversi\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ClienteAsesoria \\
+		2.1 Instrumentos de Deuda Gubernamental &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExperienciaDeudaGub \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaDeudaGub \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoDeudaGub \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenDeudaGub \\
+		2.2 Instrumentos de Deuda Corporativa &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExpDeudaCorp \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaDeudaCorp \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoDeudaCorp \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenDeudaCorp \\
+		2.3 Sociedades de Inversi\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExpSociedadesInv \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaSociedadesInv \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoSociedadesInv \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenSociedadesInv \\
+		2.4 Valores Estructurados &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExpValoresEst \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaValoresEst \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoValoresEst \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenValoresEst \\
+		2.5 Certificados Burs\'atiles Fiduciarios (Cerubes, Cedevis) y Fideicomisos Privados &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExpCertificadosBur \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaCertificadosBur \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoCertificadosBur \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenCertificadosBur \\
+		1. El Cliente tiene alguna limitante y/o restricci\'on para invertir &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.TieneLimitante \\
+		6.1 Porcentaje total del Patrimonio que el Cliente designa a invertir en productos de inversi\'on (diferentes de bienes ra\'ices, etc.) &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeTotalPatrimonio \\
+		6.2 Porcentaje del ingreso anual que el Cliente destina a invertir en instrumentos de inversi\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeIngresoAnual \\
+		6.3 Porcentaje de las inversiones del Cliente que mantendr\'a en esta instituci\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeInversiones \\
+		6.4 Seleccionar el origen de los ingresos del Cliente destinados a invertir &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.OrigenIngresos \\
+		Perfil &
+		FileSelection &
+		File &
+		 &
+		ReperfilamientoPersonaFisica.Perfil \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+\clearpage
+%% -----
+%% User Interface: Update
+%% -----
+\subsection{IUXX-03. Editar Reperfilamiento de Personas F\'isicas} \label{sec:ui-page-update-reperfilamientopersonafisica}
+
+\textbf{Descripci\'on}: P\'agina para Editar Reperfilamiento de Personas F\'isicas.\\
+
+\begin{figure}[H]
+	\label{tab:ui-edit-reperfilamientopersonafisica-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/ReperfilamientoPersonaFisica-Edit.png}
+	\caption{P\'agina Editar Reperfilamiento de Personas F\'isicas}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Editar Reperfilamiento de Personas F\'isicas}
+	\label{tab:ui-update-reperfilamientopersonafisica-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		 &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.Contrato \\
+		Nombre &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.Nombre \\
+		Perfil Actual &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PerfilActual \\
+		Seleccione a la persona a perfilar &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PersonaPerfilar \\
+		% (Liquidez) &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeLiquidez \\
+		Monto $ (Liquidez) &
+		DatePicker &
+		Date &
+		 &
+		ReperfilamientoPersonaFisica.MontoLiquidez \\
+		% (Corto Plazo) &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeCortoPlazo \\
+		Monto $ (Corto Plazo) &
+		TextBox &
+		Currency &
+		 &
+		ReperfilamientoPersonaFisica.MontoCortoPlazo \\
+		% (Largo Plazo) &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeLargoPlazo \\
+		Monto $ (Largo Plazo) &
+		TextBox &
+		Currency &
+		 &
+		ReperfilamientoPersonaFisica.MontoLargoPlazo \\
+		% (Patrimonio l\'iquido total 100%) &
+		TextBox &
+		Text &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajePatrimonioLiquidoTotal \\
+		Monto $ (Patrimonio l\'iquido total 100%) &
+		TextBox &
+		Currency &
+		 &
+		ReperfilamientoPersonaFisica.MontoPatrimonioLiquidoTotal \\
+		1.1 Intervalo de Edad &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.IntervaloEdad \\
+		1.2 Nivel de Estudios &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.NivelEstudios \\
+		1.3 Ocupaci\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.Ocupacion \\
+		1.4 Actividad Profesional ¿Anterior? &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ActividadProfesionalAnterior \\
+		Actividad Profesional ¿Actual? &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ActividadProfesionalActual \\
+		Relacionada con Inversiones &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ActividadRelacionadaInversiones \\
+		1.5 Estrategia de inversi\'on del Cliente generalmente utilizada &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.EstrategiaCliente \\
+		1.6 El Cliente ha usado asesor\'ia para la toma de decisiones de inversi\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ClienteAsesoria \\
+		2.1 Instrumentos de Deuda Gubernamental &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExperienciaDeudaGub \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaDeudaGub \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoDeudaGub \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenDeudaGub \\
+		2.2 Instrumentos de Deuda Corporativa &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExpDeudaCorp \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaDeudaCorp \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoDeudaCorp \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenDeudaCorp \\
+		2.3 Sociedades de Inversi\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExpSociedadesInv \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaSociedadesInv \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoSociedadesInv \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenSociedadesInv \\
+		2.4 Valores Estructurados &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExpValoresEst \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaValoresEst \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoValoresEst \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenValoresEst \\
+		2.5 Certificados Burs\'atiles Fiduciarios (Cerubes, Cedevis) y Fideicomisos Privados &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.ExpCertificadosBur \\
+		Frecuencia &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.FrecuenciaCertificadosBur \\
+		Plazo &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PlazoCertificadosBur \\
+		Volumen &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.VolumenCertificadosBur \\
+		1. El Cliente tiene alguna limitante y/o restricci\'on para invertir &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.TieneLimitante \\
+		6.1 Porcentaje total del Patrimonio que el Cliente designa a invertir en productos de inversi\'on (diferentes de bienes ra\'ices, etc.) &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeTotalPatrimonio \\
+		6.2 Porcentaje del ingreso anual que el Cliente destina a invertir en instrumentos de inversi\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeIngresoAnual \\
+		6.3 Porcentaje de las inversiones del Cliente que mantendr\'a en esta instituci\'on &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.PorcentajeInversiones \\
+		6.4 Seleccionar el origen de los ingresos del Cliente destinados a invertir &
+		Modal &
+		Entity &
+		 &
+		ReperfilamientoPersonaFisica.OrigenIngresos \\
+		Perfil &
+		FileSelection &
+		File &
+		 &
+		ReperfilamientoPersonaFisica.Perfil \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+\clearpage
+%% -----
+%% User Interface: Delete
+%% -----
+\subsection{IUXX-04. Eliminar Reperfilamiento de Personas F\'isicas} \label{sec:ui-page-delete-reperfilamientopersonafisica}
+
+\textbf{Descripci\'on}: P\'agina para Eliminar Reperfilamiento de Personas F\'isicas.\\
+
+\begin{figure}[H]
+	\label{tab:ui-delete-reperfilamientopersonafisica-page}
+	\includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/ReperfilamientoPersonaFisica-Delete.png}
+	\caption{P\'agina Eliminar Reperfilamiento de Personas F\'isicas}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Forma Eliminar Reperfilamiento de Personas F\'isicas}
+	\label{tab:ui-delete-reperfilamientopersonafisica-form}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ p{4cm} p{2cm} p{2cm} p{3cm} p{8cm} }
+		\hline
+		\textbf{Etiqueta} &
+		\textbf{Widget} &
+		\textbf{Tipo} &
+		\textbf{Validaciones} &
+		\textbf{Fuente de Datos} \\
+		\hline
+		 &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.Contrato \\
+		Nombre &
+		Label &
+		Text &
+		&
+		ReperfilamientoPersonaFisica.Nombre \\
+		Perfil Actual &
+		Label &
+		Text &
+		&
+		ReperfilamientoPersonaFisica.PerfilActual \\
+		Seleccione a la persona a perfilar &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PersonaPerfilar \\
+		% (Liquidez) &
+		Label &
+		Text &
+		&
+		ReperfilamientoPersonaFisica.PorcentajeLiquidez \\
+		Monto $ (Liquidez) &
+		Label &
+		Date &
+		&
+		ReperfilamientoPersonaFisica.MontoLiquidez \\
+		% (Corto Plazo) &
+		Label &
+		Text &
+		&
+		ReperfilamientoPersonaFisica.PorcentajeCortoPlazo \\
+		Monto $ (Corto Plazo) &
+		Label &
+		Currency &
+		&
+		ReperfilamientoPersonaFisica.MontoCortoPlazo \\
+		% (Largo Plazo) &
+		Label &
+		Text &
+		&
+		ReperfilamientoPersonaFisica.PorcentajeLargoPlazo \\
+		Monto $ (Largo Plazo) &
+		Label &
+		Currency &
+		&
+		ReperfilamientoPersonaFisica.MontoLargoPlazo \\
+		% (Patrimonio l\'iquido total 100%) &
+		Label &
+		Text &
+		&
+		ReperfilamientoPersonaFisica.PorcentajePatrimonioLiquidoTotal \\
+		Monto $ (Patrimonio l\'iquido total 100%) &
+		Label &
+		Currency &
+		&
+		ReperfilamientoPersonaFisica.MontoPatrimonioLiquidoTotal \\
+		1.1 Intervalo de Edad &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.IntervaloEdad \\
+		1.2 Nivel de Estudios &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.NivelEstudios \\
+		1.3 Ocupaci\'on &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.Ocupacion \\
+		1.4 Actividad Profesional ¿Anterior? &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ActividadProfesionalAnterior \\
+		Actividad Profesional ¿Actual? &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ActividadProfesionalActual \\
+		Relacionada con Inversiones &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ActividadRelacionadaInversiones \\
+		1.5 Estrategia de inversi\'on del Cliente generalmente utilizada &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.EstrategiaCliente \\
+		1.6 El Cliente ha usado asesor\'ia para la toma de decisiones de inversi\'on &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ClienteAsesoria \\
+		2.1 Instrumentos de Deuda Gubernamental &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ExperienciaDeudaGub \\
+		Frecuencia &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.FrecuenciaDeudaGub \\
+		Plazo &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PlazoDeudaGub \\
+		Volumen &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.VolumenDeudaGub \\
+		2.2 Instrumentos de Deuda Corporativa &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ExpDeudaCorp \\
+		Frecuencia &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.FrecuenciaDeudaCorp \\
+		Plazo &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PlazoDeudaCorp \\
+		Volumen &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.VolumenDeudaCorp \\
+		2.3 Sociedades de Inversi\'on &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ExpSociedadesInv \\
+		Frecuencia &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.FrecuenciaSociedadesInv \\
+		Plazo &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PlazoSociedadesInv \\
+		Volumen &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.VolumenSociedadesInv \\
+		2.4 Valores Estructurados &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ExpValoresEst \\
+		Frecuencia &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.FrecuenciaValoresEst \\
+		Plazo &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PlazoValoresEst \\
+		Volumen &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.VolumenValoresEst \\
+		2.5 Certificados Burs\'atiles Fiduciarios (Cerubes, Cedevis) y Fideicomisos Privados &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.ExpCertificadosBur \\
+		Frecuencia &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.FrecuenciaCertificadosBur \\
+		Plazo &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PlazoCertificadosBur \\
+		Volumen &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.VolumenCertificadosBur \\
+		1. El Cliente tiene alguna limitante y/o restricci\'on para invertir &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.TieneLimitante \\
+		6.1 Porcentaje total del Patrimonio que el Cliente designa a invertir en productos de inversi\'on (diferentes de bienes ra\'ices, etc.) &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PorcentajeTotalPatrimonio \\
+		6.2 Porcentaje del ingreso anual que el Cliente destina a invertir en instrumentos de inversi\'on &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PorcentajeIngresoAnual \\
+		6.3 Porcentaje de las inversiones del Cliente que mantendr\'a en esta instituci\'on &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.PorcentajeInversiones \\
+		6.4 Seleccionar el origen de los ingresos del Cliente destinados a invertir &
+		Label &
+		Entity &
+		&
+		ReperfilamientoPersonaFisica.OrigenIngresos \\
+		Perfil &
+		Label &
+		File &
+		&
+		ReperfilamientoPersonaFisica.Perfil \\
+		\hline
+	\end{tabular}
+	}
+\end{table}
+
+
+
+%% --------------------------------------------------------------------------------------------------
+%% CRUD UI: Negativa de Perfilamiento
+%% --------------------------------------------------------------------------------------------------
+%%\clearpage
+\section{Administrar Negativa de Perfilamiento} \label{sec:cf-ui-admin-negativaperfilamiento}
+
+\begin{figure}[H]
+        \label{tab:ui-search-negativaperfilamiento-page}
+        \includegraphics[width=0.95\textwidth,height=0.70\textheight]{ui-specs/ui-screenshots/Dominio-Screenshots.js/NegativaPerfilamiento-Admin.png}
+        \caption{P\'agina Administrar Negativa de Perfilamiento}
+\end{figure}
+

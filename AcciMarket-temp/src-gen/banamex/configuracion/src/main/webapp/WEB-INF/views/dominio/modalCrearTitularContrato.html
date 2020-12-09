@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:form="http://www.springframework.org/tags/form">
+<body>
+	<div th:fragment="modalGuardar" class="modal fade cg-mod-agregar"
+		id="modalCrear" tabindex="-1" role="dialog"
+		aria-labelledby="cg-mod-agregar" aria-hidden="true"
+		data-backdrop="static" data-keyboard="false">
+		<div id="alertDanger"></div>
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form id="formNew" name="formNew">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							<label th:utext="#{lable.title.modal.agregar.titularcontrato}"></label>
+						</h4>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="container body">
+						<!-- Codigo Adicional -->
+						<!--
+						<input type="hidden" id="idSubprocesoI" name="idSubprocesoI">
+						<div class="row">
+							<div class="col-md-4 form-group">
+								<label for="moduloI" class="col-form-label"
+									th:text="#{cg.proceso.modulo}"></label> <select 
+									onchange="activarProcesoInsert();" id="moduloI" name="moduloI" class="form-control"
+									required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+									<option th:each="modulo : ${modulo}"
+										th:value="${modulo.idCtrlProceso}"
+										th:utext="${modulo.descripcion}" />
+								</select>
+							</div>
+							<div class="col-md-4 form-group">
+								<label for="procesoI" class="col-form-label"
+									th:text="#{cg.subproceso.proceso}"></label> <select
+									disabled="disabled"
+									name="procesoI" onchange="activarSubProcesoInsert();" id="procesoI"
+									class="form-control" required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+								</select>
+							</div>
+							<div class="col-md-4 form-group">
+								<label for="subprocesoI" class="col-form-label"
+									th:text="#{label.criterio.busqueda.subproceso}"></label> 
+									<select onchange="setIdSubProcesoInsert();"
+									name="subprocesoI" disabled="disabled" id="subprocesoI"
+									class="form-control" required>
+									<option value="" th:text="#{cg.seleccionar}" selected></option>
+								</select>
+							</div>
+						</div>
+						-->
+						<!-- Codigo Adicional -->
+						
+						<div class="row">
+						<div class="form-group col-md-4" id="divNombre">
+							<label for="nombre" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.nombre}"></label> 
+							<input  type="text" id="nombre"
+									name="nombre" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.actividad}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="actividad : ${listaDummy}"
+									th:value="${actividad.cveDummy}"
+									th:text="${actividad.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4" id="divNoClienteBanamex">
+							<label for="noClienteBanamex" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.noclientebanamex}"></label> 
+							<input  type="text" id="noClienteBanamex"
+									name="noClienteBanamex" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.inst}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="inst : ${listaDummy}"
+									th:value="${inst.cveDummy}"
+									th:text="${inst.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4" id="divNoCta">
+							<label for="noCta" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.nocta}"></label> 
+							<input  type="text" id="noCta"
+									name="noCta" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divSuc">
+							<label for="suc" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.suc}"></label> 
+							<input  type="text" id="suc"
+									name="suc" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divClabe">
+							<label for="clabe" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.clabe}"></label> 
+							<input  type="text" id="clabe"
+									name="clabe" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divCalle">
+							<label for="calle" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.calle}"></label> 
+							<input  type="text" id="calle"
+									name="calle" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divNoExt">
+							<label for="noExt" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.noext}"></label> 
+							<input  type="text" id="noExt"
+									name="noExt" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divNoInterior">
+							<label for="noInterior" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.nointerior}"></label> 
+							<input  type="text" id="noInterior"
+									name="noInterior" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="mexicoExtrajero" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.mexextr}"></label> <select
+								id="cveMexicoExtrajero" name="cveMexicoExtrajero" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="mexExtr : ${listaMexicoExtrajero}"
+									th:value="${mexExtr.cveMexicoExtrajero}"
+									th:text="${mexExtr.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4" id="divCp">
+							<label for="cp" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.cp}"></label> 
+							<input  type="text" id="cp"
+									name="cp" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divEstado">
+							<label for="estado" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.estado}"></label> 
+							<input  type="text" id="estado"
+									name="estado" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divDelMpo">
+							<label for="delMpo" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.delmpo}"></label> 
+							<input  type="text" id="delMpo"
+									name="delMpo" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divCiudad">
+							<label for="ciudad" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.ciudad}"></label> 
+							<input  type="text" id="ciudad"
+									name="ciudad" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divColonia">
+							<label for="colonia" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.colonia}"></label> 
+							<input  type="text" id="colonia"
+									name="colonia" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="noSi" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.correspondencia}"></label> <select
+								id="cveNoSi" name="cveNoSi" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="correspondencia : ${listaNoSi}"
+									th:value="${correspondencia.cveNoSi}"
+									th:text="${correspondencia.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4" id="divRfc">
+							<label for="rfc" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.rfc}"></label> 
+							<input  type="text" id="rfc"
+									name="rfc" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divCurp">
+							<label for="curp" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.curp}"></label> 
+							<input  type="text" id="curp"
+									name="curp" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4" id="divFecNac">
+							<label for="fecNac" class="required col-form-label"
+									th:text="#{label.tabla.columna.titularcontrato.fecnac}"></label> 
+							<input  type="date" id="fecNac"
+									name="fecNac" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+									data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+									data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); "/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.escolaridad}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="escolaridad : ${listaDummy}"
+									th:value="${escolaridad.cveDummy}"
+									th:text="${escolaridad.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.edocivil}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="edoCivil : ${listaDummy}"
+									th:value="${edoCivil.cveDummy}"
+									th:text="${edoCivil.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.sexo}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="sexo : ${listaDummy}"
+									th:value="${sexo.cveDummy}"
+									th:text="${sexo.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.tipovivienda}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="tipoVivienda : ${listaDummy}"
+									th:value="${tipoVivienda.cveDummy}"
+									th:text="${tipoVivienda.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.calidadmigratoria}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="calidadMigratoria : ${listaDummy}"
+									th:value="${calidadMigratoria.cveDummy}"
+									th:text="${calidadMigratoria.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.paisresidencia}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="paisResidencia : ${listaDummy}"
+									th:value="${paisResidencia.cveDummy}"
+									th:text="${paisResidencia.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.nacionalidad}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="nacionalidad : ${listaDummy}"
+									th:value="${nacionalidad.cveDummy}"
+									th:text="${nacionalidad.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.paisnac}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="paisNac : ${listaDummy}"
+									th:value="${paisNac.cveDummy}"
+									th:text="${paisNac.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="dummy" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.edonac}"></label> <select
+								id="cveDummy" name="cveDummy" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="edoNac : ${listaDummy}"
+									th:value="${edoNac.cveDummy}"
+									th:text="${edoNac.descripcion}"></option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="noSi" class="required col-form-label"
+								th:text="#{label.title.modal.input.titularcontrato.empleadogrofinbanamex}"></label> <select
+								id="cveNoSi" name="cveNoSi" class="form-control" required>
+								<option value="" th:text="#{cg.seleccionar}"></option>
+								<option th:each="empleadoGroFinBanamex : ${listaNoSi}"
+									th:value="${empleadoGroFinBanamex.cveNoSi}"
+									th:text="${empleadoGroFinBanamex.descripcion}"></option>
+							</select>
+						</div>
+						</div>
+					</div>
+
+					<div class="form-group modal-footer">
+						<button type="button" class="btn-style-citi" data-dismiss="modal"
+							th:text="#{label.button.cancelar}"></button>
+						<button type="submit" class="btn-style-citi" id="Guardar"
+							th:text="#{label.button.guardar}"></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>	

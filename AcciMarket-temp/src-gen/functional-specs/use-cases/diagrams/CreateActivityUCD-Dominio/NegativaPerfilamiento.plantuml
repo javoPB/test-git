@@ -1,0 +1,21 @@
+@startuml
+start
+:El Operador captura información 
+en la forma [Agregar Negativa de Perfilamiento];
+while (Datos incompletos?) is (SI)  
+	:El Sistema muestra los campos de la forma 
+	[Agregar Negativa de Perfilamiento] que son obligatorios;  
+	:El Operador captura información en 
+	la forma [Agregar Negativa de Perfilamiento];
+endwhile (NO)  
+	if (Datos válidos?) then (SI)    
+		:El Sistema crea un nuevo registro 
+		en la entidad [Negativa de Perfilamiento];  
+	else (NO)    
+		:El Sistema muestra los campos de la forma 
+		[Agregar Negativa de Perfilamiento] que son inválidos e indica la razón;    
+		end  
+	endif
+stop
+@enduml
+

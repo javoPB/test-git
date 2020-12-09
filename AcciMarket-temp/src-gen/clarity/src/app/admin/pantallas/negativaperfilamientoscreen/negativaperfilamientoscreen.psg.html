@@ -1,0 +1,38 @@
+<div class="card-block">
+
+	<div class="card-header">
+   	Negativa de Perfilamiento
+   	</div>
+   	
+<div class="card-block">	
+<!-- form -->
+<form class="form" [formGroup]="negativaperfilamientoformForm">
+	<div class="clr-form-control">
+	    <label for="vertical-file3" class="clr-control-label" >Perfil<span class="required">*</span></label>
+	    <div class="clr-control-container">
+	        <div class="clr-file-wrapper">
+	            <input type="file" id="perfil" formControlName="perfil" placeholder="Perfil">
+	            <control-messages class="control-messages" [control]="negativaperfilamientoformForm.controls.perfil"></control-messages>
+	        </div>
+	    </div>
+	</div>
+	<div class="clr-form-control">
+	    <label for="inconsistencias" class="clr-control-label">Inconsistencias<span class="required">*</span></label>
+	    <div class="clr-control-container clr-col-md-12"> 
+	        <label for="inconsistencias" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm clr-input clr-col-sm-11 clr-col-md-11"
+	                [class.invalid]="negativaperfilamientoformForm.get('inconsistencias').invalid && (negativaperfilamientoformForm.get('inconsistencias').dirty || negativaperfilamientoformForm.get('inconsistencias').touched)">
+	            <input id="inconsistencias" type="text" formControlName="inconsistencias" placeholder="Inconsistencias" class="clr-input clr-col-sm-12 clr-col-md-12">
+	            <span class="tooltip-content">
+	                Inconsistencias es requerido.
+	            </span>
+	        </label>
+	    </div>
+	</div>
+	<div class="ln_solid"></div>
+	<button id="enviarnegativaperfilamientocommand" type="submit" class="btn btn-outline" [routerLink]="['../pantallas']" ><clr-icon shape="fa fa-check"></clr-icon>Enviar</button>
+</form>
+<!-- ./form -->	
+    
+    <p>
+	</p>
+</div>	

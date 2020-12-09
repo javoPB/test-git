@@ -1,0 +1,106 @@
+
+	{
+		"ids":[
+			{
+				"id": "beneficiario-results",
+				"headers": [
+				{ "label": "Nombre" },
+				{ "label": "Apellido Paterno" },
+				{ "label": "Apellido Materno" },
+				{ "label": "Porcentaje %" }
+				],
+				"rows": [
+					{
+						"id": "1",
+						"data": [
+							"Pariatur cum et.",
+							"Ipsa perspiciatis perspiciatis in.",
+							"Sit ipsum nesciunt ut.",
+							"2,214"
+						]
+					},
+					{
+						"id": "2",
+						"data": [
+							"Qui quia commodi dolorem.",
+							"Vel ea et harum fugiat porro dolores.",
+							"Sit fugiat quia qui dolorum ipsa.",
+							"5,822"
+						]
+					},
+					{
+						"id": "3",
+						"data": [
+							"In aspernatur rerum et voluptatibus occaecati et dolores.",
+							"Est eos inventore laudantium.",
+							"Impedit tempore in ipsum.",
+							"1,918"
+						]
+					},
+					{
+						"id": "4",
+						"data": [
+							"Sed in sint distinctio debitis consequatur.",
+							"Soluta exercitationem pariatur saepe autem quos.",
+							"Et quaerat praesentium dicta libero nihil fugit.",
+							"5,966"
+						]
+					},
+					{
+						"id": "5",
+						"data": [
+							"Ut doloribus tempora expedita totam facere ipsum sunt.",
+							"Nulla architecto maxime necessitatibus minima animi.",
+							"Aspernatur vitae illo animi.",
+							"5,407"
+						]
+					},
+					{
+						"id": "6",
+						"data": [
+							"Inventore in libero quo.",
+							"Aut qui porro aut enim explicabo.",
+							"Sunt illo quasi.",
+							"1,877"
+						]
+					},
+					{
+						"id": "7",
+						"data": [
+							"Est iure quia.",
+							"At vel aut et aut.",
+							"Vitae saepe aliquid neque quia enim.",
+							"5,660"
+						]
+					},
+					{
+						"id": "8",
+						"data": [
+							"Placeat repellat quia occaecati.",
+							"Non placeat expedita praesentium facilis.",
+							"Qui accusamus numquam in.",
+							"6,177"
+						]
+					},
+					{
+						"id": "9",
+						"data": [
+							"Facilis et at ut voluptatem et nulla et.",
+							"Porro alias eveniet autem expedita sapiente.",
+							"Est qui et tempora unde expedita.",
+							"3,808"
+						]
+					},
+					{
+						"id": "10",
+						"data": [
+							"Mollitia et molestias a et placeat molestias consequatur.",
+							"Eaque quasi deleniti sed sit nulla temporibus.",
+							"Et dicta perspiciatis magnam veritatis.",
+							"8,121"
+						]
+					}
+				]
+			}
+		]
+	}

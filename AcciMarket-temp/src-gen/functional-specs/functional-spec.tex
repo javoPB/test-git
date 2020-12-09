@@ -1,0 +1,83 @@
+\documentclass[10pt, letterpaper]{report}
+
+%% packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{titlesec}
+\usepackage{glossaries}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{booktabs} % http://ctan.org/pkg/booktabs
+\usepackage{tabularx}
+
+%% page settings
+\usepackage[top=2cm, bottom=1.8cm, left=2.5cm, right=2.5cm]{geometry} % for page border settings
+\usepackage{fancyhdr} % for head and footer options
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\urlstyle{same}
+
+%% commands
+\newcommand{\tbi}[1]{\textbf{\textit{#1}}}
+
+%% glossary
+\makeglossaries
+
+\begin{document}
+
+\title{Requerimientos Funcionales}
+\author{Softtek}
+\date{}
+
+\input{title-page.tex}
+
+%\maketitle
+
+\pagestyle{plain}
+\tableofcontents
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[OC]{\leftmark}
+\fancyhead[EC]{\rightmark}
+\cfoot{\thepage}
+\chapter{Modelo de Dominio del M\'odulo Pantallas}
+\clearpage
+\input{domain-model/DOM-Pantallas.tex}
+
+\chapter{Casos de Uso del M\'odulo Pantallas}
+%\clearpage
+\input{use-cases/UC-Pantallas.tex}
+
+\chapter{Especificaci\'on de la Interfaz de Usuario del M\'odulo Pantallas}
+%\clearpage
+%\begin{landscape}
+\input{ui-specs/UI-Pantallas.tex}
+%\end{landscape}
+\chapter{Modelo de Dominio del M\'odulo Dominio}
+\clearpage
+\input{domain-model/DOM-Dominio.tex}
+
+\chapter{Casos de Uso del M\'odulo Dominio}
+%\clearpage
+\input{use-cases/UC-Dominio.tex}
+
+\chapter{Especificaci\'on de la Interfaz de Usuario del M\'odulo Dominio}
+%\clearpage
+%\begin{landscape}
+\input{ui-specs/UI-Dominio.tex}
+%\end{landscape}
+\printglossary
+
+\end{document}

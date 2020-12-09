@@ -1,0 +1,73 @@
+@startuml
+title Dominio
+enum Dummy <<enum>> {
+	Dummy 1
+	Dummy 2
+	Dummy 3
+}
+enum Sexo <<enum>> {
+	FEMENINO
+	MASCULINO
+}
+enum Institucional <<enum>> {
+	INSTITUCIONAL
+	INSTITUCIONAL PRACT. VTA.
+}
+enum Sofisticado <<enum>> {
+	SOFISTICADO
+	NO SOFISTICADO
+}
+enum Elegible <<enum>> {
+	ELEGIBLE
+	NO ELEGIBLE
+}
+enum Calificado <<enum>> {
+	CALIFICADO
+	NO CALIFICADO
+}
+enum Discrecional <<enum>> {
+	DISCRECIONAL
+	NO DISCRECIONAL
+}
+enum ConocimientoExperiencia <<enum>> {
+	No conoce ni ha intervenido
+	Sólo conoce
+	Conoce y ha intervenido
+}
+enum Relacion <<enum>> {
+	Vicepresidente
+	Presidente
+}
+enum OpcDistrInstrucciones <<enum>> {
+	Intradía
+	Programados
+	Históricos
+}
+enum MexicoExtrajero <<enum>> {
+	México
+	Extranjero
+}
+enum NoSi <<enum>> {
+	No
+	Si
+}
+enum SituacionFinancieraActual <<enum>> {
+	0-20%
+	20-40%
+	40-60%
+	60-80%
+	80-100%
+}
+enum OrigenIngresos <<enum>> {
+	Venta de Activos
+	Premios
+	Préstamos
+	Salario Anual
+	Pago de Dividendos
+	Venta de Bienes
+	Herencia
+	Patrimonio/Ahorro
+	Traspaso/Cancelación de cuentas de otro Banco
+	Otro
+}
+@enduml

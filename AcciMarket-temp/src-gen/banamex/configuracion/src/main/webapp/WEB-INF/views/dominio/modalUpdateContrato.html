@@ -1,0 +1,374 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="modal fade cg-mod-editar" id="movModal" tabindex="-1" th:fragment="modalFragUpdate"
+	role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="cg-mod-editar" aria-hidden="true"
+	style="display: none;">
+	<div id="alertDangerUp"></div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<form id="formUpd" name="formUpd">
+				<div class="modal-header">
+					<h4 class="modal-title">
+						<label id="modalTitle" th:text="#{lable.title.modal.actualizar.contrato}"></label>
+					</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="container body">
+					<input type="hidden" id="idContratoUpd" name="idContratoUpd">	
+					<!-- Codigo Adicional -->
+					<!--
+					<input type="hidden" id="idSubprocesoUpd" name="idSubprocesoUpd">
+					<div class="row">
+						<div class="col-md-4">
+							<label class="col-form-label" for="subprocesoUpd"
+								th:text="#{label.criterio.busqueda.subproceso}"></label> 
+								<input type="text" id="subprocesoUpd" name="subprocesoUpd" class="form-control" readonly="readonly">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label" for="procesoUpd"
+								th:text="#{label.criterio.busqueda.proceso}"></label> 
+								<input type="text" id="procesoUpd" name="procesoUpd"  class="form-control" readonly="readonly">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label" for="moduloUpd"
+								th:text="#{label.criterio.busqueda.modulo}"></label> 
+								<input type="text" id="moduloUpd"  name="moduloUpd"  class="form-control" readonly="readonly">
+						</div>
+					</div>
+					-->
+					<!-- Codigo Adicional -->
+						
+					<div class="row">
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="noContratoUpd"
+								th:text="#{label.title.modal.input.contrato.nocontrato}"></label> 
+							<input type="text" id="noContratoUpd" name="noContratoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="digitoUpd"
+								th:text="#{label.title.modal.input.contrato.digito}"></label> 
+							<input type="text" id="digitoUpd" name="digitoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="dvUpd"
+								th:text="#{label.title.modal.input.contrato.dv}"></label> 
+							<input type="text" id="dvUpd" name="dvUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="estatusUpd"
+								th:text="#{label.title.modal.input.contrato.estatus}"></label> 
+							<input type="text" id="estatusUpd" name="estatusUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="perfilUpd"
+								th:text="#{label.title.modal.input.contrato.perfil}"></label> 
+							<input type="text" id="perfilUpd" name="perfilUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="portafolioUpd"
+								th:text="#{label.title.modal.input.contrato.portafolio}"></label> 
+							<input type="text" id="portafolioUpd" name="portafolioUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cLABEUpd"
+								th:text="#{label.title.modal.input.contrato.clabe}"></label> 
+							<input type="text" id="cLABEUpd" name="cLABEUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="sTipoPortUpd"
+								th:text="#{label.title.modal.input.contrato.stipoport}"></label> 
+							<input type="text" id="sTipoPortUpd" name="sTipoPortUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="libroUpd"
+								th:text="#{label.title.modal.input.contrato.libro}"></label> 
+							<input type="text" id="libroUpd" name="libroUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="asesorInversionUpd"
+								th:text="#{label.title.modal.input.contrato.asesorinversion}"></label> 
+							<input type="text" id="asesorInversionUpd" name="asesorInversionUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="tipoManifiestoUpd"
+								th:text="#{label.title.modal.input.contrato.tipomanifiesto}"></label> 
+							<input type="text" id="tipoManifiestoUpd" name="tipoManifiestoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="servicioInversionUpd"
+								th:text="#{label.title.modal.input.contrato.servicioinversion}"></label> 
+							<input type="text" id="servicioInversionUpd" name="servicioInversionUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cartaEjecucion1Upd"
+								th:text="#{label.title.modal.input.contrato.cartaejecucion1}"></label> 
+							<input type="text" id="cartaEjecucion1Upd" name="cartaEjecucion1Upd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="fechaCartaEjecucion1Upd"
+								th:text="#{label.title.modal.input.contrato.fechacartaejecucion1}"></label> 
+							<input type="text" id="fechaCartaEjecucion1Upd" name="fechaCartaEjecucion1Upd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cartaEjecucion2Upd"
+								th:text="#{label.title.modal.input.contrato.cartaejecucion2}"></label> 
+							<input type="text" id="cartaEjecucion2Upd" name="cartaEjecucion2Upd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="fechaCartaEjecucion2Upd"
+								th:text="#{label.title.modal.input.contrato.fechacartaejecucion2}"></label> 
+							<input type="text" id="fechaCartaEjecucion2Upd" name="fechaCartaEjecucion2Upd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="justificacionInstitucionalUpd"
+								th:text="#{label.title.modal.input.contrato.justificacioninstitucional}"></label> 
+							<input type="text" id="justificacionInstitucionalUpd" name="justificacionInstitucionalUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="fechaInstitucionalUpd"
+								th:text="#{label.title.modal.input.contrato.fechainstitucional}"></label> 
+							<input type="text" id="fechaInstitucionalUpd" name="fechaInstitucionalUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveSofisticadoUpd"
+							th:text="#{label.title.modal.input.contrato.sofisticado}"></label> 
+							<select class="form-control" id="sofisticadoUpd" name="sofisticadoUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="sofisticado : ${listaSofisticado}"
+								th:value="${sofisticado.cveSofisticado}"
+								th:text="${sofisticado.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="justificacionSofisticadoUpd"
+								th:text="#{label.title.modal.input.contrato.justificacionsofisticado}"></label> 
+							<input type="text" id="justificacionSofisticadoUpd" name="justificacionSofisticadoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="fechaSofisticadoUpd"
+								th:text="#{label.title.modal.input.contrato.fechasofisticado}"></label> 
+							<input type="text" id="fechaSofisticadoUpd" name="fechaSofisticadoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveElegibleUpd"
+							th:text="#{label.title.modal.input.contrato.elegible}"></label> 
+							<select class="form-control" id="elegibleUpd" name="elegibleUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="elegible : ${listaElegible}"
+								th:value="${elegible.cveElegible}"
+								th:text="${elegible.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="justificacionElegibleUpd"
+								th:text="#{label.title.modal.input.contrato.justificacionelegible}"></label> 
+							<input type="text" id="justificacionElegibleUpd" name="justificacionElegibleUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="fechaElegibleUpd"
+								th:text="#{label.title.modal.input.contrato.fechaelegible}"></label> 
+							<input type="text" id="fechaElegibleUpd" name="fechaElegibleUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveCalificadoUpd"
+							th:text="#{label.title.modal.input.contrato.calificado}"></label> 
+							<select class="form-control" id="calificadoUpd" name="calificadoUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="calificado : ${listaCalificado}"
+								th:value="${calificado.cveCalificado}"
+								th:text="${calificado.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="justificacionCalificadoUpd"
+								th:text="#{label.title.modal.input.contrato.justificacioncalificado}"></label> 
+							<input type="text" id="justificacionCalificadoUpd" name="justificacionCalificadoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="fechaCalificadoUpd"
+								th:text="#{label.title.modal.input.contrato.fechacalificado}"></label> 
+							<input type="text" id="fechaCalificadoUpd" name="fechaCalificadoUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveDiscrecionalUpd"
+							th:text="#{label.title.modal.input.contrato.discrecional}"></label> 
+							<select class="form-control" id="discrecionalUpd" name="discrecionalUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="discrecional : ${listaDiscrecional}"
+								th:value="${discrecional.cveDiscrecional}"
+								th:text="${discrecional.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="justificacionDiscrecionalUpd"
+								th:text="#{label.title.modal.input.contrato.justificaciondiscrecional}"></label> 
+							<input type="text" id="justificacionDiscrecionalUpd" name="justificacionDiscrecionalUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="fechaDiscrecionalUpd"
+								th:text="#{label.title.modal.input.contrato.fechadiscrecional}"></label> 
+							<input type="text" id="fechaDiscrecionalUpd" name="fechaDiscrecionalUpd" class="form-control"  maxlength="100" required data-bv-regexp="true"  pattern="^[^\'\&quot\*\(\)\&\|\/\\]*$" 
+								data-bv-regexp-message="No se permiten los caracteres:  ' * \ / ( ) &quot & "
+								data-bv-notempty-message="Campo requerido" onkeypress="return onlyText(event); ">
+					</div>	
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.contrato.instrdeudagub}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="instrDeudaGub : ${listaConocimientoExperiencia}"
+								th:value="${instrDeudaGub.cveConocimientoExperiencia}"
+								th:text="${instrDeudaGub.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.contrato.instrdeudacorp}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="instrDeudaCorp : ${listaConocimientoExperiencia}"
+								th:value="${instrDeudaCorp.cveConocimientoExperiencia}"
+								th:text="${instrDeudaCorp.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.contrato.sociedadesinver}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="sociedadesInver : ${listaConocimientoExperiencia}"
+								th:value="${sociedadesInver.cveConocimientoExperiencia}"
+								th:text="${sociedadesInver.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.contrato.valoresestruc}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="valoresEstruc : ${listaConocimientoExperiencia}"
+								th:value="${valoresEstruc.cveConocimientoExperiencia}"
+								th:text="${valoresEstruc.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.contrato.certburfideicomisos}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="certBurFideicomisos : ${listaConocimientoExperiencia}"
+								th:value="${certBurFideicomisos.cveConocimientoExperiencia}"
+								th:text="${certBurFideicomisos.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.contrato.titulosopcionales}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="titulosOpcionales : ${listaConocimientoExperiencia}"
+								th:value="${titulosOpcionales.cveConocimientoExperiencia}"
+								th:text="${titulosOpcionales.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.contrato.acciones}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="acciones : ${listaConocimientoExperiencia}"
+								th:value="${acciones.cveConocimientoExperiencia}"
+								th:text="${acciones.descripcion}"></option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="required col-form-label" for="cveConocimientoExperienciaUpd"
+							th:text="#{label.title.modal.input.contrato.valoresextr}"></label> 
+							<select class="form-control" id="conocimientoExperienciaUpd" name="conocimientoExperienciaUpd"
+							required>
+							<option value="" th:text="#{cg.seleccionar}"></option>
+							<option th:each="valoresExtr : ${listaConocimientoExperiencia}"
+								th:value="${valoresExtr.cveConocimientoExperiencia}"
+								th:text="${valoresExtr.descripcion}"></option>
+							</select>
+					</div>
+					</div>
+					
+					<div class="form-group modal-footer">
+						<div id="updInformes" class="form-group">
+							<button id="salir" type="button"  class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cancelar}"></button>
+							<button id="btnGuardar" type="submit" class="btn-style-citi" th:text="#{label.button.guardar}"></button>
+							<button type="button" class="btn-style-citi" data-dismiss="modal" th:text="#{label.button.cerrar}"></button>
+						</div>
+					</div>
+					
+				</div>	
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>	

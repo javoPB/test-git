@@ -1,0 +1,161 @@
+
+	{
+		"ids":[
+			{
+				"id": "distribucioninstrucciones-results",
+				"headers": [
+				{ "label": "NOMBRE" },
+				{ "label": "Capturados" },
+				{ "label": "Contrato" },
+				{ "label": "Folio Mov." },
+				{ "label": "Dígito" },
+				{ "label": "Importe Neto" },
+				{ "label": "Depósitos" },
+				{ "label": "Retiros" },
+				{ "label": "Sucursal" }
+				],
+				"rows": [
+					{
+						"id": "1",
+						"data": [
+							"Programados",
+							"",
+							"Error eaque sed et consequatur recusandae atque natus.",
+							"Et nisi qui modi et consequatur accusamus.",
+							"Nostrum eos maxime et.",
+							"Optio qui molestias in culpa vero.",
+							"",
+							"",
+							"Dummy 2"
+						]
+					},
+					{
+						"id": "2",
+						"data": [
+							"Intradía",
+							"",
+							"Labore iste et sit et facere omnis fugit.",
+							"Dolor velit cumque quia illo quidem non.",
+							"Cupiditate nemo commodi ea temporibus.",
+							"Excepturi magnam expedita.",
+							"",
+							"",
+							"Dummy 1"
+						]
+					},
+					{
+						"id": "3",
+						"data": [
+							"Históricos",
+							"",
+							"Aliquam similique voluptate sint voluptas impedit.",
+							"Qui fuga molestiae dignissimos autem.",
+							"Omnis voluptate ducimus molestias.",
+							"Nihil repudiandae ipsam aut earum reiciendis.",
+							"",
+							"",
+							"Dummy 3"
+						]
+					},
+					{
+						"id": "4",
+						"data": [
+							"Programados",
+							"",
+							"Quo magnam non labore aliquid itaque.",
+							"Ut excepturi eligendi quo necessitatibus sequi quod pariatur.",
+							"In et autem rerum sequi fugiat suscipit.",
+							"Et itaque fugit vel.",
+							"",
+							"",
+							"Dummy 2"
+						]
+					},
+					{
+						"id": "5",
+						"data": [
+							"Programados",
+							"",
+							"Quisquam voluptatem et aliquam.",
+							"Et totam eos nesciunt et iste fuga.",
+							"Vitae vel optio deleniti expedita omnis accusantium rem.",
+							"Dolor eum dolorem fugiat dolores dolore commodi molestiae.",
+							"",
+							"",
+							"Dummy 1"
+						]
+					},
+					{
+						"id": "6",
+						"data": [
+							"Históricos",
+							"",
+							"Sunt vitae distinctio.",
+							"Pariatur quas distinctio et.",
+							"Voluptatem commodi dignissimos.",
+							"Dolorum culpa in voluptas harum doloremque natus laborum.",
+							"",
+							"",
+							"Dummy 1"
+						]
+					},
+					{
+						"id": "7",
+						"data": [
+							"Programados",
+							"",
+							"Consequatur nobis et ex quis.",
+							"Et dignissimos autem ut laboriosam ullam libero.",
+							"Laudantium et nisi quaerat magni.",
+							"Qui et quia.",
+							"",
+							"",
+							"Dummy 3"
+						]
+					},
+					{
+						"id": "8",
+						"data": [
+							"Históricos",
+							"",
+							"Tempora dolorum iste molestiae ad officiis sequi.",
+							"Nostrum est omnis quod.",
+							"Eius beatae est sapiente maxime voluptatem.",
+							"Quos saepe non illum labore quod est.",
+							"",
+							"",
+							"Dummy 3"
+						]
+					},
+					{
+						"id": "9",
+						"data": [
+							"Intradía",
+							"",
+							"Quia saepe amet a ut aperiam.",
+							"Ipsa accusantium ut vel qui ipsum id et.",
+							"Itaque molestiae eligendi et iure repellendus.",
+							"Eaque sed velit nisi dolore ipsam ut.",
+							"",
+							"",
+							"Dummy 1"
+						]
+					},
+					{
+						"id": "10",
+						"data": [
+							"Históricos",
+							"",
+							"Distinctio aut sed non.",
+							"Laudantium quibusdam incidunt.",
+							"Repellat consectetur reiciendis.",
+							"Odio veritatis consequatur.",
+							"",
+							"",
+							"Dummy 3"
+						]
+					}
+				]
+			}
+		]
+	}
